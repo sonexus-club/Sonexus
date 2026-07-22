@@ -1,18 +1,59 @@
 # Sonexus
 
-Sonexus — децентрализованная музыкальная P2P-платформа нового поколения.
+## Decentralized Audio Streaming Platform
 
-## Основные цели
+Sonexus is a decentralized high-quality audio platform based on:
 
-- Онлайн-воспроизведение Lossless (FLAC 16/44.1–48)
-- Загрузка Hi-Res через Torrent/Magnet
-- WebTorrent в браузере
-- IPFS как WebSeed
-- Собственный Tracker
-- Домашний Origin Seeder
-- PostgreSQL как единая база данных
-- Dashboard для управления системой
+- WebTorrent WebRTC
+- IPFS
+- WordPress
+- Custom Sonexus Player
 
-## Статус проекта
+## Architecture
 
-🚧 Находится в активной разработке.
+
+User | WordPress + Musicon | Sonexus Player | +----------------+ | | WebTorrent IPFS WebRTC WebSeed | | +----------------+ | Sonexus Node
+
+## Components
+
+### Frontend
+
+- WordPress
+- Musicon Theme
+- Sonexus Player
+
+### Backend
+
+- Gateway
+- WebTorrent Node
+- IPFS Storage
+- Dashboard
+
+### Infrastructure
+
+- Docker
+- Cloudflare Tunnel
+- Linux Server
+
+## Audio Quality
+
+Supported formats:
+
+- AAC 320 kbps
+- FLAC 16-bit / 44.1 kHz
+- Hi-Res FLAC 24-bit
+
+## Project Status
+
+Development stage.
+
+Current focus:
+
+- WebTorrent streaming
+- IPFS integration
+- Player integration
+- Server infrastructure
+
+## Documentation
+
+See `/docs`
