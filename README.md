@@ -1,59 +1,127 @@
-# Sonexus
+# SoNexus
 
-## Decentralized Audio Streaming Platform
+> Decentralized Hi-Res Audio Streaming Platform
 
-Sonexus is a decentralized high-quality audio platform based on:
+## Overview
 
-- WebTorrent WebRTC
+SoNexus is an open, modular and decentralized audio streaming platform designed for high-quality music delivery using modern peer-to-peer technologies.
+
+The platform combines:
+
+- WebTorrent
 - IPFS
 - WordPress
-- Custom Sonexus Player
+- Docker
+- PostgreSQL
+
+into a scalable hybrid streaming architecture.
+
+---
+
+## Current Status
+
+Version: 1.0
+
+Phase: Documentation Foundation
+
+Status: In Development
+
+GitHub: Local
+
+---
 
 ## Architecture
 
+Playback pipeline:
 
-User | WordPress + Musicon | Sonexus Player | +----------------+ | | WebTorrent IPFS WebRTC WebSeed | | +----------------+ | Sonexus Node
+WordPress
 
-## Components
+↓
 
-### Frontend
+SoNexus Player
 
-- WordPress
-- Musicon Theme
-- Sonexus Player
+↓
 
-### Backend
+Gateway
 
-- Gateway
-- WebTorrent Node
-- IPFS Storage
-- Dashboard
+↓
 
-### Infrastructure
+IPFS (Fast Playback Start)
 
-- Docker
-- Cloudflare Tunnel
-- Linux Server
+↓
 
-## Audio Quality
+WebTorrent (Primary Delivery)
 
-Supported formats:
+↓
 
-- AAC 320 kbps
-- FLAC 16-bit / 44.1 kHz
-- Hi-Res FLAC 24-bit
+Audio Output
 
-## Project Status
-
-Development stage.
-
-Current focus:
-
-- WebTorrent streaming
-- IPFS integration
-- Player integration
-- Server infrastructure
+---
 
 ## Documentation
 
-See `/docs`
+Project documentation is located in:
+
+```text
+docs/
+├── Project-AIContext.md
+├── Architecture.md
+├── adr/
+└── development/
+```
+
+---
+
+## Roadmap
+
+Current milestone:
+
+- Complete GitHub Migration
+- Gateway Architecture
+- Gateway Implementation
+- URL Parser
+- Metadata Database
+- Dashboard
+- Native SoNexus Player
+
+---
+
+## Technology Stack
+
+Frontend
+
+- WordPress
+- Musicon Theme
+- JavaScript
+
+Backend
+
+- Node.js
+- Express.js
+- WebTorrent
+- IPFS
+- PostgreSQL
+
+Infrastructure
+
+- Ubuntu Linux
+- Docker
+- Docker Compose
+- Nginx
+- Cloudflare Tunnel
+
+---
+
+## Principles
+
+- Architecture First
+- GitHub is the Source of Truth
+- One ADR = One Architecture Decision
+- Modular Design
+- Documentation evolves with implementation
+
+---
+
+## License
+
+MIT License
