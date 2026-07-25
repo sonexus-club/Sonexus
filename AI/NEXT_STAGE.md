@@ -1,52 +1,57 @@
-# NEXT_STAGE.md
+# NEXT_STAGE
 
-> SoNexus Next Development Stage
+Status: Final
+Version: 1.0
+Last Updated: 2026-07-25
+Owner: SoNexus Project
 
 ---
 
 # Current Stage
 
-ADR-005
-
-Gateway Architecture
+Recovery Stage
 
 ---
 
 # Objective
 
-Design the Gateway Architecture.
-
-Define responsibilities, interfaces, APIs and interaction with the Player, WebTorrent and IPFS.
+Complete HDS (ws.sonexus.club) documentation recovery.
 
 ---
 
-# Recovery Point
+# Execution Plan
 
-GitHub Migration Completed
-
----
-
-# First Task
-
-Create ADR-005 Gateway Architecture.
-
----
-
-# Success Criteria
-
-- Gateway responsibilities approved.
-- API defined.
-- Data flow approved.
-- Architecture documented.
-- ADR-005 approved.
+1. Create HDS Server Baseline.
+2. Document existing infrastructure.
+3. Synchronize GitHub documentation.
+4. Complete Recovery Stage.
+5. Return to Standard Development.
+6. Design Gateway MVP.
+7. Implement Gateway MVP.
 
 ---
 
-# Notes
+# Working Rules
 
-Before starting work:
+Follow AI/PROJECT_RULES.md.
 
-1. Load AI_CONTEXT.md.
-2. Review PROJECT_RULES.md.
-3. Review REPOSITORY_TREE.md.
-4. Continue only from the current Recovery Point.
+Monitor progress in AI/AGIFLOW.md.
+
+GitHub remains the Source of Truth.
+
+---
+
+# Exit Criteria
+
+Recovery Stage is completed when:
+
+- HDS infrastructure is fully documented.
+- GitHub reflects the actual implementation.
+- Documentation is synchronized.
+- Project returns to Standard Development.
+
+---
+
+# Next Engineering Milestone
+
+Gateway MVP
