@@ -1,7 +1,7 @@
 # PROJECT_RULES
 
 Status: Final
-Version: 1.1
+Version: 1.2
 Last Updated: 2026-07-25
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -364,6 +364,95 @@ After every significant task record:
 Once a decision has been approved and documented, it is considered Final.
 
 The AI moves the project forward instead of repeatedly revisiting previous decisions.
+
+---
+
+# 18. Recovery Stage
+
+Recovery Stage is a temporary process used only when existing infrastructure or code was created without timely documentation.
+
+During Recovery Stage, the project audits the existing implementation, documents the real state, synchronizes GitHub, and then returns to Standard Development.
+
+After Recovery Stage is completed, the project automatically returns to Standard Development.
+
+---
+
+# 19. Standard Development
+
+Standard Development is the default project process.
+
+Design
+
+↓
+
+Discussion
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Verification
+
+↓
+
+Documentation
+
+↓
+
+GitHub
+
+↓
+
+AgiFlow Monitoring
+
+---
+
+# 20. Baseline First
+
+Before changing existing infrastructure, the AI MUST first establish a Baseline.
+
+Examples:
+
+- Server Baseline
+- Docker Baseline
+- IPFS Baseline
+- Gateway Baseline
+
+---
+
+# 21. Android Workflow
+
+When working through Android:
+
+- ChatGPT prepares ready-to-run commands.
+- The user executes them through @GitHub, @AgiFlow, or on the HDS.
+- ChatGPT analyzes the result.
+- The next command is prepared only after the result has been analyzed.
+
+---
+
+# 22. Single Source of Responsibility
+
+Each tool has one primary responsibility.
+
+- GitHub: Source of Truth.
+- HDS (ws.sonexus.club): Development & Integration Environment.
+- AgiFlow: Project Monitoring.
+- ChatGPT: AI Engineering Lead.
+
+The tools must not duplicate each other's roles.
+
+---
+
+# 23. AgiFlow Reference
+
+Project monitoring rules are defined in AI/AGIFLOW.md.
 
 ---
 
