@@ -1,7 +1,7 @@
 # AI_CHANGELOG
 
 Status: Final
-Version: 1.0
+Version: 2.0
 Last Updated: 2026-07-25
 Owner: SoNexus Project
 
@@ -19,63 +19,58 @@ Only approved and published changes are recorded.
 
 ## 2026-07-25
 
-### PROJECT_RULES.md → Version 1.2
+### AI Documentation Foundation v2.0
 
 Added:
 
-- Tool Responsibilities
-- Standard Development
-- Recovery Stage
-- Baseline First
-- Android Workflow
-- Single Source of Responsibility
-- Reference to AI/AGIFLOW.md
+- AI Engineering Lead expanded
+- ADR First Principle
+- One Epic = One ADR
+- GitHub References
+- Organizational Methodology Frozen
 
----
+### PROJECT_RULES.md → Version 2.0
 
-### New document
+Updated to include:
 
-AI/AGIFLOW.md
+- full engineering-cycle role for ChatGPT;
+- ADR First Principle;
+- One Epic = One ADR;
+- Definition of Done for Epic;
+- organizational methodology freeze.
 
-Purpose:
+### AGIFLOW.md → Version 1.2
 
-Project Monitoring rules.
+Added:
 
----
+- GitHub References;
+- continuous task management;
+- One Epic = One ADR;
+- Planned ADR creation when work leaves the current ADR.
 
 ### AI_CONTEXT.md
 
 Updated:
 
-- Tool Responsibilities
-- Standard Development
-- Recovery Stage
-- Baseline First
-- Android Workflow
-- Current project working mode
-
----
-
-### NEXT_STAGE.md
-
-Updated for Recovery Stage.
-
-Current engineering objective:
-
-HDS documentation recovery.
+- Tool Responsibilities;
+- Standard Development;
+- Recovery Stage;
+- Baseline First;
+- Android Workflow;
+- full engineering-cycle role for ChatGPT.
 
 ---
 
 # Current Documentation Status
 
 PROJECT_RULES.md
-Final v1.2
+Final v2.0
 
 AI_CONTEXT.md
 Final
 
 AGIFLOW.md
-Final v1.0
+Final v1.2
 
 NEXT_STAGE.md
 Final v1.0
