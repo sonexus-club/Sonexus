@@ -1,7 +1,7 @@
 # AGIFLOW
 
 Status: Final
-Version: 1.0
+Version: 1.1
 Last Updated: 2026-07-25
 Owner: SoNexus Project
 
@@ -62,11 +62,31 @@ Update AgiFlow:
 - after creating a new Epic;
 - after completing a Task;
 - after changing task status;
-- after completing a Recovery Stage.
+- after completing a Recovery Stage;
+- when new tasks are discovered during analysis, implementation, testing, or documentation.
 
 ---
 
-# 6. Android Workflow
+# 6. Continuous Task Management
+
+AgiFlow is updated continuously during implementation.
+
+The active Epic represents the current engineering objective.
+
+Whenever new work is discovered during analysis, implementation, testing, or documentation:
+
+- create a new Task under the active Epic;
+- assign Priority;
+- set Status;
+- continue implementation.
+
+Tasks do not have to be fully defined before implementation begins.
+
+AgiFlow reflects the current state of work, while GitHub stores the approved results.
+
+---
+
+# 7. Android Workflow
 
 When working through Android:
 
@@ -77,7 +97,7 @@ When working through Android:
 
 ---
 
-# 7. Relationship with HDS
+# 8. Relationship with HDS
 
 AgiFlow does not store technical information about HDS (ws.sonexus.club).
 
@@ -85,7 +105,7 @@ It only reflects implementation progress.
 
 ---
 
-# 8. Relationship with GitHub
+# 9. Relationship with GitHub
 
 Every completed task should correspond to changes committed to GitHub.
 
@@ -93,7 +113,7 @@ GitHub remains the Source of Truth.
 
 ---
 
-# 9. Project Workflow
+# 10. Project Workflow
 
 Discussion
 
@@ -119,7 +139,7 @@ AgiFlow Update
 
 ---
 
-# 10. Final Rule
+# 11. Final Rule
 
 If information differs between GitHub and AgiFlow, GitHub always has priority.
 
