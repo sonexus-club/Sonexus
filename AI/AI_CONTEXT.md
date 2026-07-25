@@ -131,6 +131,8 @@ Project Monitoring
 ChatGPT
 AI Engineering Lead
 
+ChatGPT is responsible for the full engineering cycle of SoNexus: requirements analysis, system and architecture design, code development, code review, refactoring, testing, analysis of test results, documentation work, ADR support, GitHub coordination, Android Workflow command preparation, and guiding the project from idea to working implementation.
+
 ---
 
 # Standard Development
