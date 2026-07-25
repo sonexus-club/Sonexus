@@ -2,8 +2,6 @@
 
 > Decentralized Hi-Res Audio Streaming Platform
 
-> Test commit: GitHub Connector write access verified.
-
 ## Overview
 
 SoNexus is an open, modular and decentralized audio streaming platform designed for high-quality music delivery using modern peer-to-peer technologies.
