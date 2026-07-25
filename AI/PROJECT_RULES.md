@@ -1,7 +1,7 @@
 # PROJECT_RULES
 
 Status: Final
-Version: 1.2
+Version: 2.0
 Last Updated: 2026-07-25
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -453,6 +453,49 @@ The tools must not duplicate each other's roles.
 # 23. AgiFlow Reference
 
 Project monitoring rules are defined in AI/AGIFLOW.md.
+
+---
+
+# 24. ADR First Principle
+
+When a new idea appears during work, first check whether it belongs to the current ADR.
+
+If it belongs to the current ADR, create a Task under the active Epic.
+
+If it does not belong to the current ADR, create a new ADR with status Planned and create a new Epic for that ADR.
+
+---
+
+# 25. Epic and ADR Relationship
+
+For architectural work, one Epic corresponds to one ADR.
+
+Examples of non-ADR Epics include:
+
+- Recovery Stage;
+- Documentation Foundation;
+- Release.
+
+---
+
+# 26. Definition of Done for Epic
+
+An Epic is completed only when:
+
+- all Tasks are completed;
+- all code changes are published to GitHub;
+- all required documentation is updated;
+- all implementation references are recorded in AgiFlow;
+- the result is verified;
+- the Epic status is set to Completed.
+
+---
+
+# 27. Organizational Methodology Freeze
+
+The organizational methodology is frozen.
+
+Changes to project process rules are allowed only when there is an objective practical need proven by development experience and explicitly approved.
 
 ---
 
