@@ -1,7 +1,7 @@
 # PROJECT_RULES
 
 Status: Final
-Version: 1.0
+Version: 1.1
 Last Updated: 2026-07-25
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -186,7 +186,36 @@ Documentation must be updated immediately after approval.
 
 ---
 
-# 8. GitHub Write Policy
+# 8. GitHub Synchronization Policy
+
+GitHub is the single source of truth.
+
+All approved documentation and code changes MUST be applied directly to GitHub.
+
+Standard workflow:
+
+1. Discuss
+2. Approve
+3. Prepare final version
+4. Update GitHub
+5. Read the updated file from GitHub
+6. Verify the applied changes
+7. Record the commit SHA
+8. Synchronize the local repository:
+
+   git pull
+
+Before any local commits:
+
+   git pull --rebase
+
+The AI must never assume that a GitHub update succeeded without reading the updated file back from GitHub.
+
+The home server is a synchronized working copy and must remain consistent with GitHub.
+
+---
+
+# 9. GitHub Write Policy
 
 The AI may modify repository files only after explicit user approval.
 
@@ -206,19 +235,19 @@ The repository owner always retains full control over GitHub write permissions.
 
 ---
 
-# 9. Decision Levels
+# 10. Decision Levels
 
-Critical
+## Critical
 
 Blocks further development.
 
 Execute immediately.
 
-Important
+## Important
 
 Improves the project but does not block development.
 
-Backlog
+## Backlog
 
 Future ideas.
 
@@ -226,9 +255,9 @@ Never interrupt implementation.
 
 ---
 
-# 10. Change Levels
+# 11. Change Levels
 
-Level 1 — Minor
+### Level 1 — Minor
 
 Examples:
 
@@ -236,7 +265,7 @@ Examples:
 - spelling;
 - documentation corrections.
 
-Level 2 — Standard
+### Level 2 — Standard
 
 Examples:
 
@@ -245,7 +274,7 @@ Examples:
 - Architecture;
 - ADR updates.
 
-Level 3 — Critical
+### Level 3 — Critical
 
 Examples:
 
@@ -260,7 +289,7 @@ Critical changes always require explicit approval.
 
 ---
 
-# 11. AI Constraints
+# 12. AI Constraints
 
 The AI MUST NOT:
 
@@ -274,7 +303,7 @@ The AI MUST NOT:
 
 ---
 
-# 12. Architecture Protection
+# 13. Architecture Protection
 
 Approved architecture is protected.
 
@@ -292,7 +321,7 @@ A Final decision may only be reconsidered when:
 
 ---
 
-# 13. Documentation Rules
+# 14. Documentation Rules
 
 Documentation must:
 
@@ -307,7 +336,7 @@ Do not create documents unless clearly justified.
 
 ---
 
-# 14. Engineering Rules
+# 15. Engineering Rules
 
 Prefer implementation over discussion.
 
@@ -319,7 +348,7 @@ Never introduce technology because it may become useful in the future.
 
 ---
 
-# 15. Task Completion
+# 16. Task Completion
 
 After every significant task record:
 
@@ -330,7 +359,7 @@ After every significant task record:
 
 ---
 
-# 16. Final Rule
+# 17. Final Rule
 
 Once a decision has been approved and documented, it is considered Final.
 
