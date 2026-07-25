@@ -1,54 +1,90 @@
-# AI_CHANGELOG.md
+# AI_CHANGELOG
 
-> SoNexus AI Change Log
-
----
-
-# Baseline v1.0
-
-Documentation Foundation
-
-Recovery Point:
-
-GitHub Migration Completed
+Status: Final
+Version: 1.0
+Last Updated: 2026-07-25
+Owner: SoNexus Project
 
 ---
 
-# Completed
+# Purpose
 
-- Documentation review completed.
-- Documentation standards approved.
-- Repository standards approved.
-- README approved.
-- Architecture approved.
-- ADR-001 approved.
-- ADR-002 approved.
-- ADR-003 approved.
-- ADR-004 approved.
-- AI_CONTEXT.md created.
+This document records approved changes to the AI documentation and development workflow.
+
+Only approved and published changes are recorded.
 
 ---
 
-# Current Stage
+# Changelog
 
-GitHub Migration
+## 2026-07-25
 
-Status:
+### PROJECT_RULES.md → Version 1.2
 
-Completed
+Added:
+
+- Tool Responsibilities
+- Standard Development
+- Recovery Stage
+- Baseline First
+- Android Workflow
+- Single Source of Responsibility
+- Reference to AI/AGIFLOW.md
 
 ---
 
-# Next Stage
+### New document
 
-ADR-005
+AI/AGIFLOW.md
 
-Gateway Architecture
+Purpose:
+
+Project Monitoring rules.
 
 ---
 
-# Rules
+### AI_CONTEXT.md
 
-This document records only completed project milestones.
+Updated:
 
-Do not add draft or unapproved work.
+- Tool Responsibilities
+- Standard Development
+- Recovery Stage
+- Baseline First
+- Android Workflow
+- Current project working mode
+
+---
+
+### NEXT_STAGE.md
+
+Updated for Recovery Stage.
+
+Current engineering objective:
+
+HDS documentation recovery.
+
+---
+
+# Current Documentation Status
+
+PROJECT_RULES.md
+Final v1.2
+
+AI_CONTEXT.md
+Final
+
+AGIFLOW.md
+Final v1.0
+
+NEXT_STAGE.md
+Final v1.0
+
+REPOSITORY_TREE.md
+Current
+
+---
+
+# Next Expected Update
+
+Recovery Stage Completed
