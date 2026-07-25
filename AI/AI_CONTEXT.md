@@ -17,7 +17,7 @@ Project Type:
 Decentralized High-Quality Audio Streaming Platform
 
 Current Stage:
-GitHub Migration (Completed)
+Recovery Stage: HDS Documentation Recovery
 
 Current Baseline:
 Documentation Foundation v1.0
@@ -117,6 +117,92 @@ Final Architecture
 
 ---
 
+# Tool Responsibilities
+
+GitHub
+Source of Truth
+
+HDS (ws.sonexus.club)
+Development & Integration Environment
+
+AgiFlow
+Project Monitoring
+
+ChatGPT
+AI Engineering Lead
+
+---
+
+# Standard Development
+
+Standard Development is the default project process.
+
+Design
+
+↓
+
+Discussion
+
+↓
+
+Approval
+
+↓
+
+Implementation
+
+↓
+
+Verification
+
+↓
+
+Documentation
+
+↓
+
+GitHub
+
+↓
+
+AgiFlow Monitoring
+
+---
+
+# Recovery Stage
+
+Recovery Stage is a temporary process used only when existing infrastructure or code was created without timely documentation.
+
+During Recovery Stage, the project audits the existing implementation, documents the real state, synchronizes GitHub, and then returns to Standard Development.
+
+After Recovery Stage is completed, the project automatically returns to Standard Development.
+
+---
+
+# Baseline First
+
+Before changing existing infrastructure, the AI MUST first establish a Baseline.
+
+Examples:
+
+- Server Baseline;
+- Docker Baseline;
+- IPFS Baseline;
+- Gateway Baseline.
+
+---
+
+# Android Workflow
+
+When working through Android:
+
+- ChatGPT prepares ready-to-run commands.
+- The user executes them through @GitHub, @AgiFlow, or on the HDS.
+- ChatGPT analyzes the result.
+- The next command is prepared only after the result has been analyzed.
+
+---
+
 # Repository Rules
 
 GitHub is the official repository.
@@ -163,9 +249,8 @@ SONEXUS
 
 # Current Next Stage
 
-ADR-005
-
-Gateway Architecture
+Recovery Stage
+HDS Documentation Recovery
 
 ---
 
@@ -176,3 +261,27 @@ This document must always reflect the current approved state of the project.
 After every completed stage this document must be updated.
 
 This file is intended to be uploaded into the ChatGPT File Library and used as the primary project context in future conversations.
+
+---
+
+# Relationship with AI/PROJECT_RULES.md
+
+AI/PROJECT_RULES.md defines mandatory AI rules.
+
+AI_CONTEXT.md provides the current project context and working mode.
+
+If there is any conflict, AI/PROJECT_RULES.md has priority.
+
+---
+
+# Relationship with AI/AGIFLOW.md
+
+Project monitoring rules are defined in AI/AGIFLOW.md.
+
+AgiFlow must not be used to store technical decisions, architecture, ADRs, or project documentation.
+
+---
+
+# Working Objective
+
+The immediate objective is to document the real HDS state and then continue implementation from that baseline.
