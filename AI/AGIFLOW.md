@@ -1,7 +1,7 @@
 # AGIFLOW
 
 Status: Final
-Version: 1.1
+Version: 1.2
 Last Updated: 2026-07-25
 Owner: SoNexus Project
 
@@ -86,7 +86,35 @@ AgiFlow reflects the current state of work, while GitHub stores the approved res
 
 ---
 
-# 7. Android Workflow
+# 7. GitHub References
+
+After completing a Task, AgiFlow should reference the implementation stored in GitHub.
+
+Recommended fields:
+
+- Git Commit
+- GitHub Path
+
+Example:
+
+Task:
+Gateway MVP
+
+Status:
+Completed
+
+Git Commit:
+5bf9a49
+
+GitHub Path:
+backend/gateway/
+docs/adr/ADR-005-Gateway.md
+
+AgiFlow stores references to implementation, not the implementation itself.
+
+---
+
+# 8. Android Workflow
 
 When working through Android:
 
@@ -97,7 +125,7 @@ When working through Android:
 
 ---
 
-# 8. Relationship with HDS
+# 9. Relationship with HDS
 
 AgiFlow does not store technical information about HDS (ws.sonexus.club).
 
@@ -105,7 +133,7 @@ It only reflects implementation progress.
 
 ---
 
-# 9. Relationship with GitHub
+# 10. Relationship with GitHub
 
 Every completed task should correspond to changes committed to GitHub.
 
@@ -113,7 +141,7 @@ GitHub remains the Source of Truth.
 
 ---
 
-# 10. Project Workflow
+# 11. Project Workflow
 
 Discussion
 
@@ -139,8 +167,35 @@ AgiFlow Update
 
 ---
 
-# 11. Final Rule
+# 12. Final Rule
 
 If information differs between GitHub and AgiFlow, GitHub always has priority.
 
 AgiFlow must never be used to store technical decisions, architecture, ADRs, or project documentation.
+
+---
+
+# 13. ADR and Epic Relationship
+
+For architectural work, one Epic corresponds to one ADR.
+
+Examples of non-ADR Epics include:
+
+- Recovery Stage;
+- Documentation Foundation;
+- Release.
+
+If a new idea does not belong to the current ADR, create a new ADR with status Planned and a corresponding new Epic.
+
+---
+
+# 14. Definition of Done
+
+An Epic is completed only when:
+
+- all Tasks are completed;
+- all code changes are published to GitHub;
+- all required documentation is updated;
+- all implementation references are recorded in AgiFlow;
+- the result is verified;
+- the Epic status is set to Completed.
