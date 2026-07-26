@@ -1,7 +1,7 @@
 # TRELLO
 
 Status: Draft
-Version: 1.1
+Version: 1.2
 Last Updated: 2026-07-26
 Owner: SoNexus Project
 
@@ -501,7 +501,53 @@ TASK (when needed)
 
 ---
 
-# 21. Experimental Features
+# 21. Documentation Principles
+
+## Principle 1
+
+### Document Knowledge, Not Process
+
+Document only knowledge with long-term value.
+
+Do not document:
+
+- temporary analysis results;
+- intermediate Recovery stages;
+- diagnostic reports;
+- Baseline archives;
+- working notes;
+- one-time actions.
+
+Baseline is used as an input for engineering analysis and does not become permanent project documentation unless an architectural decision requires it.
+
+---
+
+## Principle 2
+
+### One Knowledge → One Document
+
+Rules:
+
+- Each piece of knowledge has one official home.
+- Do not create duplicate documentation.
+- Update an existing document when possible instead of creating a new one.
+- Create a new document only when the existing structure no longer fits.
+
+---
+
+## Principle 3
+
+### Minimal Documentation
+
+Before creating a new document, ask:
+
+"Will this document be useful in a year?"
+
+If the answer is negative or uncertain, the new document should not be created.
+
+---
+
+# 22. Experimental Features
 
 ## TR-PILOT-001 — Visual Workflow Separation
 
@@ -519,7 +565,7 @@ If it becomes distracting, it should be removed without affecting the workflow.
 
 ---
 
-# 22. Known Limitation
+# 23. Known Limitation
 
 The ChatGPT Trello connector does not currently expose a reliable operation for reordering lists after creation.
 
@@ -530,7 +576,7 @@ Practical implication:
 
 ---
 
-# 23. Working Rules
+# 24. Working Rules
 
 - Keep the board simple.
 - Do not store final knowledge in Trello.
@@ -541,7 +587,7 @@ Practical implication:
 
 ---
 
-# 24. Relation to Recovery Stage
+# 25. Relation to Recovery Stage
 
 During Recovery Stage, Trello is used to monitor the real state of work while GitHub is updated with approved results.
 
@@ -549,7 +595,7 @@ If a document is opened for editing, check it for obsolete AgiFlow references an
 
 ---
 
-# 25. Final Rule
+# 26. Final Rule
 
 If a piece of information is approved and finalized, it belongs in GitHub.
 
