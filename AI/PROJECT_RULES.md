@@ -1,7 +1,7 @@
 # PROJECT_RULES
 
 Status: Final
-Version: 2.2
+Version: 2.3
 Last Updated: 2026-07-26
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -423,6 +423,14 @@ Examples:
 - Docker Baseline
 - IPFS Baseline
 - Gateway Baseline
+
+Baseline is used as an engineering snapshot of the current state.
+
+Baseline is not permanent project documentation.
+
+Baseline data is stored locally for analysis, comparison, and recovery purposes.
+
+Only architectural decisions and knowledge with long-term value are transferred into permanent GitHub documentation.
 
 ---
 
