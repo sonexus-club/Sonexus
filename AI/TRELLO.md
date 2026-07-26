@@ -1,7 +1,7 @@
 # TRELLO
 
 Status: Draft
-Version: 1.0
+Version: 1.1
 Last Updated: 2026-07-26
 Owner: SoNexus Project
 
@@ -424,7 +424,84 @@ ChatGPT is responsible for the full engineering cycle: requirements analysis, sy
 
 ---
 
-# 14. Experimental Features
+# 14. Task Hierarchy
+
+ADR
+↓
+Checklist
+↓
+TASK (only when needed)
+
+## Rule
+
+- Each ADR has one main card.
+- The checklist is the primary tool for ADR decomposition.
+- TASK is created only when one checklist item is no longer sufficient.
+- Simple work stays inside the ADR without creating separate cards.
+
+---
+
+# 15. Golden Rule
+
+> First Checklist.
+> Then TASK.
+> Never the other way around.
+
+---
+
+# 16. Checklist Rules
+
+- A checklist has no independent lifecycle.
+- A checklist inherits the status of the main ADR card.
+- Checklist items are marked complete with checkmarks.
+- If a checklist item becomes a TASK, the corresponding checklist item is marked complete after the TASK finishes.
+
+---
+
+# 17. TASK Rules
+
+A TASK is created only if the work requires:
+
+- its own analysis;
+- its own design;
+- its own implementation;
+- its own testing;
+- its own review.
+
+In all other cases, use only the checklist.
+
+---
+
+# 18. ADR Completion
+
+An ADR is completed only if:
+
+- all checklist items are completed;
+- Definition of Done is fulfilled;
+- documentation is published in GitHub;
+- the card is moved to ✅ Done.
+
+---
+
+# 19. Workflow Principle
+
+Status is determined only by the Trello column.
+
+Do not use separate statuses inside cards.
+
+---
+
+# 20. Three-Level Engineering Model
+
+ADR
+↓
+Checklist
+↓
+TASK (when needed)
+
+---
+
+# 21. Experimental Features
 
 ## TR-PILOT-001 — Visual Workflow Separation
 
@@ -442,7 +519,7 @@ If it becomes distracting, it should be removed without affecting the workflow.
 
 ---
 
-# 15. Known Limitation
+# 22. Known Limitation
 
 The ChatGPT Trello connector does not currently expose a reliable operation for reordering lists after creation.
 
@@ -453,7 +530,7 @@ Practical implication:
 
 ---
 
-# 16. Working Rules
+# 23. Working Rules
 
 - Keep the board simple.
 - Do not store final knowledge in Trello.
@@ -464,7 +541,7 @@ Practical implication:
 
 ---
 
-# 17. Relation to Recovery Stage
+# 24. Relation to Recovery Stage
 
 During Recovery Stage, Trello is used to monitor the real state of work while GitHub is updated with approved results.
 
@@ -472,7 +549,7 @@ If a document is opened for editing, check it for obsolete AgiFlow references an
 
 ---
 
-# 18. Final Rule
+# 25. Final Rule
 
 If a piece of information is approved and finalized, it belongs in GitHub.
 
