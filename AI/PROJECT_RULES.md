@@ -1,7 +1,7 @@
 # PROJECT_RULES
 
 Status: Final
-Version: 2.1
+Version: 2.2
 Last Updated: 2026-07-26
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -496,6 +496,16 @@ An Epic is completed only when:
 The organizational methodology is frozen.
 
 Changes to project process rules are allowed only when there is an objective practical need proven by development experience and explicitly approved.
+
+---
+
+# 28. Trello Labels
+
+For ADR cards, use the Trello Labels Standard v1.0.
+
+Status is determined by the Trello column.
+
+Labels are used only for classification of cards.
 
 ---
 
