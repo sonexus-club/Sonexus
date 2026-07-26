@@ -1,8 +1,8 @@
 # PROJECT_RULES
 
 Status: Final
-Version: 2.0
-Last Updated: 2026-07-25
+Version: 2.1
+Last Updated: 2026-07-26
 Owner: SoNexus Project
 Source of Truth: GitHub
 
@@ -409,7 +409,7 @@ GitHub
 
 ↓
 
-AgiFlow Monitoring
+Trello Monitoring
 
 ---
 
@@ -431,7 +431,7 @@ Examples:
 When working through Android:
 
 - ChatGPT prepares ready-to-run commands.
-- The user executes them through @GitHub, @AgiFlow, or on the HDS.
+- The user executes them through @GitHub, @Trello, or on the HDS.
 - ChatGPT analyzes the result.
 - The next command is prepared only after the result has been analyzed.
 
@@ -443,16 +443,16 @@ Each tool has one primary responsibility.
 
 - GitHub: Source of Truth.
 - HDS (ws.sonexus.club): Development & Integration Environment.
-- AgiFlow: Project Monitoring.
+- Trello: Project Monitoring.
 - ChatGPT: AI Engineering Lead.
 
 The tools must not duplicate each other's roles.
 
 ---
 
-# 23. AgiFlow Reference
+# 23. Trello Reference
 
-Project monitoring rules are defined in AI/AGIFLOW.md.
+Project monitoring rules are defined in AI/TRELLO.md.
 
 ---
 
@@ -485,7 +485,7 @@ An Epic is completed only when:
 - all Tasks are completed;
 - all code changes are published to GitHub;
 - all required documentation is updated;
-- all implementation references are recorded in AgiFlow;
+- all implementation references are recorded in Trello;
 - the result is verified;
 - the Epic status is set to Completed.
 
