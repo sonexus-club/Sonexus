@@ -1,7 +1,7 @@
 # PROJECT_RULES
 
 Status: Final
-Version: 2.3
+Version: 2.4
 Last Updated: 2026-07-26
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -20,7 +20,7 @@ It does NOT define:
 - implementation details;
 - software design.
 
-These are documented in Architecture.md and ADR documents.
+These are documented in docs/Project-Architecture.md, docs/Project-Methodology.md and ADR documents.
 
 ---
 
@@ -30,11 +30,13 @@ Before starting any task, the AI MUST read the following documents in order:
 
 1. AI/PROJECT_RULES.md
 2. AI/AI_CONTEXT.md
-3. docs/Architecture.md
-4. docs/adr/ADR-000-Status.md
-5. Relevant ADR documents
-6. Repository structure
-7. Source code
+3. docs/Project-Methodology.md
+4. docs/Project-Architecture.md
+5. docs/adr/ADR-000-Status.md
+6. Relevant ADR documents
+7. Relevant Service (S) documents
+8. Repository structure
+9. Source code
 
 The AI MUST NOT start implementation before completing this sequence.
 
