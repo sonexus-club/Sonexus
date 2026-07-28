@@ -10,7 +10,6 @@ Last Updated: 2026-07-23
 
 Related Documents:
 
-- Project-AIContext.md
 - adr/ADR-Status.md
 - adr/ADR-004-Universal-URL-Standard.md
 
@@ -446,7 +445,6 @@ The SoNexus platform follows these principles:
 
 # Related Documents
 
-- Project-AIContext.md
 - ADR-Status.md
 - Development-Roadmap.md
 - Development-Journal.md

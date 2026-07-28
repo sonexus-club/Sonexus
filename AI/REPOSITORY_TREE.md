@@ -37,7 +37,6 @@ Generated: 2026-07-25 00:14:09
 │   │   ├── Development-Journal.md
 │   │   └── Development-Roadmap.md
 │   ├── .gitkeep
-│   └── Project-AIContext.md
 ├── frontend
 │   ├── musicon
 │   ├── sonexus-player

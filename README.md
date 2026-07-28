@@ -64,7 +64,6 @@ Project documentation is located in:
 
 ```text
 Docs/
-├── Project-AIContext.md
 ├── Project-Architecture.md
 ├── Project-Methodology.md
 ├── Project-Passport.md

@@ -39,7 +39,6 @@ Status
 
 Created:
 
-- Project-AIContext.md
 - Architecture.md
 - ADR-Status.md
 - Development-Roadmap.md

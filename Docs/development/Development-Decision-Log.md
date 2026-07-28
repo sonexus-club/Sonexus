@@ -50,7 +50,7 @@ Status: Approved
 
 Summary:
 
-Project-AIContext.md becomes the primary project recovery document and the main AI context document.
+The primary project recovery document and main AI context document are approved.
 
 ---
 
@@ -151,7 +151,7 @@ Status: Approved
 
 Summary:
 
-Project-AIContext.md and Architecture.md approved as primary project documents.
+The primary project context document and Architecture.md are approved as primary project documents.
 
 ---
 
