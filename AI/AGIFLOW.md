@@ -108,7 +108,7 @@ Git Commit:
 
 GitHub Path:
 backend/gateway/
-docs/adr/ADR-005-Gateway.md
+Docs/ADR/ADR-005-Gateway.md
 
 AgiFlow stores references to implementation, not the implementation itself.
 

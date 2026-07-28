@@ -20,7 +20,7 @@ Related Documents:
 
 ## EN
 
-Architecture.md is the primary technical document describing the SoNexus platform.
+Project-Architecture.md is the primary technical document describing the SoNexus platform.
 
 It defines the system structure, major components, communication between modules and the fundamental architectural principles.
 
@@ -30,7 +30,7 @@ This document serves as the reference architecture for all future development.
 
 ## RU
 
-Architecture.md — основной технический документ проекта SoNexus.
+Project-Architecture.md — основной технический документ проекта SoNexus.
 
 Он определяет структуру системы, основные компоненты, взаимодействие между ними и базовые архитектурные принципы.
 
@@ -469,7 +469,7 @@ Additional ADRs will be created as new architectural modules are introduced.
 
 # Final Notes
 
-Architecture.md is the primary technical reference for the SoNexus platform.
+Project-Architecture.md is the primary technical reference for the SoNexus platform.
 
 All implementation decisions must remain consistent with this document.
 

@@ -63,12 +63,12 @@ Audio Output
 Project documentation is located in:
 
 ```text
-docs/
+Docs/
 ├── Project-AIContext.md
 ├── Project-Architecture.md
 ├── Project-Methodology.md
 ├── Project-Passport.md
-├── adr/
+├── ADR/
 ├── services/
 └── development/
 ```

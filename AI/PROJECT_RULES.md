@@ -20,7 +20,7 @@ It does NOT define:
 - implementation details;
 - software design.
 
-These are documented in docs/Project-Architecture.md, docs/Project-Methodology.md and ADR documents.
+These are documented in Docs/Project-Architecture.md, Docs/Project-Methodology.md and ADR documents.
 
 ---
 
@@ -30,9 +30,9 @@ Before starting any task, the AI MUST read the following documents in order:
 
 1. AI/PROJECT_RULES.md
 2. AI/AI_CONTEXT.md
-3. docs/Project-Methodology.md
-4. docs/Project-Architecture.md
-5. docs/adr/ADR-000-Status.md
+3. Docs/Project-Methodology.md
+4. Docs/Project-Architecture.md
+5. Docs/ADR/ADR-000-Status.md
 6. Relevant ADR documents
 7. Relevant Service (S) documents
 8. Repository structure
@@ -49,7 +49,7 @@ Repository structure:
 AI/
 Project AI knowledge base.
 
-docs/
+Docs/
 Project documentation.
 
 backend/

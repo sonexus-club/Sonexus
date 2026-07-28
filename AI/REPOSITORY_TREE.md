@@ -31,7 +31,7 @@ Generated: 2026-07-25 00:14:09
 │   │   └── ADR-004-Universal-URL-Standard.md
 │   ├── ai
 │   │   └── REPOSITORY_TREE.md
-│   ├── Architecture.md
+│   ├── Project-Architecture.md
 │   ├── development
 │   │   ├── Development-Decision-Log.md
 │   │   ├── Development-Journal.md
