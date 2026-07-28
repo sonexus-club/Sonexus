@@ -4,125 +4,67 @@
 
 ## Overview
 
-SoNexus is an open, modular and decentralized audio streaming platform designed for high-quality music delivery using modern peer-to-peer technologies.
-
-The platform combines:
-
-- WebTorrent
-- IPFS
-- WordPress
-- Docker
-- PostgreSQL
-
-into a scalable hybrid streaming architecture.
-
----
+SoNexus is an open, modular audio platform that combines IPFS fast start with WebTorrent peer-to-peer delivery.
 
 ## Current Status
 
-Version: 1.0
+- Status: Active
+- Current stage: Repository restructuring
+- Active service: S-1 Gateway
+- Source of Truth: GitHub
 
-Phase: Documentation Foundation
-
-Status: In Development
-
-GitHub: Local
-
----
+See [`Project-Status.md`](Project-Status.md) for the current objective, active work, blockers and next milestone.
 
 ## Architecture
 
-Playback pipeline:
-
-WordPress
-
-↓
-
+```text
+WordPress / Musicon
+        ↓
 SoNexus Player
+        ↓
+S-1 Gateway
+   ├── S-4 Postgres
+   ├── S-3 IPFS
+   ├── S-2 WebTorrent
+   └── S-7 Dashboard
+```
 
-↓
-
-Gateway
-
-↓
-
-IPFS (Fast Playback Start)
-
-↓
-
-WebTorrent (Primary Delivery)
-
-↓
-
-Audio Output
-
----
+IPFS provides the initial playback source. WebTorrent provides the primary decentralized delivery path. Gateway coordinates application logic and does not stream audio directly.
 
 ## Documentation
 
-Project documentation is located in:
+- [`AI/AI-Index.md`](AI/AI-Index.md) — entry point for AI assistants
+- [`Project-Status.md`](Project-Status.md) — current project state
+- [`Project-Changelog.md`](Project-Changelog.md) — approved project history
+- [`Docs/Project-Architecture.md`](Docs/Project-Architecture.md) — system architecture
+- [`Docs/Project-Methodology.md`](Docs/Project-Methodology.md) — engineering methodology
+- [`Docs/ADR/`](Docs/ADR/) — architectural decisions
+- [`Docs/Services/`](Docs/Services/) — service technical passports
 
-```text
-Docs/
-├── Project-Architecture.md
-├── Project-Methodology.md
-├── Project-Passport.md
-├── ADR/
-├── services/
-└── development/
-```
+## Repository Areas
 
----
-
-## Roadmap
-
-Current milestone:
-
-- Complete GitHub Migration
-- Gateway Architecture
-- Gateway Implementation
-- URL Parser
-- Metadata Database
-- Dashboard
-- Native SoNexus Player
-
----
+- `AI/` — AI navigation and rules
+- `Docs/` — project documentation
+- `HDS/` — home development server code, configuration and tools
+- `VPS/` — VPS code, configuration and tools
+- `backup/` — temporary snapshot created before restructuring
 
 ## Technology Stack
 
-Frontend
-
-- WordPress
-- Musicon Theme
-- JavaScript
-
-Backend
-
-- Node.js
-- Express.js
-- WebTorrent
-- IPFS
+- WordPress, Musicon, JavaScript
+- Node.js, Express.js
+- WebTorrent, IPFS (Kubo)
 - PostgreSQL
-
-Infrastructure
-
-- Ubuntu Linux
-- Docker
-- Docker Compose
-- Nginx
-- Cloudflare Tunnel
-
----
+- Docker, Ubuntu Linux, Nginx, Cloudflare Tunnel
 
 ## Principles
 
 - Architecture First
 - GitHub is the Source of Truth
-- One ADR = One Architecture Decision
-- Modular Design
-- Documentation evolves with implementation
-
----
+- One architectural responsibility per ADR
+- One document per knowledge area
+- Minimal documentation
+- Modular design
 
 ## License
 
