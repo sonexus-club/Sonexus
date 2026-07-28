@@ -462,7 +462,7 @@ The tools must not duplicate each other's roles.
 
 # 23. Trello Reference
 
-Project monitoring rules are defined in AI/TRELLO.md.
+Project monitoring rules are defined in Docs/Project-Methodology.md.
 
 ---
 

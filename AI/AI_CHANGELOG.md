@@ -48,6 +48,13 @@ Added:
 - One Epic = One ADR;
 - Planned ADR creation when work leaves the current ADR.
 
+Legacy note:
+
+- AGIFLOW.md is decommissioned.
+- TRELLO.md is decommissioned.
+- The current Trello methodology is maintained in Docs/Project-Methodology.md.
+- Neither AGIFLOW.md nor TRELLO.md is an active project document.
+
 ### AI_CONTEXT.md
 
 Legacy note:
@@ -76,7 +83,10 @@ AI_CONTEXT.md
 Replaced by AI/AI-Index.md
 
 AGIFLOW.md
-Final v1.2
+Historical only; methodology moved to Docs/Project-Methodology.md
+
+TRELLO.md
+Historical only; methodology moved to Docs/Project-Methodology.md
 
 NEXT_STAGE.md
 Final v1.0
