@@ -46,7 +46,7 @@ It provides navigation to the authoritative project documents and does not dupli
 - `Docs/` — project documentation
 - `HDS/` — code, configuration and tools for the home development server
 - `VPS/` — code, configuration and tools for the VPS environment
-- `backup/` — temporary repository snapshot used during restructuring
+- `Backup/` — temporary repository snapshot used during restructuring
 
 ## Working Principle
 

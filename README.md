@@ -47,7 +47,7 @@ IPFS provides the initial playback source. WebTorrent provides the primary decen
 - `Docs/` — project documentation
 - `HDS/` — home development server code, configuration and tools
 - `VPS/` — VPS code, configuration and tools
-- `backup/` — temporary snapshot created before restructuring
+- `Backup/` — temporary snapshot created before restructuring
 
 ## Technology Stack
 
