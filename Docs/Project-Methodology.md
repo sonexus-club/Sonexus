@@ -123,6 +123,22 @@ Examples:
 
 ## Trello Workflow
 
+### Purpose
+
+Trello is the working notebook and process tracker for SoNexus.
+
+It is used for:
+
+- ideas;
+- planning;
+- checklists;
+- task coordination;
+- progress tracking;
+- short working notes;
+- links to GitHub artifacts.
+
+Trello must not store final architecture, ADR text, source code, or permanent project documentation. GitHub remains the single source of truth.
+
 ### Trello Lifecycle Standard v1.0
 
 The Trello board uses the following columns:
@@ -136,9 +152,48 @@ The Trello board uses the following columns:
 - ✅ Завершено
 - 📦 Архив
 
+Status is determined only by the column containing the card.
+
+### Card Rules
+
+- One card represents one engineering responsibility.
+- Split a card when it begins to cover separate responsibilities.
+- Keep objectives, checklists, working notes, and GitHub references concise.
+- Do not duplicate card status in its title or description.
+- Use a checklist as the primary execution plan.
+- Create a separate Task card only when the work requires its own analysis, implementation, testing, and lifecycle.
+
+### GitHub Integration
+
+Trello references implementation stored in GitHub.
+
+Recommended references:
+
+- ADR or service document path;
+- branch name;
+- commit SHA;
+- pull request link.
+
+### Completion Rule
+
+A card is completed only when:
+
+- its checklist is complete;
+- the result is verified;
+- required code and documentation are published to GitHub;
+- relevant GitHub references are recorded;
+- the card is moved to ✅ Завершено.
+
 ## Trello Labels
 
 Labels are used for classification, not status.
+
+## Documentation Principles
+
+- Document knowledge with long-term value, not temporary process output.
+- Each piece of knowledge has one official document.
+- Update an existing document instead of creating a duplicate.
+- Create a new permanent document only when it has a clear long-term purpose.
 
 ## Baseline Policy
 
