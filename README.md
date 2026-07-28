@@ -9,7 +9,7 @@ SoNexus is an open, modular audio platform that combines IPFS fast start with We
 ## Current Status
 
 - Status: Active
-- Current stage: Repository restructuring
+- Current stage: S-1 Gateway
 - Active service: S-1 Gateway
 - Source of Truth: GitHub
 
