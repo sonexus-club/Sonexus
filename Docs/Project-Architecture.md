@@ -1,414 +1,254 @@
-# Architecture
+# SoNexus Project Architecture
 
-Title: Architecture
 Version: 1.0
 Status: Final
 Progress: Completed
-GitHub: Local
 Owner: SoNexus Project
-Last Updated: 2026-07-23
+Source of Truth: GitHub
 
-Related Documents:
+## Purpose
 
-- adr/ADR-Status.md
-- adr/ADR-004-Universal-URL-Standard.md
+This document defines the approved technical architecture of SoNexus: system layers, service boundaries, component communication, playback flow and architectural principles.
 
----
+## System Overview
 
-# Purpose
+SoNexus is a modular decentralized high-quality audio streaming platform.
 
-## EN
+Playback starts through IPFS for low startup latency and continues through WebTorrent for peer-to-peer delivery.
 
-Project-Architecture.md is the primary technical document describing the SoNexus platform.
-
-It defines the system structure, major components, communication between modules and the fundamental architectural principles.
-
-This document serves as the reference architecture for all future development.
-
----
-
-## RU
-
-Project-Architecture.md — основной технический документ проекта SoNexus.
-
-Он определяет структуру системы, основные компоненты, взаимодействие между ними и базовые архитектурные принципы.
-
-Документ является эталоном архитектуры для всей дальнейшей разработки.
-
----
-
-# System Overview
-
-## EN
-
-SoNexus is a modular decentralized Hi-Res audio streaming platform.
-
-The platform combines WebTorrent, IPFS and modern web technologies into a scalable hybrid streaming architecture.
-
-Playback starts through IPFS for fast startup and continues through WebTorrent for decentralized distribution.
-
----
-
-## RU
-
-SoNexus — модульная децентрализованная платформа потокового воспроизведения Hi-Res аудио.
-
-Платформа объединяет WebTorrent, IPFS и современные веб-технологии в единую гибридную архитектуру.
-
-Воспроизведение начинается через IPFS для быстрого старта и продолжается через WebTorrent для полноценной P2P-доставки.
-
----
-
-# Architecture Goals
-
-Primary goals:
+## Architecture Goals
 
 - High audio quality
-- Modular architecture
+- Modularity
 - Scalability
 - Decentralization
 - Simplicity
 - Maintainability
 - Long-term evolution
 
----
+## Architecture Layers
 
-# Architecture Layers
-
-Presentation Layer
+### Presentation
 
 - WordPress
 - Musicon Theme
 - SoNexus Player
 
-Application Layer
+### Application
 
-- Gateway
+- S-1 Gateway
 - URL Parser
 - Quality Manager
+- S-7 Dashboard
 
-Delivery Layer
+### Delivery
 
-- IPFS
-- WebTorrent
+- S-3 IPFS
+- S-2 WebTorrent
 
-Storage Layer
+### Storage
 
-- PostgreSQL
-- Audio Storage
+- S-4 Postgres
+- S-8 Storage
+- Audio files
 - Metadata
 
-Infrastructure Layer
+### Infrastructure
 
-- Docker
 - Ubuntu Linux
-- Nginx
-- Cloudflare Tunnel
-
-# Core Components
-
-## Frontend
-
-Responsible for:
-
-- User Interface
-- Playback Control
-- Playlist Management
-- Communication with Gateway
-
-Components:
-
-- WordPress
-- Musicon Theme
-- SoNexus Player
-
----
-
-## Backend
-
-Responsible for:
-
-- Business Logic
-- Session Management
-- Playback Authorization
-- Metadata Processing
-
-Components:
-
-- Gateway
-- URL Parser
-- Quality Manager
-- Dashboard
-
----
-
-## Delivery
-
-Responsible for media transport.
-
-Components:
-
-- IPFS
-- WebTorrent
-
-Responsibilities:
-
-- Fast playback startup
-- Peer-to-peer distribution
-- Automatic source switching
-
----
-
-## Storage
-
-Responsible for persistent data.
-
-Components:
-
-- PostgreSQL
-- Audio Storage
-- IPFS Storage
-
-Stores:
-
-- Artists
-- Albums
-- Tracks
-- Metadata
-- Covers
-- Audio Files
-
----
-
-## Infrastructure
-
-Responsible for deployment and operation.
-
-Components:
-
 - Docker
 - Docker Compose
-- Ubuntu Linux
 - Nginx
 - Cloudflare Tunnel
 
----
+## Service Registry
 
-# High-Level Architecture
+- S-1 Gateway
+- S-2 WebTorrent
+- S-3 IPFS
+- S-4 Postgres
+- S-5 Audio
+- S-6 Player
+- S-7 Dashboard
+- S-8 Storage
 
+Service boundaries and current service status are documented in `Docs/Services/`.
+
+## High-Level Architecture
+
+```text
 Internet
-
-↓
-
+   ↓
 Cloudflare Tunnel
-
-↓
-
+   ↓
 Nginx
+   ↓
+WordPress / Musicon
+   ↓
+S-6 Player
+   ↓
+S-1 Gateway
+   ├── S-4 Postgres
+   ├── S-3 IPFS
+   ├── S-2 WebTorrent
+   └── S-7 Dashboard
+```
 
-↓
+## Component Responsibilities
 
-WordPress
+### Player
 
-↓
+- Controls playback.
+- Parses the universal stream URL.
+- Selects quality.
+- Starts playback through IPFS.
+- Switches transparently to WebTorrent when available.
 
+### Gateway
+
+- Coordinates playback-related application logic.
+- Requests metadata.
+- Coordinates IPFS and WebTorrent services.
+- Integrates with Postgres and Dashboard.
+- Does not stream audio directly.
+
+### IPFS
+
+- Provides the initial playback source.
+- Supports fast startup and initial buffering.
+
+### WebTorrent
+
+- Provides primary peer-to-peer delivery.
+- Communicates directly with peers.
+- Reduces centralized server traffic.
+
+### Postgres
+
+- Stores structured metadata and service relationships.
+
+### Storage
+
+- Stores source audio, generated quality variants, covers and service data.
+
+## Playback Pipeline
+
+```text
+User
+  ↓
+WordPress / Musicon
+  ↓
 SoNexus Player
+  ↓
+Gateway coordination and metadata
+  ↓
+IPFS fast start
+  ↓
+WebTorrent primary delivery
+  ↓
+Audio output
+```
 
-↓
+The transition from IPFS to WebTorrent must be seamless and transparent to the listener.
 
+## Universal Stream URL
+
+```text
+https://<Domain>/<TrackCID>#h=<AlbumInfoHash>&t=<TrackIndex>&q=<QualityIndex>
+```
+
+Parameters:
+
+- `TrackCID` — IPFS CID used for initial playback.
+- `h` — WebTorrent album infoHash.
+- `t` — track index inside the album.
+- `q` — quality index.
+
+Quality model:
+
+- `q=0` — Auto
+- `q=1` — AAC 320 kbps / Lossy
+- `q=2` — FLAC 16-bit / 44.1–48 kHz / Lossless default
+- `q=3` — FLAC 24-bit / Hi-Res
+
+The URL contract is defined by `Docs/ADR/ADR-004-Universal-URL-Standard.md`.
+
+## Metadata Flow
+
+```text
+Player
+  ↓
 Gateway
+  ↓
+Postgres
+  ↓
+Metadata response
+  ↓
+Player
+```
 
-↓
+## Audio Delivery Strategy
 
-URL Parser
+### Stage 1 — IPFS
 
-↓
+Purpose:
 
-Quality Manager
+- low startup latency;
+- immediate playback;
+- stable initial buffering.
 
-↓
+### Stage 2 — WebTorrent
 
-IPFS → Playback Start
+Purpose:
 
-↓
+- peer-to-peer distribution;
+- reduced server load;
+- horizontal scalability;
+- decentralized delivery.
 
-WebTorrent → Continuous Playback
+## Deployment Areas
 
-↓
+### HDS
 
-Audio Output
+Contains code, configuration and tools for the home development server:
 
----
-
-# Component Communication
-
-WordPress communicates only with Gateway.
-
-Gateway communicates with:
-
-- PostgreSQL
+- Gateway
 - IPFS
 - WebTorrent
 - Dashboard
+- Postgres
+- Docker
+- Tools
 
-WebTorrent communicates directly with peers.
+### VPS
 
-IPFS provides the initial playback source.
+Contains code, configuration and tools for the VPS environment:
 
-Gateway never streams audio directly.
+- WordPress
+- Nginx
+- Cloudflare
+- Docker
+- Tools
 
+## Technology Stack
 
-# Playback Pipeline
-
-## Playback Flow
-
-User
-
-↓
-
-WordPress
-
-↓
-
-SoNexus Player
-
-↓
-
-Gateway
-
-↓
-
-URL Parser
-
-↓
-
-Quality Manager
-
-↓
-
-IPFS
-
-↓
-
-WebTorrent
-
-↓
-
-Audio Output
-
----
-
-# URL Processing
-
-Universal URL Format
-
-https://<Domain>/<TrackCID>#h=<AlbumInfoHash>&t=<TrackIndex>&q=<QualityIndex>
-
-The URL Parser performs the following operations:
-
-1. Read Universal URL.
-2. Extract TrackCID.
-3. Extract AlbumInfoHash.
-4. Extract TrackIndex.
-5. Extract Quality.
-6. Validate parameters.
-7. Create playback session.
-8. Request metadata.
-9. Start playback from IPFS.
-10. Switch seamlessly to WebTorrent.
-
----
-
-# Metadata Flow
-
-Player
-
-↓
-
-Gateway
-
-↓
-
-PostgreSQL
-
-↓
-
-Metadata Response
-
-↓
-
-Player
-
----
-
-# Audio Delivery Strategy
-
-Playback consists of two stages.
-
-Stage 1
-
-Fast startup using IPFS.
-
-Purpose:
-
-- Low startup latency.
-- Immediate playback.
-- Stable initial buffering.
-
-Stage 2
-
-Continuous playback using WebTorrent.
-
-Purpose:
-
-- P2P distribution.
-- Reduced server load.
-- Better scalability.
-- Decentralized delivery.
-
-The transition between IPFS and WebTorrent must be seamless and transparent to the listener.
-
----
-
-# Scalability
-
-The architecture supports horizontal scaling.
-
-Future improvements include:
-
-- Multiple Gateway instances.
-- Multiple WebTorrent nodes.
-- Multiple IPFS nodes.
-- Distributed metadata.
-- Load balancing.
-- Multi-region deployment.
-- Plugin ecosystem.
-
-
-# Technology Stack
-
-## Frontend
+### Frontend
 
 - WordPress
 - Musicon Theme
-- SoNexus Player
 - JavaScript
 - HTML5
 - CSS3
 
----
-
-## Backend
+### Backend
 
 - Node.js
 - Express.js
 - WebTorrent
-- IPFS (Kubo)
+- IPFS / Kubo
 - PostgreSQL
 
----
-
-## Infrastructure
+### Infrastructure
 
 - Ubuntu Linux
 - Docker
@@ -416,61 +256,44 @@ Future improvements include:
 - Nginx
 - Cloudflare Tunnel
 
----
+## Scalability
 
-# Architecture Principles
+The architecture allows future horizontal scaling through:
 
-The SoNexus platform follows these principles:
+- multiple Gateway instances;
+- multiple WebTorrent nodes;
+- multiple IPFS nodes;
+- distributed metadata;
+- load balancing;
+- multi-region deployment.
+
+## Architecture Principles
 
 - Architecture First
 - API First
 - Modular Design
-- Stateless Services
+- Stateless Services where applicable
 - P2P First
 - IPFS Fast Start
 - WebTorrent Primary Delivery
 - Separation of Concerns
 - GitHub is the Source of Truth
 
----
+## Related ADRs
 
-# Related ADR
+- `Docs/ADR/ADR-000-Status.md`
+- `Docs/ADR/ADR-001-WebTorrent.md`
+- `Docs/ADR/ADR-002-IPFS-as-WebSeed.md`
+- `Docs/ADR/ADR-003-Docker-Platform.md`
+- `Docs/ADR/ADR-004-Universal-URL-Standard.md`
 
-- ADR-001 — WebTorrent over BitTorrent
-- ADR-002 — IPFS as WebSeed
-- ADR-003 — Docker Platform
-- ADR-004 — Universal URL Standard
+## Related Documents
 
----
+- `README.md`
+- `Project-Status.md`
+- `Docs/Project-Methodology.md`
+- `Docs/Services/`
 
-# Related Documents
+## Final Rule
 
-- ADR-Status.md
-- Development-Roadmap.md
-- Development-Journal.md
-- Development-Decision-Log.md
-
----
-
-# Future Architecture
-
-Planned architectural modules:
-
-- ADR-005 — Gateway Architecture
-- ADR-006 — Metadata Database
-- ADR-007 — Dashboard Architecture
-- ADR-008 — Player Architecture
-
-Additional ADRs will be created as new architectural modules are introduced.
-
----
-
-# Final Notes
-
-Project-Architecture.md is the primary technical reference for the SoNexus platform.
-
-All implementation decisions must remain consistent with this document.
-
-Architectural changes are introduced only through approved ADRs.
-
-This document is maintained throughout the entire lifecycle of the project and reflects the current approved architecture.
+All implementation must remain consistent with this document and approved ADRs. Architectural changes require explicit approval and an ADR update or a new ADR.
