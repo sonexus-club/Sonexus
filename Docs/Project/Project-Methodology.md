@@ -104,11 +104,33 @@ All new project files and directories must follow this naming standard. Changes 
 
 ### ADR Lifecycle Standard v1.0
 
-The ADR lifecycle is defined in three main stages:
+The project uses two independent dimensions for ADR work.
+
+### Engineering lifecycle
+
+This describes where the engineering work is in the project workflow.
 
 - Preparation
 - Implementation
 - Publication
+
+### ADR document status
+
+This describes the approval state of the ADR document.
+
+- Draft
+- Check
+- Final
+
+Lifecycle and document status are separate dimensions.
+
+The Trello column determines the working lifecycle state.
+
+ADR metadata determines the document approval state.
+
+`Review` is a legacy term and must not be used for new ADRs.
+
+The current approved ADR status terminology is `Draft / Check / Final`.
 
 ## Service Standard (S)
 

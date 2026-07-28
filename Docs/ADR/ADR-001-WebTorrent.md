@@ -8,7 +8,7 @@ Status: Final
 
 Progress: Completed
 
-GitHub: Local
+GitHub: Published
 
 Owner: SoNexus Project
 

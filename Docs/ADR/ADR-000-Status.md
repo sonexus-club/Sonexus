@@ -32,7 +32,7 @@ GitHub: Published
 | Status | Description |
 |---------|-------------|
 | Draft | Initial proposal |
-| Review | Under discussion |
+| Check | Under technical verification |
 | Final | Approved architecture decision |
 | Deprecated | No longer recommended |
 | Replaced | Superseded by another ADR |

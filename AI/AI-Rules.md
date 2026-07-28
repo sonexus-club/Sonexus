@@ -1,8 +1,8 @@
 # AI-Rules
 
 Status: Final
-Version: 2.4
-Last Updated: 2026-07-26
+Version: 2.5
+Last Updated: 2026-07-28
 Owner: SoNexus Project
 Source of Truth: GitHub
 
@@ -47,22 +47,22 @@ The AI MUST NOT start implementation before completing this sequence.
 Repository structure:
 
 AI/
-Project AI knowledge base.
+AI navigation and mandatory assistant rules.
+
+Backup/
+Immutable snapshot created before repository restructuring.
 
 Docs/
-Project documentation.
+Project documentation:
+- Project/
+- ADR/
+- Services/
 
-backend/
-Backend services.
+HDS/
+Code, configuration and tools for the home development server.
 
-frontend/
-Frontend components.
-
-infrastructure/
-Infrastructure configuration.
-
-tools/
-Utility scripts.
+VPS/
+Code, configuration and tools for the VPS environment.
 
 ---
 
