@@ -460,23 +460,15 @@ The tools must not duplicate each other's roles.
 
 ---
 
-# 23. Trello Reference
+# 23. Trello Standard Reference
 
-Project monitoring rules are defined in Docs/Project/Project-Methodology.md.
+Trello standard:
 
-## Trello ADR Naming
+See:
 
-When creating or updating ADR cards in Trello, use:
+`Docs/Project/Trello-Standard.md`
 
-`ADR-XXX — English Name (Русское название)`
-
-Rules:
-
-- Never create Russian-only ADR titles.
-- Never create English-only ADR titles in Trello.
-- The English title must exactly match the ADR filename in GitHub.
-- The Russian title is intended only for project management.
-- GitHub documentation always uses the English title only.
+AI must not duplicate Trello methodology.
 
 ---
 
@@ -499,22 +491,13 @@ Mandatory rules:
 
 ---
 
-# 25. Trello Label Categories
+# 25. Trello Standard Usage
 
-When creating or updating Trello cards, the AI MUST use no more than one label from each category.
+When creating or updating Trello cards, the AI MUST follow:
 
-Category rules:
+`Docs/Project/Trello-Standard.md`
 
-- Stage: Preparation, Implementation, Publication;
-- Platform: VPS, HDS, Project;
-- Architecture Area: one approved permanent architecture area only.
-
-Mandatory constraints:
-
-- never assign more than one label from the same category;
-- Trello columns define workflow status;
-- labels are only for classification;
-- Frontend and Backend must not be used as Platform labels.
+The AI must apply the approved naming, lifecycle, ownership, label and template rules from that document without rewriting them elsewhere.
 
 ---
 
@@ -563,11 +546,9 @@ Changes to project process rules are allowed only when there is an objective pra
 
 # 30. Trello Labels
 
-For ADR cards, use the Trello Labels Standard v1.0.
+Use the approved Trello label rules defined in:
 
-Status is determined by the Trello column.
-
-Labels are used only for classification of cards.
+`Docs/Project/Trello-Standard.md`
 
 ---
 
