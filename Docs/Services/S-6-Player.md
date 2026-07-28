@@ -41,7 +41,7 @@ The service does not:
 
 ## Related Documents
 
-- `Docs/Project-Architecture.md`
+- `../Project/Project-Architecture.md`
 - `Docs/ADR/ADR-001-WebTorrent.md`
 - `Docs/ADR/ADR-002-IPFS-as-WebSeed.md`
 - `Docs/ADR/ADR-004-Universal-URL-Standard.md`

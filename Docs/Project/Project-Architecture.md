@@ -290,8 +290,8 @@ The architecture allows future horizontal scaling through:
 ## Related Documents
 
 - `README.md`
-- `Project-Status.md`
-- `Docs/Project-Methodology.md`
+- `Docs/Project/Project-Status.md`
+- `Docs/Project/Project-Methodology.md`
 - `Docs/Services/`
 
 ## Final Rule

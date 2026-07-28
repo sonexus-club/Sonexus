@@ -13,7 +13,7 @@ SoNexus is an open, modular audio platform that combines IPFS fast start with We
 - Active service: S-1 Gateway
 - Source of Truth: GitHub
 
-See [`Project-Status.md`](Project-Status.md) for the current objective, active work, blockers and next milestone.
+See [Project Status](Docs/Project/Project-Status.md) for the current objective, active work, blockers and next milestone.
 
 ## Architecture
 
@@ -34,10 +34,10 @@ IPFS provides the initial playback source. WebTorrent provides the primary decen
 ## Documentation
 
 - [`AI/AI-Index.md`](AI/AI-Index.md) — entry point for AI assistants
-- [`Project-Status.md`](Project-Status.md) — current project state
-- [`Project-Changelog.md`](Project-Changelog.md) — approved project history
-- [`Docs/Project-Architecture.md`](Docs/Project-Architecture.md) — system architecture
-- [`Docs/Project-Methodology.md`](Docs/Project-Methodology.md) — engineering methodology
+- [Project Status](Docs/Project/Project-Status.md) — current project state
+- [Project Changelog](Docs/Project/Project-Changelog.md) — approved project history
+- [`Docs/Project/Project-Architecture.md`](Docs/Project/Project-Architecture.md) — system architecture
+- [`Docs/Project/Project-Methodology.md`](Docs/Project/Project-Methodology.md) — engineering methodology
 - [`Docs/ADR/`](Docs/ADR/) — architectural decisions
 - [`Docs/Services/`](Docs/Services/) — service technical passports
 

@@ -20,7 +20,7 @@ It does NOT define:
 - implementation details;
 - software design.
 
-These are documented in Docs/Project-Architecture.md, Docs/Project-Methodology.md and ADR documents.
+These are documented in Docs/Project/Project-Architecture.md, Docs/Project/Project-Methodology.md and ADR documents.
 
 ---
 
@@ -30,8 +30,8 @@ Before starting any task, the AI MUST read the following documents in order:
 
 1. AI/AI-Rules.md
 2. AI/AI-Index.md
-3. Docs/Project-Methodology.md
-4. Docs/Project-Architecture.md
+3. Docs/Project/Project-Methodology.md
+4. Docs/Project/Project-Architecture.md
 5. Docs/ADR/ADR-000-Status.md
 6. Relevant ADR documents
 7. Relevant Service (S) documents
@@ -462,7 +462,7 @@ The tools must not duplicate each other's roles.
 
 # 23. Trello Reference
 
-Project monitoring rules are defined in Docs/Project-Methodology.md.
+Project monitoring rules are defined in Docs/Project/Project-Methodology.md.
 
 ---
 

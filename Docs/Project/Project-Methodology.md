@@ -21,10 +21,10 @@ Project-wide documents use the format:
 
 Examples:
 
-- `Project-Architecture.md`
-- `Project-Methodology.md`
-- `Project-Changelog.md`
-- `Project-Status.md`
+- `Docs/Project/Project-Architecture.md`
+- `Docs/Project/Project-Methodology.md`
+- `Docs/Project/Project-Changelog.md`
+- `Docs/Project/Project-Status.md`
 
 ### AI documents
 

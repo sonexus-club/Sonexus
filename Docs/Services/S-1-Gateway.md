@@ -70,19 +70,19 @@ Exact versions, API endpoints, authentication, session model and deployment para
 ## Current State
 
 - Service identifier approved: S-1.
-- Architectural role defined in `Docs/Project-Architecture.md`.
+- Architectural role defined in `../Project/Project-Architecture.md`.
 - Implementation not started.
 - Detailed Gateway architecture is the next engineering stage.
 
 ## Related Documents
 
-- `Docs/Project-Architecture.md`
-- `Docs/Project-Methodology.md`
+- `../Project/Project-Architecture.md`
+- `../Project/Project-Methodology.md`
 - `Docs/ADR/ADR-001-WebTorrent.md`
 - `Docs/ADR/ADR-002-IPFS-as-WebSeed.md`
 - `Docs/ADR/ADR-003-Docker-Platform.md`
 - `Docs/ADR/ADR-004-Universal-URL-Standard.md`
-- `Project-Status.md`
+- `../Project/Project-Status.md`
 
 ## Open Decisions
 

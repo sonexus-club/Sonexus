@@ -39,7 +39,7 @@ The service does not:
 
 ## Related Documents
 
-- `Docs/Project-Architecture.md`
+- `../Project/Project-Architecture.md`
 - `Docs/ADR/ADR-004-Universal-URL-Standard.md`
 
 ## Open Decisions

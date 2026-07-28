@@ -16,7 +16,7 @@
 ### Documentation Consolidation
 
 - Replaced the legacy AI context document with `AI/AI-Index.md`.
-- Consolidated Trello methodology into `Docs/Project-Methodology.md`.
+- Consolidated Trello methodology into `Docs/Project/Project-Methodology.md`.
 - Decommissioned the standalone AgiFlow and Trello AI documents.
 
 ## 2026-07-23

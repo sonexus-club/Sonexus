@@ -40,7 +40,7 @@ The service does not:
 
 ## Related Documents
 
-- `Docs/Project-Architecture.md`
+- `../Project/Project-Architecture.md`
 - `Docs/ADR/ADR-003-Docker-Platform.md`
 
 ## Open Decisions
