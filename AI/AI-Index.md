@@ -26,7 +26,7 @@ It provides navigation to the authoritative project documents and does not dupli
 4. [Project-Architecture.md](../Docs/Project-Architecture.md)
 5. [ADR Status](../Docs/ADR/ADR-000-Status.md)
 6. Relevant ADR documents in [Docs/ADR](../Docs/ADR/)
-7. Relevant service documents in `Docs/Services/` when available
+7. Relevant service documents in [Docs/Services](../Docs/Services/)
 8. Relevant source code and configuration
 
 ## Documentation Map
@@ -46,7 +46,7 @@ It provides navigation to the authoritative project documents and does not dupli
 - `Docs/` — project documentation
 - `HDS/` — code, configuration and tools for the home development server
 - `VPS/` — code, configuration and tools for the VPS environment
-- `Backup/` — temporary repository snapshot used during restructuring
+- `backup/` — temporary repository snapshot used during restructuring
 
 ## Working Principle
 
