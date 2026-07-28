@@ -1,7 +1,7 @@
 # AI-Rules
 
 Status: Final
-Version: 2.5
+Version: 2.6
 Last Updated: 2026-07-28
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -480,7 +480,45 @@ Rules:
 
 ---
 
-# 24. ADR First Principle
+# 24. Hierarchy and Identifier Rules
+
+The AI MUST use the approved project hierarchy:
+
+`Project → ADR-00X → S-X → S-X.Y → Task`
+
+Mandatory rules:
+
+- use the approved hierarchy in active documentation and planning;
+- never invent, reuse, reassign or renumber ADR, service or module identifiers;
+- verify Docs/ADR/ADR-000-Status.md before assigning any new ADR or service number;
+- for every new service, the service number MUST equal its primary ADR number;
+- every permanent module or capability MUST inherit the parent service number;
+- preserve legacy identifiers unless an approved migration explicitly changes them;
+- existing published S-1 through S-8 identifiers remain reserved and must not be reused;
+- S-6 remains a legacy reserved identifier and must not be reassigned.
+
+---
+
+# 25. Trello Label Categories
+
+When creating or updating Trello cards, the AI MUST use no more than one label from each category.
+
+Category rules:
+
+- Stage: Preparation, Implementation, Publication;
+- Platform: VPS, HDS, Project;
+- Architecture Area: one approved permanent architecture area only.
+
+Mandatory constraints:
+
+- never assign more than one label from the same category;
+- Trello columns define workflow status;
+- labels are only for classification;
+- Frontend and Backend must not be used as Platform labels.
+
+---
+
+# 26. ADR First Principle
 
 When a new idea appears during work, first check whether it belongs to the current ADR.
 
@@ -490,7 +528,7 @@ If it does not belong to the current ADR, create a new ADR with status Planned a
 
 ---
 
-# 25. Epic and ADR Relationship
+# 27. Epic and ADR Relationship
 
 For architectural work, one Epic corresponds to one ADR.
 
@@ -502,7 +540,7 @@ Examples of non-ADR Epics include:
 
 ---
 
-# 26. Definition of Done for Epic
+# 28. Definition of Done for Epic
 
 An Epic is completed only when:
 
@@ -515,7 +553,7 @@ An Epic is completed only when:
 
 ---
 
-# 27. Organizational Methodology Freeze
+# 29. Organizational Methodology Freeze
 
 The organizational methodology is frozen.
 
@@ -523,7 +561,7 @@ Changes to project process rules are allowed only when there is an objective pra
 
 ---
 
-# 28. Trello Labels
+# 30. Trello Labels
 
 For ADR cards, use the Trello Labels Standard v1.0.
 

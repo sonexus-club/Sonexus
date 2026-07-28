@@ -20,7 +20,7 @@ S-2 WebTorrent provides peer-to-peer audio delivery for SoNexus after playback s
 
 The service does not:
 
-- define player behavior;
+- define S-11 Stream Controller behavior;
 - replace IPFS startup delivery;
 - own metadata stored in PostgreSQL;
 - define Gateway application logic.
@@ -28,7 +28,7 @@ The service does not:
 ## Interfaces
 
 - S-1 Gateway.
-- S-6 Player.
+- S-11 Stream Controller.
 - S-8 Storage.
 
 ## Current State
@@ -40,8 +40,8 @@ The service does not:
 ## Related Documents
 
 - `../Project/Project-Architecture.md`
-- `Docs/ADR/ADR-001-WebTorrent.md`
-- `Docs/ADR/ADR-003-Docker-Platform.md`
+- `../ADR/ADR-001-WebTorrent.md`
+- `../ADR/ADR-003-Docker-Platform.md`
 
 ## Open Decisions
 

@@ -1,5 +1,26 @@
 # Project Changelog
 
+## 2026-07-28
+
+### Hierarchical Identifier Standard
+
+- Approved the active project hierarchy `Project → ADR-00X → S-X → S-X.Y → Task`.
+- Formalized permanent identifier immutability for ADRs, services and modules.
+- Defined the legacy-service transition rule for the pre-existing S-1 through S-8 registry.
+- Approved ADR-aligned numbering for all newly created services and modules.
+
+### Stream Controller Migration
+
+- Adopted `ADR-011 → S-11 — Stream Controller` as the active browser-side transport model.
+- Preserved `S-6 Player` as a reserved legacy identifier.
+- Distinguished Plyr as a third-party playback UI library rather than a SoNexus service.
+
+### Trello Standards
+
+- Approved Trello label categories: Stage, Platform and Architecture Area.
+- Limited Platform labels to `VPS`, `HDS` and `Project`.
+- Approved bilingual naming for ADR, service and module cards in Trello.
+
 ## 2026-07-25
 
 ### AI Documentation and Workflow

@@ -32,13 +32,14 @@ Playback starts through IPFS for low startup latency and continues through WebTo
 
 - WordPress
 - Musicon Theme
-- SoNexus Player
+- Plyr / HTML5 playback UI
 
 ### Application
 
 - S-1 Gateway
-- URL Parser
-- Quality Manager
+- S-11 Stream Controller
+- S-11.1 Universal URL Parser
+- S-11.4 Quality Manager
 - S-7 Dashboard
 
 ### Delivery
@@ -63,16 +64,22 @@ Playback starts through IPFS for low startup latency and continues through WebTo
 
 ## Service Registry
 
+### Active services
+
 - S-1 Gateway
 - S-2 WebTorrent
 - S-3 IPFS
 - S-4 Postgres
 - S-5 Audio
-- S-6 Player
 - S-7 Dashboard
 - S-8 Storage
+- S-11 Stream Controller
 
-Service boundaries and current service status are documented in `Docs/Services/`.
+### Legacy reserved identity
+
+- S-6 Player — legacy reserved identifier replaced by the approved S-11 Stream Controller model.
+
+Service boundaries and current service status are documented in `../Services/`.
 
 ## High-Level Architecture
 
@@ -85,42 +92,53 @@ Nginx
    ↓
 WordPress / Musicon
    ↓
-S-6 Player
+Plyr / HTML5 UI
    ↓
-S-1 Gateway
-   ├── S-4 Postgres
+S-11 Stream Controller
+   ├── S-1 Gateway
+   │   ├── S-4 Postgres
+   │   └── S-7 Dashboard
    ├── S-3 IPFS
-   ├── S-2 WebTorrent
-   └── S-7 Dashboard
+   └── S-2 WebTorrent
 ```
 
 ## Component Responsibilities
 
-### Player
+### Plyr / HTML5 playback UI
 
-- Controls playback.
+- Provides the third-party playback interface inside WordPress and Musicon.
+- Renders playback controls and browser media state.
+- Does not define SoNexus service identity.
+
+### S-11 Stream Controller
+
+- Controls browser-side transport behavior.
 - Parses the universal stream URL.
-- Selects quality.
-- Starts playback through IPFS.
-- Switches transparently to WebTorrent when available.
+- Resolves the track index.
+- Coordinates quality selection.
+- Starts playback through IPFS WebSeed.
+- Connects browser-to-browser WebTorrent/WebRTC delivery.
+- Integrates with the Service Worker where required.
+- Manages Bit-Perfect capability signaling.
 
 ### Gateway
 
 - Coordinates playback-related application logic.
 - Requests metadata.
-- Coordinates IPFS and WebTorrent services.
+- Coordinates application-facing integrations with IPFS and WebTorrent services.
 - Integrates with Postgres and Dashboard.
 - Does not stream audio directly.
+- Does not carry browser P2P audio traffic.
 
 ### IPFS
 
-- Provides the initial playback source.
+- Provides the initial playback source as WebSeed.
 - Supports fast startup and initial buffering.
 
 ### WebTorrent
 
-- Provides primary peer-to-peer delivery.
-- Communicates directly with peers.
+- Provides primary browser-to-browser peer-to-peer delivery through WebRTC.
+- Communicates directly with peers from the browser environment.
 - Reduces centralized server traffic.
 
 ### Postgres
@@ -138,13 +156,12 @@ User
   ↓
 WordPress / Musicon
   ↓
-SoNexus Player
+Plyr / HTML5 UI
   ↓
-Gateway coordination and metadata
-  ↓
-IPFS fast start
-  ↓
-WebTorrent primary delivery
+S-11 Stream Controller
+  ├── Gateway coordination and metadata
+  ├── IPFS fast start
+  └── WebTorrent primary delivery
   ↓
 Audio output
 ```
@@ -171,12 +188,12 @@ Quality model:
 - `q=2` — FLAC 16-bit / 44.1–48 kHz / Lossless default
 - `q=3` — FLAC 24-bit / Hi-Res
 
-The URL contract is defined by `Docs/ADR/ADR-004-Universal-URL-Standard.md`.
+The URL contract is defined by `../ADR/ADR-004-Universal-URL-Standard.md`.
 
 ## Metadata Flow
 
 ```text
-Player
+S-11 Stream Controller
   ↓
 Gateway
   ↓
@@ -184,7 +201,7 @@ Postgres
   ↓
 Metadata response
   ↓
-Player
+S-11 Stream Controller
 ```
 
 ## Audio Delivery Strategy
@@ -196,12 +213,13 @@ Purpose:
 - low startup latency;
 - immediate playback;
 - stable initial buffering.
+- initial WebSeed source.
 
 ### Stage 2 — WebTorrent
 
 Purpose:
 
-- peer-to-peer distribution;
+- browser-to-browser peer-to-peer distribution through WebRTC;
 - reduced server load;
 - horizontal scalability;
 - decentralized delivery.
@@ -232,15 +250,16 @@ Contains code, configuration and tools for the VPS environment:
 
 ## Technology Stack
 
-### Frontend
+### Presentation Stack
 
 - WordPress
 - Musicon Theme
+- Plyr
 - JavaScript
 - HTML5
 - CSS3
 
-### Backend
+### Service Stack
 
 - Node.js
 - Express.js
@@ -281,18 +300,18 @@ The architecture allows future horizontal scaling through:
 
 ## Related ADRs
 
-- `Docs/ADR/ADR-000-Status.md`
-- `Docs/ADR/ADR-001-WebTorrent.md`
-- `Docs/ADR/ADR-002-IPFS-as-WebSeed.md`
-- `Docs/ADR/ADR-003-Docker-Platform.md`
-- `Docs/ADR/ADR-004-Universal-URL-Standard.md`
+- `../ADR/ADR-000-Status.md`
+- `../ADR/ADR-001-WebTorrent.md`
+- `../ADR/ADR-002-IPFS-as-WebSeed.md`
+- `../ADR/ADR-003-Docker-Platform.md`
+- `../ADR/ADR-004-Universal-URL-Standard.md`
 
 ## Related Documents
 
-- `README.md`
-- `Docs/Project/Project-Status.md`
-- `Docs/Project/Project-Methodology.md`
-- `Docs/Services/`
+- `../../README.md`
+- `Project-Status.md`
+- `Project-Methodology.md`
+- `../Services/`
 
 ## Final Rule
 

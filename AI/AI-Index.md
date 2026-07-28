@@ -17,6 +17,7 @@ It provides navigation to the authoritative project documents and does not dupli
 - Type: Decentralized high-quality audio streaming platform
 - Primary language for repository documentation: English
 - Current project status: [Project Status](../Docs/Project/Project-Status.md)
+- Active hierarchy: `Project → ADR-00X → S-X → S-X.Y → Task`
 
 ## Required Reading Order
 

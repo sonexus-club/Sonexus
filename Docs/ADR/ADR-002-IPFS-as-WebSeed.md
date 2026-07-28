@@ -40,7 +40,7 @@ Playback strategy:
 
 Stage 1
 
-- Player requests audio from IPFS.
+- The browser-side stream controller requests audio from IPFS.
 - Playback starts immediately.
 
 Stage 2
@@ -82,4 +82,4 @@ Advantages:
 
 Approved.
 
-The implementation is part of the Gateway and Player architecture.
+The implementation is part of the Gateway and Stream Controller architecture.

@@ -28,7 +28,7 @@ The service does not:
 ## Interfaces
 
 - S-1 Gateway.
-- S-6 Player.
+- S-11 Stream Controller.
 - S-8 Storage.
 
 ## Current State
@@ -40,8 +40,8 @@ The service does not:
 ## Related Documents
 
 - `../Project/Project-Architecture.md`
-- `Docs/ADR/ADR-002-IPFS-as-WebSeed.md`
-- `Docs/ADR/ADR-003-Docker-Platform.md`
+- `../ADR/ADR-002-IPFS-as-WebSeed.md`
+- `../ADR/ADR-003-Docker-Platform.md`
 
 ## Open Decisions
 

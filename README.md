@@ -4,7 +4,7 @@
 
 ## Overview
 
-SoNexus is an open, modular audio platform that combines IPFS fast start with WebTorrent peer-to-peer delivery.
+SoNexus is an open, modular audio platform that combines IPFS WebSeed fast start with browser-to-browser WebTorrent/WebRTC delivery.
 
 ## Current Status
 
@@ -20,16 +20,17 @@ See [Project Status](Docs/Project/Project-Status.md) for the current objective, 
 ```text
 WordPress / Musicon
         ↓
-SoNexus Player
+Plyr / HTML5 UI
         ↓
-S-1 Gateway
-   ├── S-4 Postgres
+S-11 Stream Controller
+   ├── S-1 Gateway
+   │   ├── S-4 Postgres
+   │   └── S-7 Dashboard
    ├── S-3 IPFS
-   ├── S-2 WebTorrent
-   └── S-7 Dashboard
+   └── S-2 WebTorrent
 ```
 
-IPFS provides the initial playback source. WebTorrent provides the primary decentralized delivery path. Gateway coordinates application logic and does not stream audio directly.
+Plyr is a third-party playback UI library. S-11 Stream Controller is the browser-side transport controller. IPFS provides the initial WebSeed source, WebTorrent provides browser-to-browser decentralized delivery, and Gateway coordinates application logic without carrying P2P audio traffic.
 
 ## Documentation
 

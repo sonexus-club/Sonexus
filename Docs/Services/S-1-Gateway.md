@@ -9,11 +9,11 @@ Source of Truth: GitHub
 
 S-1 Gateway is the application-layer entry point for SoNexus.
 
-It coordinates playback-related requests between the SoNexus Player and backend services without streaming audio directly.
+It coordinates playback-related requests between S-11 Stream Controller and supporting services without streaming audio directly.
 
 ## Responsibilities
 
-- Receive requests from the SoNexus Player.
+- Receive requests from S-11 Stream Controller.
 - Coordinate URL parsing and quality selection.
 - Request and return track metadata.
 - Coordinate IPFS startup and WebTorrent delivery services.
@@ -34,8 +34,8 @@ The Gateway does not:
 
 ### Inbound
 
-- SoNexus Player.
-- WordPress through the SoNexus Player integration.
+- S-11 Stream Controller.
+- WordPress and Musicon through the S-11 Stream Controller integration.
 
 ### Outbound
 
@@ -47,7 +47,7 @@ The Gateway does not:
 ## Data Flow
 
 ```text
-SoNexus Player
+S-11 Stream Controller
       ↓
 S-1 Gateway
       ├── S-4 Postgres
@@ -78,10 +78,10 @@ Exact versions, API endpoints, authentication, session model and deployment para
 
 - `../Project/Project-Architecture.md`
 - `../Project/Project-Methodology.md`
-- `Docs/ADR/ADR-001-WebTorrent.md`
-- `Docs/ADR/ADR-002-IPFS-as-WebSeed.md`
-- `Docs/ADR/ADR-003-Docker-Platform.md`
-- `Docs/ADR/ADR-004-Universal-URL-Standard.md`
+- `../ADR/ADR-001-WebTorrent.md`
+- `../ADR/ADR-002-IPFS-as-WebSeed.md`
+- `../ADR/ADR-003-Docker-Platform.md`
+- `../ADR/ADR-004-Universal-URL-Standard.md`
 - `../Project/Project-Status.md`
 
 ## Open Decisions
