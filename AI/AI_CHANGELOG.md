@@ -29,7 +29,7 @@ Added:
 - GitHub References
 - Organizational Methodology Frozen
 
-### PROJECT_RULES.md → Version 2.0
+### PROJECT_RULES.md â†’ Version 2.0
 
 Updated to include:
 
@@ -39,7 +39,7 @@ Updated to include:
 - Definition of Done for Epic;
 - organizational methodology freeze.
 
-### AGIFLOW.md → Version 1.2
+### AGIFLOW.md â†’ Version 1.2
 
 Added:
 
@@ -49,6 +49,12 @@ Added:
 - Planned ADR creation when work leaves the current ADR.
 
 ### AI_CONTEXT.md
+
+Legacy note:
+
+- AI_CONTEXT.md was replaced by AI/AI-Index.md.
+- The current AI entry point is AI/AI-Index.md.
+- AI_CONTEXT.md is no longer an active project document.
 
 Updated:
 
@@ -67,7 +73,7 @@ PROJECT_RULES.md
 Final v2.0
 
 AI_CONTEXT.md
-Final
+Replaced by AI/AI-Index.md
 
 AGIFLOW.md
 Final v1.2

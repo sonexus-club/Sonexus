@@ -29,7 +29,7 @@ These are documented in Docs/Project-Architecture.md, Docs/Project-Methodology.m
 Before starting any task, the AI MUST read the following documents in order:
 
 1. AI/AI-Rules.md
-2. AI/AI_CONTEXT.md
+2. AI/AI-Index.md
 3. Docs/Project-Methodology.md
 4. Docs/Project-Architecture.md
 5. Docs/ADR/ADR-000-Status.md
