@@ -22,6 +22,7 @@ GitHub: Published
 | ADR-006 | Metadata Database | — | Planned | Planned | Not Created | S-4 — Postgres | — | — |
 | ADR-007 | Dashboard Architecture | — | Planned | Planned | Not Created | S-7 — Dashboard | — | — |
 | ADR-008 | Player Architecture | — | Planned | Planned | Not Created | S-6 — Player | — | Legacy planned identity replaced by ADR-011 / S-11 |
+| ADR-010 | Engineering Methodology | 1.0 | Final | Completed | Published | Project-wide methodology | — | — |
 | ADR-011 | Stream Controller Architecture | — | Draft | Planned | Not Created | S-11 — Stream Controller | S-11.1, S-11.2, S-11.3, S-11.4, S-11.5, S-11.6, S-11.7 | Active planned architecture |
 
 ---
