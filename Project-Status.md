@@ -7,43 +7,46 @@ Source of Truth: GitHub
 
 ## Current Stage
 
-Repository restructuring.
+S-1 Gateway.
 
 ## Current Objective
 
-Bring the repository to the approved target structure without losing information or duplicating documentation.
+Complete the analysis and architecture definition for S-1 Gateway, then prepare the service for implementation.
 
 ## Active Work
 
-- Standardize repository naming.
-- Consolidate AI documentation.
-- Prepare the HDS and VPS structure.
-- Preserve the temporary repository backup until restructuring is complete.
+- Review and refine `Docs/Services/S-1-Gateway.md`.
+- Define the Gateway API contract.
+- Define the playback session model.
+- Confirm service boundaries and integrations.
+- Prepare the required Gateway ADR and implementation plan.
 
 ## Current Service
 
 S-1 — Gateway.
 
+## Repository Status
+
+Repository restructuring is completed.
+
+- GitHub matches the approved structure.
+- Documentation is consolidated and synchronized.
+- AI documentation is reduced to `AI/AI-Index.md` and `AI/AI-Rules.md`.
+- `HDS/`, `VPS/`, `Docs/ADR/`, `Docs/Services/` and `Backup/` are established.
+- Legacy working documents and paths are removed from the active structure.
+
 ## Next Milestone
 
-Complete repository restructuring, then continue the S-1 Gateway stage.
+Approve the detailed S-1 Gateway architecture and move the service from Analysis to Development.
 
 ## Blockers
 
 None.
 
-## Exit Criteria
-
-Repository restructuring is completed when:
-
-- GitHub matches the approved structure.
-- Documentation is synchronized.
-- Temporary migration is finished.
-- Project returns to Standard Development.
-
 ## Road Ahead
 
-1. Complete repository restructuring.
-2. Return to Standard Development.
-3. Design Gateway MVP.
-4. Implement Gateway MVP.
+1. Complete S-1 Gateway analysis.
+2. Approve the Gateway architecture and API contracts.
+3. Prepare the Gateway implementation plan.
+4. Implement and test the Gateway MVP.
+5. Publish the completed stage to GitHub.
