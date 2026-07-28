@@ -464,6 +464,20 @@ The tools must not duplicate each other's roles.
 
 Project monitoring rules are defined in Docs/Project/Project-Methodology.md.
 
+## Trello ADR Naming
+
+When creating or updating ADR cards in Trello, use:
+
+`ADR-XXX — English Name (Русское название)`
+
+Rules:
+
+- Never create Russian-only ADR titles.
+- Never create English-only ADR titles in Trello.
+- The English title must exactly match the ADR filename in GitHub.
+- The Russian title is intended only for project management.
+- GitHub documentation always uses the English title only.
+
 ---
 
 # 24. ADR First Principle

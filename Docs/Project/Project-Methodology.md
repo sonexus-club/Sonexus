@@ -196,6 +196,26 @@ Recommended references:
 - commit SHA;
 - pull request link.
 
+## Trello ADR Naming Standard
+
+ADR cards in Trello use the following naming convention:
+
+`ADR-XXX — English Name (Русское название)`
+
+Example:
+
+`ADR-009 — Security Architecture (Архитектура безопасности)`
+
+`ADR-010 — Observability Architecture (Архитектура наблюдаемости)`
+
+Rules:
+
+- The English title is the primary title.
+- The Russian title is written in parentheses.
+- The English title must exactly match the corresponding ADR document filename in GitHub.
+- GitHub documentation remains English-only.
+- Trello uses bilingual titles for project management.
+
 ### Completion Rule
 
 A card is completed only when:
