@@ -18,17 +18,17 @@ It coordinates playback-related requests between S-11 Stream Controller and supp
 - Receive requests from browser-side clients and supporting services.
 - Request and return track metadata.
 - Communicate with HDS through a protected tunnel.
-- Provide IPFS access and proxying with HTTP Range support.
+- Coordinate access to the IPFS HTTP Range endpoint through the protected infrastructure boundary.
 - Control bootstrap and backup WebTorrent seeding.
 - Hide internal HDS services from browser clients.
 - Provide logging, telemetry and error handling.
-- Manage playback-related application logic defined by approved ADRs.
+- Coordinate server-side playback support logic defined by approved ADRs.
 
 ## Boundaries
 
 The Gateway does not:
 
-- stream audio directly;
+- act as a persistent or primary audio streaming source;
 - replace IPFS or WebTorrent;
 - store audio files;
 - act as the presentation layer;
