@@ -1,5 +1,16 @@
 # Project Changelog
 
+## 2026-07-29
+
+### Decentralized Delivery and Session Closure
+
+- approved the Decentralized Delivery Principle;
+- defined HDS as bootstrap, backup and recovery seeder only;
+- confirmed browser-to-browser WebTorrent/WebRTC delivery as the primary SoNexus delivery model;
+- clarified S-1 Gateway responsibility boundaries;
+- confirmed protected replaceable tunnel communication between VPS and HDS;
+- added the mandatory end-of-session documentation rule.
+
 ## 2026-07-28
 
 ### Hierarchical Identifier Standard

@@ -13,11 +13,15 @@ It coordinates playback-related requests between S-11 Stream Controller and supp
 
 ## Responsibilities
 
-- Receive requests from S-11 Stream Controller.
-- Coordinate URL parsing and quality selection.
+- Provide the public HTTP/HTTPS API for SoNexus server infrastructure.
+- Act as the single public entry point to SoNexus server infrastructure.
+- Receive requests from browser-side clients and supporting services.
 - Request and return track metadata.
-- Coordinate IPFS startup and WebTorrent delivery services.
-- Provide integration points for PostgreSQL and Dashboard.
+- Communicate with HDS through a protected tunnel.
+- Provide IPFS access and proxying with HTTP Range support.
+- Control bootstrap and backup WebTorrent seeding.
+- Hide internal HDS services from browser clients.
+- Provide logging, telemetry and error handling.
 - Manage playback-related application logic defined by approved ADRs.
 
 ## Boundaries
@@ -28,7 +32,16 @@ The Gateway does not:
 - replace IPFS or WebTorrent;
 - store audio files;
 - act as the presentation layer;
-- define architecture outside approved ADRs.
+- define architecture outside approved ADRs;
+- parse the universal URL;
+- control Plyr;
+- provide the browser WebTorrent client;
+- perform browser-side quality selection;
+- resolve the track index;
+- implement the Service Worker;
+- manage Bit-Perfect capability;
+- manage browser cache;
+- switch audio sources inside the browser.
 
 ## Interfaces
 
@@ -43,6 +56,26 @@ The Gateway does not:
 - S-3 IPFS.
 - S-4 Postgres.
 - S-7 Dashboard.
+
+## Service Principles
+
+### Decentralized Delivery Principle
+
+S-1 Gateway shall support the decentralized delivery model of SoNexus.
+
+Gateway coordinates access to infrastructure but is not a permanent audio streaming server.
+
+HDS acts only as:
+
+- the initial seeder;
+- a backup seeder;
+- a network recovery node.
+
+Gateway shall minimize persistent delivery from HDS and shall support migration of traffic toward browser peers using WebTorrent/WebRTC.
+
+Gateway communicates with HDS through a protected replaceable tunnel.
+
+Cloudflare Tunnel is currently used, but S-1 Gateway must not depend on a specific tunnel provider or implementation.
 
 ## Data Flow
 

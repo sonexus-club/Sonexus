@@ -298,6 +298,24 @@ The architecture allows future horizontal scaling through:
 - Separation of Concerns
 - GitHub is the Source of Truth
 
+### Decentralized Delivery Principle
+
+The primary source of audio delivery in SoNexus is the browsers of users participating in the network.
+
+The Home Data Server (HDS) is not a permanent content delivery server.
+
+HDS is used only for:
+
+- bootstrap seeding;
+- backup seeding;
+- network recovery.
+
+After playback starts and browser peers become available, content delivery should progressively migrate from HDS to browser-to-browser peer-to-peer delivery using WebTorrent/WebRTC.
+
+All SoNexus services shall be designed to minimize HDS traffic and maximize decentralized peer-to-peer delivery.
+
+Gateway and other infrastructure services must not turn HDS into a permanent streaming server or centralized CDN.
+
 ## Related ADRs
 
 - `../ADR/ADR-000-Status.md`

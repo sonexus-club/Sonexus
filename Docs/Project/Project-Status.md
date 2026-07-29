@@ -1,58 +1,28 @@
 # SoNexus Project Status
 
 Status: Active
-Last Updated: 2026-07-28
+Last Updated: 2026-07-29
 Owner: SoNexus Project
 Source of Truth: GitHub
 
-## Completed Stage
+## Current Focus
 
-Engineering Foundation.
-
-Status: Completed
-
-Completed deliverables:
-
-- Repository Standard
-- Documentation Standard
-- ADR Standard
-- Service Standard
-- Module Standard
-- AI Standard
-- Trello Standard
-- Identifier Standard
-- Engineering Methodology (ADR-010)
-
-The engineering foundation is complete.
-
-## Current Stage
-
-ADR-011 — Stream Controller Architecture.
+S-1 — Gateway
 
 Status: Analysis
 
-## Current Objective
+## Completed During the Current Session
 
-Design the browser-side transport architecture of SoNexus.
+- defined the purpose and responsibility boundaries of S-1 Gateway;
+- confirmed that Gateway communicates with HDS through a protected replaceable tunnel;
+- confirmed Cloudflare Tunnel as the current implementation;
+- approved the Decentralized Delivery Principle;
+- confirmed that HDS is only the bootstrap seeder, backup seeder and recovery node;
+- confirmed that browser peers are the primary long-term delivery source.
 
-Primary deliverables:
+## Next Continuation Point
 
-- ADR-011
-- S-11 — Stream Controller
-
-## Active ADR
-
-ADR-011 — Stream Controller Architecture
-
-Status: Analysis
-
-## Active Service
-
-S-11 — Stream Controller
-
-Status: Draft
-
-Primary ADR: ADR-011
+Define the interaction between S-1 Gateway, the tunnel and HDS.
 
 ## Repository Status
 
@@ -63,15 +33,3 @@ Repository restructuring is completed.
 - AI documentation is reduced to `AI/AI-Index.md` and `AI/AI-Rules.md`.
 - `HDS/`, `VPS/`, `Docs/ADR/`, `Docs/Services/` and `Backup/` are established.
 - Legacy working documents and paths are removed from the active structure.
-- ADR-010 records the approved unified engineering methodology.
-
-## Next Milestones
-
-1. Approve ADR-011.
-2. Finalize S-11 — Stream Controller.
-3. Approve S-11 modules.
-4. Continue S-1 Gateway implementation.
-
-## Blockers
-
-None.

@@ -1,8 +1,8 @@
 # AI-Rules
 
 Status: Final
-Version: 2.6
-Last Updated: 2026-07-28
+Version: 2.7
+Last Updated: 2026-07-29
 Owner: SoNexus Project
 Source of Truth: GitHub
 
@@ -358,6 +358,26 @@ After every significant task record:
 - Why this solution was selected.
 - Next task.
 - Remaining risks.
+
+## End-of-Session Rule
+
+Before completing every SoNexus work session:
+
+1. Update the affected project documentation.
+2. Record all approved architectural decisions.
+3. Update the current service or ADR status.
+4. Record the next continuation point.
+5. Ensure the repository is ready for seamless continuation in the next session.
+
+## Execution Rule
+
+ChatGPT performs repository changes directly when the required tools and access are available.
+
+If ChatGPT cannot perform the required repository operation, it prepares an exact implementation task for Codex.
+
+Codex performs only the requested repository changes.
+
+Architectural decisions remain the responsibility of the project owner and ChatGPT acting as technical architect.
 
 ---
 

@@ -243,6 +243,22 @@ Baseline is required before significant infrastructure changes.
 - Keep one active service at a time.
 - Do not duplicate knowledge across documents.
 
+## End-of-Session Documentation Rule
+
+At the end of every project work session, the affected documentation shall be updated before the session is considered complete.
+
+The update shall include, where applicable:
+
+- approved decisions;
+- architecture changes;
+- service status;
+- ADR status;
+- current project status;
+- relevant changelog entries;
+- the next continuation point.
+
+No project work session is considered complete until the documentation has been synchronized with the approved results of that session.
+
 ## GitHub Rules
 
 GitHub is the source of truth for approved project knowledge.
