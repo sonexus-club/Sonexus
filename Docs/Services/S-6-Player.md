@@ -32,11 +32,11 @@ The service does not:
 - store catalog metadata;
 - seed server-side torrents;
 - transcode audio;
-- replace Gateway application logic.
+- replace Gateway Local application logic.
 
 ## Interfaces
 
-- S-1 Gateway.
+- S-1 Gateway Local.
 - S-2 WebTorrent.
 - S-3 IPFS.
 - WordPress, Musicon and Plyr.

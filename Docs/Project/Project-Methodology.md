@@ -224,6 +224,27 @@ This file is the single authoritative Trello standard for the project.
 
 Project methodology must not duplicate detailed Trello lifecycle, naming, label, or template rules.
 
+Trello is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
+
+## Architecture Visualization Standard
+
+Architecture visualizations are approved engineering artifacts.
+
+After approval of each ADR:
+
+1. the GitHub documentation is updated;
+2. the master architecture diagram is updated;
+3. if needed, a dedicated ADR-specific diagram is created;
+4. the updated diagram is attached to the corresponding ADR card in Trello.
+
+The master architecture diagram must show only approved services, approved relationships, approved infrastructure boundaries and approved transport flows.
+
+Any part of the project that has not yet been analyzed or approved through ADR must remain generalized on the master diagram.
+
+GitHub stores the authoritative diagrams together with the approved project documentation.
+
+Trello stores workflow context, pre-publication iteration state and the related visual attachment for the corresponding ADR card.
+
 ## Documentation Principles
 
 - Document knowledge with long-term value, not temporary process output.
@@ -245,7 +266,7 @@ Baseline is required before significant infrastructure changes.
 
 ## End-of-Session Documentation Rule
 
-At the end of every project work session, the affected documentation shall be updated before the session is considered complete.
+At the end of every project work session, the approved affected documentation shall be updated before the session is considered complete.
 
 The update shall include, where applicable:
 
@@ -262,6 +283,10 @@ No project work session is considered complete until the documentation has been 
 ## GitHub Rules
 
 GitHub is the source of truth for approved project knowledge.
+
+GitHub stores approved architecture, ADRs, service specifications, AI rules and published engineering results.
+
+Trello stores the active engineering workflow, task movement, decomposition and pre-publication working state.
 
 ## Glossary
 

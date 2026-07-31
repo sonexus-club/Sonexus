@@ -19,7 +19,7 @@ It coordinates universal URL parsing, Gateway communication, IPFS startup, WebTo
 
 - Parse the universal stream URL.
 - Resolve the track index inside the approved URL contract.
-- Communicate with S-1 Gateway for metadata and coordination.
+- Communicate with S-1 Gateway Local for protected metadata and coordination.
 - Coordinate IPFS as WebSeed and initial playback source.
 - Coordinate browser-to-browser WebTorrent/WebRTC delivery.
 - Manage playback quality selection.
@@ -31,7 +31,7 @@ It coordinates universal URL parsing, Gateway communication, IPFS startup, WebTo
 The service does not:
 
 - replace the third-party playback UI library;
-- redefine Gateway application logic;
+- redefine Gateway Local application logic;
 - store catalog metadata;
 - seed server-side torrents;
 - perform server-side transcoding.
@@ -50,7 +50,7 @@ The service does not:
 
 - Musicon provides the WordPress theme integration surface.
 - Plyr is the third-party UI / HTML5 playback library used by the browser interface.
-- S-1 Gateway provides metadata and coordination APIs.
+- S-1 Gateway Local provides protected metadata and coordination APIs across the approved infrastructure boundary.
 - S-2 WebTorrent provides decentralized browser-to-browser delivery through WebRTC.
 - S-3 IPFS provides WebSeed and the initial playback source.
 
@@ -58,7 +58,7 @@ The service does not:
 
 - P2P audio delivery occurs browser-to-browser through WebTorrent/WebRTC.
 - IPFS is used as WebSeed and initial source before P2P delivery is established.
-- Gateway coordinates services and metadata but does not carry browser P2P audio traffic.
+- Gateway Local coordinates HDS services and metadata but does not carry browser P2P audio traffic.
 
 ## Current State
 

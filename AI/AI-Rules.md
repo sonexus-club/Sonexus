@@ -130,9 +130,11 @@ Create new modules, documents, directories or technologies only when clearly jus
 
 ---
 
-## GitHub First
+## Approved Documentation First
 
-GitHub is the single source of truth.
+GitHub is the single source of truth for approved project knowledge.
+
+Trello is the active engineering workflow and working-state management space.
 
 The home server is only a synchronized working copy.
 
@@ -154,7 +156,7 @@ Approve
 
 ↓
 
-Update GitHub
+Publish approved GitHub documentation
 
 ↓
 
@@ -184,22 +186,26 @@ One GitHub update
 
 One commit
 
-Documentation must be updated immediately after approval.
+Documentation must be updated in GitHub only after the result is approved and stable enough for publication.
 
 ---
 
 # 8. GitHub Synchronization Policy
 
-GitHub is the single source of truth.
+GitHub is the single source of truth for approved project knowledge.
+
+Trello remains the active workflow system for analysis, decomposition and pre-publication iteration.
 
 All approved documentation and code changes MUST be applied directly to GitHub.
+
+Unapproved or unstable working-state details MUST remain in Trello until they are ready for approved publication.
 
 Standard workflow:
 
 1. Discuss
 2. Approve
 3. Prepare final version
-4. Update GitHub
+4. Publish approved GitHub documentation
 5. Read the updated file from GitHub
 6. Verify the applied changes
 7. Record the commit SHA
@@ -393,7 +399,7 @@ The AI moves the project forward instead of repeatedly revisiting previous decis
 
 Recovery Stage is a temporary process used only when existing infrastructure or code was created without timely documentation.
 
-During Recovery Stage, the project audits the existing implementation, documents the real state, synchronizes GitHub, and then returns to Standard Development.
+During Recovery Stage, the project audits the existing implementation, documents the real state, synchronizes approved documentation in GitHub, and then returns to Standard Development.
 
 After Recovery Stage is completed, the project automatically returns to Standard Development.
 
@@ -423,15 +429,15 @@ Verification
 
 ↓
 
-Documentation
+Trello working-state tracking
 
 ↓
 
-GitHub
+GitHub publication of approved results
 
 ↓
 
-Trello Monitoring
+Next Task
 
 ---
 
@@ -471,9 +477,9 @@ When working through Android:
 
 Each tool has one primary responsibility.
 
-- GitHub: Source of Truth.
+- GitHub: Approved architecture, rules and published documentation.
 - HDS (ws.sonexus.club): Development & Integration Environment.
-- Trello: Project Monitoring.
+- Trello: Active engineering workflow and working-state management.
 - ChatGPT: AI Engineering Lead.
 
 The tools must not duplicate each other's roles.
@@ -518,6 +524,14 @@ When creating or updating Trello cards, the AI MUST follow:
 `Docs/Project/Trello-Standard.md`
 
 The AI must apply the approved naming, lifecycle, ownership, label and template rules from that document without rewriting them elsewhere.
+
+When an ADR is approved, the AI MUST also:
+
+- update the related GitHub documentation;
+- update the master architecture diagram if the approved ADR changes the project-level architecture;
+- create an ADR-specific diagram when the approved decision requires additional local visualization;
+- attach the relevant approved diagram to the corresponding ADR card in Trello;
+- keep not-yet-approved parts of the architecture generalized on the master diagram.
 
 ---
 

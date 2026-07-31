@@ -1,6 +1,6 @@
 # SoNexus Project Architecture
 
-Version: 1.0
+Version: 1.1
 Status: Final
 Progress: Completed
 Owner: SoNexus Project
@@ -34,12 +34,15 @@ Playback starts through IPFS for low startup latency and continues through WebTo
 - Musicon Theme
 - Plyr / HTML5 playback UI
 
-### Application
+### Browser Runtime
 
-- S-1 Gateway
 - S-11 Stream Controller
 - S-11.1 Universal URL Parser
 - S-11.4 Quality Manager
+
+### Protected HDS Coordination
+
+- S-1 Gateway Local
 - S-7 Dashboard
 
 ### Delivery
@@ -66,7 +69,7 @@ Playback starts through IPFS for low startup latency and continues through WebTo
 
 ### Active services
 
-- S-1 Gateway
+- S-1 Gateway Local
 - S-2 WebTorrent
 - S-3 IPFS
 - S-4 Postgres
@@ -84,22 +87,19 @@ Service boundaries and current service status are documented in `../Services/`.
 ## High-Level Architecture
 
 ```text
-Internet
-   ↓
-Cloudflare Tunnel
-   ↓
-Nginx
-   ↓
 WordPress / Musicon
    ↓
 Plyr / HTML5 UI
    ↓
 S-11 Stream Controller
-   ├── S-1 Gateway
-   │   ├── S-4 Postgres
-   │   └── S-7 Dashboard
+   ↓
+Protected infrastructure boundary
+   ↓
+S-1 Gateway Local
+   ├── S-4 Postgres
    ├── S-3 IPFS
-   └── S-2 WebTorrent
+   ├── S-2 WebTorrent
+   └── S-7 Dashboard
 ```
 
 ## Component Responsibilities
@@ -121,11 +121,11 @@ S-11 Stream Controller
 - Integrates with the Service Worker where required.
 - Manages Bit-Perfect capability signaling.
 
-### Gateway
+### Gateway Local
 
-- Coordinates playback-related application logic.
-- Requests metadata.
-- Coordinates application-facing integrations with IPFS and WebTorrent services.
+- Coordinates protected HDS application logic.
+- Requests metadata through the private HDS service boundary.
+- Coordinates protected integrations with IPFS and WebTorrent services.
 - Integrates with Postgres and Dashboard.
 - Does not stream audio directly.
 - Does not carry browser P2P audio traffic.
@@ -159,7 +159,7 @@ WordPress / Musicon
 Plyr / HTML5 UI
   ↓
 S-11 Stream Controller
-  ├── Gateway coordination and metadata
+  ├── Gateway Local coordination and metadata
   ├── IPFS fast start
   └── WebTorrent primary delivery
   ↓
@@ -195,7 +195,9 @@ The URL contract is defined by `../ADR/ADR-004-Universal-URL-Standard.md`.
 ```text
 S-11 Stream Controller
   ↓
-Gateway
+Protected infrastructure boundary
+  ↓
+Gateway Local
   ↓
 Postgres
   ↓
@@ -212,7 +214,7 @@ Purpose:
 
 - low startup latency;
 - immediate playback;
-- stable initial buffering.
+- stable initial buffering;
 - initial WebSeed source.
 
 ### Stage 2 — WebTorrent
@@ -230,7 +232,7 @@ Purpose:
 
 Contains code, configuration and tools for the home development server:
 
-- Gateway
+- Gateway Local
 - IPFS
 - WebTorrent
 - Dashboard
@@ -279,7 +281,7 @@ Contains code, configuration and tools for the VPS environment:
 
 The architecture allows future horizontal scaling through:
 
-- multiple Gateway instances;
+- multiple Gateway Local instances where required;
 - multiple WebTorrent nodes;
 - multiple IPFS nodes;
 - distributed metadata;
@@ -296,7 +298,8 @@ The architecture allows future horizontal scaling through:
 - IPFS Fast Start
 - WebTorrent Primary Delivery
 - Separation of Concerns
-- GitHub is the Source of Truth
+- GitHub stores approved architecture and published engineering documentation
+- Trello is the active workflow and pre-publication iteration space
 
 ### Decentralized Delivery Principle
 
@@ -314,7 +317,7 @@ After playback starts and browser peers become available, content delivery shoul
 
 All SoNexus services shall be designed to minimize HDS traffic and maximize decentralized peer-to-peer delivery.
 
-Gateway and other infrastructure services must not turn HDS into a permanent streaming server or centralized CDN.
+Gateway Local and other infrastructure services must not turn HDS into a permanent streaming server or centralized CDN.
 
 ## Related ADRs
 
@@ -323,6 +326,7 @@ Gateway and other infrastructure services must not turn HDS into a permanent str
 - `../ADR/ADR-002-IPFS-as-WebSeed.md`
 - `../ADR/ADR-003-Docker-Platform.md`
 - `../ADR/ADR-004-Universal-URL-Standard.md`
+- `../ADR/ADR-010-Engineering-Methodology.md`
 
 ## Related Documents
 

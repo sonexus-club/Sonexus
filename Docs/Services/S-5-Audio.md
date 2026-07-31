@@ -29,7 +29,7 @@ The service does not:
 
 - S-4 Postgres.
 - S-8 Storage.
-- S-1 Gateway through approved metadata contracts.
+- S-1 Gateway Local through approved metadata contracts.
 
 ## Current State
 

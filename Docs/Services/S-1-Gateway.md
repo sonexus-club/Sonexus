@@ -1,4 +1,4 @@
-# S-1 Gateway
+# S-1 Gateway Local
 
 Status: Draft
 Progress: Analysis
@@ -7,27 +7,28 @@ Source of Truth: GitHub
 
 ## Purpose
 
-S-1 Gateway is the application-layer entry point for SoNexus.
+S-1 Gateway Local is the internal HDS coordination service for SoNexus.
 
-It coordinates playback-related requests between S-11 Stream Controller and supporting services without streaming audio directly.
+It receives protected internal requests through Tunnel Local and coordinates access to supporting HDS services without streaming audio directly.
 
 ## Responsibilities
 
-- Provide the public HTTP/HTTPS API for SoNexus server infrastructure.
-- Act as the single public entry point to SoNexus server infrastructure.
-- Receive requests from browser-side clients and supporting services.
-- Request and return track metadata.
-- Communicate with HDS through a protected tunnel.
-- Coordinate access to the IPFS HTTP Range endpoint through the protected infrastructure boundary.
-- Control bootstrap and backup WebTorrent seeding.
-- Hide internal HDS services from browser clients.
-- Provide logging, telemetry and error handling.
+- Receive protected internal requests through Tunnel Local.
+- Coordinate metadata lookup and response handling.
+- Coordinate access to IPFS Source through the protected HDS boundary.
+- Coordinate bootstrap and backup WebTorrent seeding support.
+- Coordinate metadata access through Postgres.
+- Hide private HDS services behind the protected infrastructure boundary.
+- Provide logging, telemetry and error handling for HDS coordination flows.
 - Coordinate server-side playback support logic defined by approved ADRs.
 
 ## Boundaries
 
-The Gateway does not:
+The service does not:
 
+- act as the public HTTP/HTTPS API;
+- act as the single public entry point to SoNexus;
+- act as the direct browser-facing server entry point;
 - act as a persistent or primary audio streaming source;
 - replace IPFS or WebTorrent;
 - store audio files;
@@ -47,23 +48,23 @@ The Gateway does not:
 
 ### Inbound
 
-- S-11 Stream Controller.
-- WordPress and Musicon through the S-11 Stream Controller integration.
+- Tunnel Local.
+- Protected internal control and metadata requests routed from the approved infrastructure boundary.
 
 ### Outbound
 
-- S-2 WebTorrent.
 - S-3 IPFS.
+- S-2 WebTorrent.
 - S-4 Postgres.
-- S-7 Dashboard.
+- S-7 Dashboard for health and observability integration where required.
 
 ## Service Principles
 
 ### Decentralized Delivery Principle
 
-S-1 Gateway shall support the decentralized delivery model of SoNexus.
+S-1 Gateway Local shall support the decentralized delivery model of SoNexus.
 
-Gateway coordinates access to infrastructure but is not a permanent audio streaming server.
+Gateway Local coordinates protected access to HDS infrastructure but is not a permanent audio streaming server.
 
 HDS acts only as:
 
@@ -71,25 +72,27 @@ HDS acts only as:
 - a backup seeder;
 - a network recovery node.
 
-Gateway shall minimize persistent delivery from HDS and shall support migration of traffic toward browser peers using WebTorrent/WebRTC.
+Gateway Local shall minimize persistent delivery from HDS and shall support migration of traffic toward browser peers using WebTorrent/WebRTC.
 
-Gateway communicates with HDS through a protected replaceable tunnel.
+Gateway Local communicates through a protected replaceable tunnel boundary.
 
-Cloudflare Tunnel is currently used, but S-1 Gateway must not depend on a specific tunnel provider or implementation.
+Cloudflare Tunnel is currently used, but S-1 Gateway Local must not depend on a specific tunnel provider or implementation.
 
 ## Data Flow
 
 ```text
-S-11 Stream Controller
+Protected infrastructure boundary
       ↓
-S-1 Gateway
+Tunnel Local
+      ↓
+S-1 Gateway Local
       ├── S-4 Postgres
       ├── S-3 IPFS
       ├── S-2 WebTorrent
       └── S-7 Dashboard
 ```
 
-The Gateway returns coordination and metadata responses. Audio delivery remains the responsibility of IPFS and WebTorrent.
+Gateway Local returns coordination and metadata responses. Audio delivery remains the responsibility of IPFS and WebTorrent.
 
 ## Technology Baseline
 
@@ -103,40 +106,40 @@ Exact versions, API endpoints, authentication, session model and deployment para
 ## Current State
 
 - Service identifier approved: S-1.
+- Active service identity: Gateway Local.
 - Architectural role defined in `../Project/Project-Architecture.md`.
 - Implementation not started.
-- Detailed Gateway architecture is the next engineering stage.
+- Detailed Gateway Local architecture is the next engineering stage.
 
 ## Related Documents
 
 - `../Project/Project-Architecture.md`
 - `../Project/Project-Methodology.md`
+- `../ADR/ADR-000-Status.md`
 - `../ADR/ADR-001-WebTorrent.md`
 - `../ADR/ADR-002-IPFS-as-WebSeed.md`
 - `../ADR/ADR-003-Docker-Platform.md`
-- `../ADR/ADR-004-Universal-URL-Standard.md`
 - `../Project/Project-Status.md`
 
 ## Open Decisions
 
 The following items require approval before implementation:
 
-- Gateway API contract.
-- Playback session model.
-- Authentication and authorization.
+- Gateway Local internal API contract.
+- Protected request model between Tunnel Local and Gateway Local.
 - Error model.
 - Service health endpoints.
 - PostgreSQL metadata contract.
-- IPFS and WebTorrent control interfaces.
+- IPFS and WebTorrent coordination interfaces.
 - Logging and observability.
 - Deployment and scaling model.
 
 ## Completion Criteria
 
-S-1 Gateway can move from Analysis to Development only after:
+S-1 Gateway Local can move from Analysis to Development only after:
 
-- its detailed architecture is approved;
+- its detailed internal HDS architecture is approved;
 - service boundaries are confirmed;
-- API contracts are documented;
-- required ADRs are Final;
+- protected coordination contracts are documented;
+- required ADRs are Final or explicitly approved for implementation planning;
 - the implementation plan is approved.

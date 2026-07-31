@@ -4,10 +4,10 @@
 
 This document defines the approved Trello engineering standard for the SoNexus project.
 
-Trello is the engineering workflow management system.
+Trello is the active engineering workflow and working-state management system.
 
-Trello records the engineering decision process.
-GitHub stores the engineering result.
+Trello records the engineering decision process, decomposition and pre-publication iteration state.
+GitHub stores the approved engineering result.
 
 GitHub remains the Source of Truth.
 
@@ -181,3 +181,17 @@ Templates are intentionally minimal.
 - Notes
 
 Detailed engineering documentation belongs only in GitHub.
+
+## ADR Visual Attachments
+
+After approval of an ADR, the corresponding architecture visualization must be synchronized with the approved decision.
+
+Rules:
+
+- update the master architecture diagram when the approved ADR changes the project-level architecture;
+- create a dedicated ADR-specific diagram when the decision introduces substantial local structure or flows;
+- attach the relevant approved diagram to the corresponding ADR card in Trello;
+- treat the Trello attachment as a visual appendix to the ADR card, not as the Source of Truth;
+- keep unapproved or not-yet-analyzed areas generalized on the master diagram.
+
+GitHub remains the only Source of Truth for the authoritative diagram files and architecture documentation.

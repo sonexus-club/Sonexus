@@ -23,11 +23,11 @@ The service does not:
 - define S-11 Stream Controller behavior;
 - replace IPFS startup delivery;
 - own metadata stored in PostgreSQL;
-- define Gateway application logic.
+- define Gateway Local application logic.
 
 ## Interfaces
 
-- S-1 Gateway.
+- S-1 Gateway Local.
 - S-11 Stream Controller.
 - S-8 Storage.
 

@@ -14,7 +14,7 @@ S-3 IPFS provides the initial HTTP-accessible audio source for fast playback sta
 - Provide track data by CID.
 - Support initial buffering before P2P delivery takes over.
 - Maintain approved pinning and availability behavior.
-- Integrate with Gateway and Storage through approved contracts.
+- Integrate with Gateway Local and Storage through approved contracts.
 
 ## Boundaries
 
@@ -27,7 +27,7 @@ The service does not:
 
 ## Interfaces
 
-- S-1 Gateway.
+- S-1 Gateway Local.
 - S-11 Stream Controller.
 - S-8 Storage.
 
@@ -45,7 +45,7 @@ The service does not:
 
 ## Open Decisions
 
-- Gateway proxy contract.
+- Gateway Local proxy contract.
 - Range-request behavior.
 - Pinning and replication policy.
 - Public gateway fallback policy.

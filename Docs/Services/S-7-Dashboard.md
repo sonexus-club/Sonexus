@@ -27,7 +27,7 @@ The service does not:
 
 ## Interfaces
 
-- S-1 Gateway.
+- S-1 Gateway Local.
 - S-2 WebTorrent.
 - S-3 IPFS.
 - S-4 Postgres.

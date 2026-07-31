@@ -13,7 +13,7 @@ S-4 Postgres stores structured catalog and playback metadata used by SoNexus ser
 
 - Store artists, albums, tracks and quality variants.
 - Store relationships between track metadata, CID and torrent identifiers.
-- Provide persistent metadata for Gateway and Dashboard.
+- Provide persistent metadata for Gateway Local and Dashboard.
 - Support approved backup and recovery procedures.
 
 ## Boundaries
@@ -27,7 +27,7 @@ The service does not:
 
 ## Interfaces
 
-- S-1 Gateway.
+- S-1 Gateway Local.
 - S-7 Dashboard.
 - S-5 Audio.
 

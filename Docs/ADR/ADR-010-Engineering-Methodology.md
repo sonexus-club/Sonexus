@@ -22,8 +22,8 @@ At this point:
 
 - documentation is standardized;
 - engineering workflow is standardized;
-- GitHub is the Source of Truth;
-- Trello is the engineering workflow manager;
+- GitHub is the Source of Truth for approved project knowledge;
+- Trello is the active engineering workflow manager;
 - AI behavior is standardized;
 - identifier hierarchy is standardized.
 
@@ -71,9 +71,9 @@ This hierarchy is mandatory for all future engineering work.
 
 # Source of Truth
 
-GitHub is the only Source of Truth.
+GitHub is the only Source of Truth for approved architecture and published documentation.
 
-Trello records engineering workflow.
+Trello records active engineering workflow, decomposition and pre-publication working state.
 
 AI follows GitHub documentation.
 

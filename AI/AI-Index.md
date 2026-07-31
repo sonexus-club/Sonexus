@@ -3,7 +3,8 @@
 Status: Active
 Last Updated: 2026-07-28
 Owner: SoNexus Project
-Source of Truth: GitHub
+Approved Documentation: GitHub
+Active Workflow: Trello
 
 ## Purpose
 
@@ -52,5 +53,7 @@ It provides navigation to the authoritative project documents and does not dupli
 ## Working Principle
 
 GitHub is the single source of truth for approved project knowledge.
+
+Trello is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
 
 AI assistants must use the linked documents instead of relying on duplicated context or assumptions.

@@ -9,9 +9,10 @@ SoNexus is an open, modular audio platform that combines IPFS WebSeed fast start
 ## Current Status
 
 - Status: Active
-- Current stage: S-1 Gateway
-- Active service: S-1 Gateway
-- Source of Truth: GitHub
+- Current stage: S-1 Gateway Local
+- Active service: S-1 Gateway Local
+- Approved documentation: GitHub
+- Active workflow: Trello
 
 See [Project Status](Docs/Project/Project-Status.md) for the current objective, active work, blockers and next milestone.
 
@@ -23,14 +24,15 @@ WordPress / Musicon
 Plyr / HTML5 UI
         ↓
 S-11 Stream Controller
-   ├── S-1 Gateway
+   ├── Protected infrastructure boundary
+   │   └── S-1 Gateway Local
    │   ├── S-4 Postgres
    │   └── S-7 Dashboard
    ├── S-3 IPFS
    └── S-2 WebTorrent
 ```
 
-Plyr is a third-party playback UI library. S-11 Stream Controller is the browser-side transport controller. IPFS provides the initial WebSeed source, WebTorrent provides browser-to-browser decentralized delivery, and Gateway coordinates application logic without carrying P2P audio traffic.
+Plyr is a third-party playback UI library. S-11 Stream Controller is the browser-side transport controller. IPFS provides the initial WebSeed source, WebTorrent provides browser-to-browser decentralized delivery, and Gateway Local coordinates protected HDS application logic without carrying P2P audio traffic.
 
 ## Documentation
 
@@ -61,7 +63,8 @@ Plyr is a third-party playback UI library. S-11 Stream Controller is the browser
 ## Principles
 
 - Architecture First
-- GitHub is the Source of Truth
+- GitHub stores approved architecture and published engineering documentation
+- Trello is the active engineering workflow space
 - One architectural responsibility per ADR
 - One document per knowledge area
 - Minimal documentation
