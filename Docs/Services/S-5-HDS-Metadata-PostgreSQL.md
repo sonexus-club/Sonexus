@@ -41,6 +41,20 @@ The service does not:
 
 - Service identifier approved: S-5.
 - PostgreSQL is part of the approved technology baseline.
+- Infrastructure migration completed successfully.
+- Service status: Completed.
+- Approved directory: `/home/sonexus/docker/hds-metadata-postgresql`.
+- Approved Docker Compose project: `hds-metadata-postgresql`.
+- Approved Docker Compose service: `hds-metadata-postgresql`.
+- Approved Docker image: `postgres:17`.
+- Approved Docker container: `docker-hds-metadata-postgresql`.
+- Persistent storage: `/home/sonexus/storage/postgres`.
+- Approved external network: `sonexus-storage`.
+- Existing PostgreSQL data reused without loss.
+- Bind mount preserved.
+- PostgreSQL accepts connections after migration.
+- Database `sonexus` preserved.
+- Owner `sonexus` preserved.
 - Canonical schema and data contracts are not yet approved.
 
 ## Related Documents

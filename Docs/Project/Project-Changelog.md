@@ -2,6 +2,16 @@
 
 ## 2026-08-01
 
+### S-5 HDS Metadata PostgreSQL Migration
+
+- Completed the migration of S-5 HDS Metadata PostgreSQL to the approved infrastructure naming standard.
+- Migrated PostgreSQL to the approved Docker Compose project, service and container naming.
+- Reused the existing PostgreSQL data directory without data loss.
+- Preserved the bind mount at `/home/sonexus/storage/postgres`.
+- Verified that PostgreSQL accepts connections after migration.
+- Preserved the `sonexus` database and the `sonexus` owner.
+- Confirmed alignment with Infrastructure Naming Standard v1.0.
+
 ### Infrastructure Naming Standard v1.0
 
 - Approved Infrastructure Naming Standard v1.0 for the full documentation-to-runtime naming chain.
