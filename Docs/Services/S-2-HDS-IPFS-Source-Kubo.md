@@ -41,6 +41,17 @@ The service does not:
 
 - Service identifier approved: S-2.
 - Kubo is part of the approved technology baseline.
+- Infrastructure migration completed successfully.
+- Implementation type: Docker.
+- Approved directory: `/home/sonexus/docker/hds-ipfs-source-kubo`.
+- Docker Compose project: `hds-ipfs-source-kubo`.
+- Docker Compose service: `hds-ipfs-source-kubo`.
+- Docker container: `docker-hds-ipfs-source-kubo`.
+- Persistent repository: `/home/sonexus/ipfs`.
+- Existing IPFS repository reused without data loss.
+- Existing peer identity preserved.
+- Kubo API operational after migration.
+- Gateway operational after migration.
 - Detailed proxy, pinning and fallback behavior is not yet documented.
 
 ## Related Documents

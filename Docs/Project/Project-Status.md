@@ -14,6 +14,10 @@ Status: Analysis
 
 ## Completed During the Current Session
 
+- completed the infrastructure migration of S-2 HDS IPFS Source Kubo to the approved naming standard;
+- confirmed reuse of the persistent IPFS repository without data loss;
+- confirmed preservation of the existing IPFS peer identity;
+- verified Kubo API and Gateway operation after migration;
 - defined the purpose and responsibility boundaries of S-1 HDS Gateway Express;
 - confirmed that S-1 HDS Gateway Express communicates with HDS through S-7 HDS Tunnel Cloudflare;
 - confirmed Cloudflare Tunnel as the current implementation baseline;

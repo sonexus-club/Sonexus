@@ -1,5 +1,25 @@
 # Project Changelog
 
+## 2026-08-01
+
+### S-2 HDS IPFS Source Kubo Migration
+
+- Completed the first HDS service migration to the approved infrastructure naming standard.
+- Migrated S-2 HDS IPFS Source Kubo to the approved Docker Compose project and service naming.
+- Reused the existing persistent IPFS repository without data loss.
+- Preserved the existing IPFS peer identity.
+- Verified Kubo API and Gateway operation after migration.
+
+## 2026-07-30
+
+### Architecture Visualization Standard
+
+- Approved architecture visualizations as engineering artifacts synchronized with ADRs.
+- Required the master architecture diagram to be updated after each approved ADR.
+- Allowed ADR-specific diagrams when a decision introduces substantial local structure or transport flows.
+- Required the relevant diagram to be attached to the corresponding Trello ADR card.
+- Confirmed GitHub as the only Source of Truth for authoritative diagram files.
+
 ## 2026-07-29
 
 ### Decentralized Delivery and Session Closure

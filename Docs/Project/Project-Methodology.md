@@ -258,6 +258,22 @@ Trello stores workflow context, pre-publication iteration state and the related 
 
 Baseline is required before significant infrastructure changes.
 
+## Docker Compose Migration Standard
+
+This is the approved migration procedure for Docker-based HDS services.
+
+Migration procedure:
+
+1. Verify bind mounts.
+2. Verify persistent data.
+3. Prepare the new `docker-compose.yml`.
+4. Stop the old container.
+5. Remove the old container.
+6. Start the new Compose project.
+7. Verify service API.
+8. Verify persistent identity.
+9. Approve migration.
+
 ## Engineering Rules
 
 - Start with architecture.
