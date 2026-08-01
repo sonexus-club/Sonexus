@@ -5,6 +5,15 @@ Progress: Planned
 Owner: SoNexus Project
 Source of Truth: GitHub
 
+Service Type:
+Browser Runtime
+
+Docker Container:
+—
+
+Reason:
+Implemented in the browser runtime, not as an HDS Docker or host service.
+
 ## Primary ADR
 
 ADR-011 — Stream Controller Architecture
@@ -19,7 +28,7 @@ It coordinates universal URL parsing, Gateway communication, IPFS startup, WebTo
 
 - Parse the universal stream URL.
 - Resolve the track index inside the approved URL contract.
-- Communicate with S-1 Gateway Local for protected metadata and coordination.
+- Communicate with S-1 HDS Gateway Express for protected metadata and coordination.
 - Coordinate IPFS as WebSeed and initial playback source.
 - Coordinate browser-to-browser WebTorrent/WebRTC delivery.
 - Manage playback quality selection.
@@ -31,7 +40,7 @@ It coordinates universal URL parsing, Gateway communication, IPFS startup, WebTo
 The service does not:
 
 - replace the third-party playback UI library;
-- redefine Gateway Local application logic;
+- redefine S-1 HDS Gateway Express application logic;
 - store catalog metadata;
 - seed server-side torrents;
 - perform server-side transcoding.
@@ -50,15 +59,15 @@ The service does not:
 
 - Musicon provides the WordPress theme integration surface.
 - Plyr is the third-party UI / HTML5 playback library used by the browser interface.
-- S-1 Gateway Local provides protected metadata and coordination APIs across the approved infrastructure boundary.
-- S-2 WebTorrent provides decentralized browser-to-browser delivery through WebRTC.
-- S-3 IPFS provides WebSeed and the initial playback source.
+- S-1 HDS Gateway Express provides protected metadata and coordination APIs across the approved infrastructure boundary.
+- S-3 HDS WebTorrent Seeder provides HDS-side bootstrap and recovery seeding support.
+- S-2 HDS IPFS Source Kubo provides WebSeed and the initial playback source.
 
 ## Delivery Model
 
 - P2P audio delivery occurs browser-to-browser through WebTorrent/WebRTC.
 - IPFS is used as WebSeed and initial source before P2P delivery is established.
-- Gateway Local coordinates HDS services and metadata but does not carry browser P2P audio traffic.
+- S-1 HDS Gateway Express coordinates HDS services and metadata but does not carry browser P2P audio traffic.
 
 ## Current State
 

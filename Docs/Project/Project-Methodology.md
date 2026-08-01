@@ -83,10 +83,10 @@ Service documents use the format:
 
 Examples:
 
-- `S-1-Gateway.md`
-- `S-2-WebTorrent.md`
-- `S-3-IPFS.md`
-- `S-4-Postgres.md`
+- `S-1-HDS-Gateway-Express.md`
+- `S-2-HDS-IPFS-Source-Kubo.md`
+- `S-3-HDS-WebTorrent-Seeder.md`
+- `S-4-HDS-Storage-ZFS.md`
 
 ### System exceptions
 
@@ -120,13 +120,13 @@ Definitions:
 
 - Project — the complete SoNexus project.
 - ADR-00X — an architectural decision.
-- S-X — a service created from the corresponding primary ADR.
+- S-X — a service created from the corresponding primary ADR or approved service registry.
 - S-X.Y — a permanent module or capability of service S-X.
 - Task — an implementation, verification or documentation task.
 
 ## Identifier Standard
 
-- The service number must match its primary ADR number for all new services.
+- The service number must match its primary ADR number for all new services unless an approved service registry explicitly defines the numbering.
 - A module inherits the parent service number.
 - ADR, service and module identifiers are permanent.
 - Identifiers are never reused, reassigned or renumbered.
@@ -183,35 +183,37 @@ The current approved ADR status terminology is `Draft / Check / Final`.
 
 ## ADR-to-Service Numbering
 
-- Each new primary service is created by its primary ADR.
-- New services inherit the number of their primary ADR.
+- Each new primary service is created by its primary ADR unless an approved service registry explicitly defines the numbering.
+- New services normally inherit the number of their primary ADR.
 - Example: ADR-011 defines S-11.
 - Modules inherit the service number: S-11.1, S-11.2 and so on.
 
-## Legacy Service Registry Transition
+## Approved HDS Service Registry
 
-The existing S-1 through S-8 registry predates the approved hierarchy.
+The approved HDS registry currently defines the following active service identities:
 
-Migration rules:
+- S-1 — HDS Gateway Express
+- S-2 — HDS IPFS Source Kubo
+- S-3 — HDS WebTorrent Seeder
+- S-4 — HDS Storage ZFS
+- S-5 — HDS Metadata PostgreSQL
+- S-6 — HDS Transcoder FFmpeg
+- S-7 — HDS Tunnel Cloudflare
+- S-8 — HDS Dashboard Netdata
 
-- Existing published S-1 through S-8 identifiers remain reserved and are not reused.
-- New services created after adoption of this standard use the number of their primary ADR.
-- ADR-011 creates S-11 — Stream Controller.
-- The former planned identity S-6 Player is replaced by the approved S-11 Stream Controller model.
-- Historical references may remain where needed for traceability, but active architecture must use the approved active identities.
-- S-6 remains reserved as a legacy identifier and must not be reused for another service.
+ADR-011 creates S-11 — Stream Controller as the browser-side transport controller.
 
 ## Service Standard (S)
 
-### Standard S v1.1
+### Standard S v1.2
 
 S is the permanent identifier for a service in SoNexus.
 
 Examples:
 
-- S-1 — Gateway
-- S-2 — WebTorrent
-- S-3 — IPFS
+- S-1 — HDS Gateway Express
+- S-2 — HDS IPFS Source Kubo
+- S-3 — HDS WebTorrent Seeder
 - S-11 — Stream Controller
 
 ## Trello Engineering Workflow

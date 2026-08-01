@@ -1,19 +1,25 @@
-# S-4 Postgres
+# S-5 HDS Metadata PostgreSQL
 
 Status: Draft
 Progress: Planned
 Owner: SoNexus Project
 Source of Truth: GitHub
 
+Service Type:
+Docker
+
+Docker Container:
+docker-hds-metadata-postgresql
+
 ## Purpose
 
-S-4 Postgres stores structured catalog and playback metadata used by SoNexus services.
+S-5 HDS Metadata PostgreSQL stores structured catalog and playback metadata used by SoNexus services.
 
 ## Responsibilities
 
 - Store artists, albums, tracks and quality variants.
 - Store relationships between track metadata, CID and torrent identifiers.
-- Provide persistent metadata for Gateway Local and Dashboard.
+- Provide persistent metadata for S-1 HDS Gateway Express and S-8 HDS Dashboard Netdata.
 - Support approved backup and recovery procedures.
 
 ## Boundaries
@@ -23,17 +29,17 @@ The service does not:
 - store audio payloads;
 - stream media;
 - define business logic;
-- replace Storage.
+- replace S-4 HDS Storage ZFS.
 
 ## Interfaces
 
-- S-1 Gateway Local.
-- S-7 Dashboard.
-- S-5 Audio.
+- S-1 HDS Gateway Express.
+- S-8 HDS Dashboard Netdata.
+- S-6 HDS Transcoder FFmpeg.
 
 ## Current State
 
-- Service identifier approved: S-4.
+- Service identifier approved: S-5.
 - PostgreSQL is part of the approved technology baseline.
 - Canonical schema and data contracts are not yet approved.
 

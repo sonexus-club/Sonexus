@@ -1,19 +1,28 @@
-# S-8 Storage
+# S-4 HDS Storage ZFS
 
 Status: Draft
 Progress: Planned
 Owner: SoNexus Project
 Source of Truth: GitHub
 
+Service Type:
+Host Infrastructure
+
+Docker Container:
+—
+
+Reason:
+Implemented as Host Infrastructure.
+
 ## Purpose
 
-S-8 Storage manages persistent audio files and related media assets used by SoNexus services.
+S-4 HDS Storage ZFS manages persistent audio files and related media assets used by SoNexus services.
 
 ## Responsibilities
 
 - Store source and generated audio variants.
 - Preserve the approved artist, album and quality directory structure.
-- Provide files to WebTorrent, IPFS and Audio processing services.
+- Provide files to S-2 HDS IPFS Source Kubo, S-3 HDS WebTorrent Seeder and S-6 HDS Transcoder FFmpeg.
 - Support integrity checks, backup and recovery procedures.
 
 ## Boundaries
@@ -27,16 +36,16 @@ The service does not:
 
 ## Interfaces
 
-- S-2 WebTorrent.
-- S-3 IPFS.
-- S-5 Audio.
-- S-7 Dashboard.
+- S-2 HDS IPFS Source Kubo.
+- S-3 HDS WebTorrent Seeder.
+- S-6 HDS Transcoder FFmpeg.
+- S-8 HDS Dashboard Netdata.
 
 ## Current State
 
-- Service identifier approved: S-8.
-- NVMe-based storage and album directory principles are approved at project level.
-- Final storage layout, ZFS policy and lifecycle automation are not yet documented.
+- Service identifier approved: S-4.
+- ZFS is the approved storage model for HDS.
+- Final storage layout, ZFS policy and lifecycle automation are not yet fully documented.
 
 ## Related Documents
 

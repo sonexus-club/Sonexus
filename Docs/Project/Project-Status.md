@@ -1,29 +1,29 @@
 # SoNexus Project Status
 
 Status: Active
-Last Updated: 2026-07-31
+Last Updated: 2026-08-01
 Owner: SoNexus Project
 Approved Documentation: GitHub
 Active Workflow: Trello
 
 ## Current Focus
 
-S-1 — Gateway Local
+S-1 — HDS Gateway Express
 
 Status: Analysis
 
 ## Completed During the Current Session
 
-- defined the purpose and responsibility boundaries of S-1 Gateway Local;
-- confirmed that Gateway Local communicates with HDS through a protected replaceable tunnel;
-- confirmed Cloudflare Tunnel as the current implementation;
+- defined the purpose and responsibility boundaries of S-1 HDS Gateway Express;
+- confirmed that S-1 HDS Gateway Express communicates with HDS through S-7 HDS Tunnel Cloudflare;
+- confirmed Cloudflare Tunnel as the current implementation baseline;
 - approved the Decentralized Delivery Principle;
 - confirmed that HDS is only the bootstrap seeder, backup seeder and recovery node;
 - confirmed that browser peers are the primary long-term delivery source.
 
 ## Next Continuation Point
 
-Define the interaction between S-1 Gateway Local, the tunnel and HDS.
+Define the interaction between S-1 HDS Gateway Express, S-7 HDS Tunnel Cloudflare and the rest of HDS.
 
 ## Repository Status
 

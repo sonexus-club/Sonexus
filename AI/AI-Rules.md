@@ -512,8 +512,8 @@ Mandatory rules:
 - for every new service, the service number MUST equal its primary ADR number;
 - every permanent module or capability MUST inherit the parent service number;
 - preserve legacy identifiers unless an approved migration explicitly changes them;
-- existing published S-1 through S-8 identifiers remain reserved and must not be reused;
-- S-6 remains a legacy reserved identifier and must not be reassigned.
+- the approved HDS service registry defines S-1 through S-8 as active HDS service identifiers;
+- S-11 remains the approved browser-side Stream Controller identifier.
 
 ---
 

@@ -9,8 +9,8 @@ SoNexus is an open, modular audio platform that combines IPFS WebSeed fast start
 ## Current Status
 
 - Status: Active
-- Current stage: S-1 Gateway Local
-- Active service: S-1 Gateway Local
+- Current stage: S-1 HDS Gateway Express
+- Active service: S-1 HDS Gateway Express
 - Approved documentation: GitHub
 - Active workflow: Trello
 
@@ -25,14 +25,15 @@ Plyr / HTML5 UI
         ↓
 S-11 Stream Controller
    ├── Protected infrastructure boundary
-   │   └── S-1 Gateway Local
-   │   ├── S-4 Postgres
-   │   └── S-7 Dashboard
-   ├── S-3 IPFS
-   └── S-2 WebTorrent
+   │   ├── S-7 HDS Tunnel Cloudflare
+   │   └── S-1 HDS Gateway Express
+   │       ├── S-5 HDS Metadata PostgreSQL
+   │       └── S-8 HDS Dashboard Netdata
+   ├── S-2 HDS IPFS Source Kubo
+   └── S-3 HDS WebTorrent Seeder
 ```
 
-Plyr is a third-party playback UI library. S-11 Stream Controller is the browser-side transport controller. IPFS provides the initial WebSeed source, WebTorrent provides browser-to-browser decentralized delivery, and Gateway Local coordinates protected HDS application logic without carrying P2P audio traffic.
+Plyr is a third-party playback UI library. S-11 Stream Controller is the browser-side transport controller. S-2 HDS IPFS Source Kubo provides the initial WebSeed source, S-3 HDS WebTorrent Seeder provides bootstrap and recovery seeding support, and S-1 HDS Gateway Express coordinates protected HDS application logic without carrying P2P audio traffic.
 
 ## Documentation
 

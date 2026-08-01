@@ -1,6 +1,6 @@
 # SoNexus Project Architecture
 
-Version: 1.1
+Version: 1.2
 Status: Final
 Progress: Completed
 Owner: SoNexus Project
@@ -14,7 +14,7 @@ This document defines the approved technical architecture of SoNexus: system lay
 
 SoNexus is a modular decentralized high-quality audio streaming platform.
 
-Playback starts through IPFS for low startup latency and continues through WebTorrent for peer-to-peer delivery.
+Playback starts through S-2 HDS IPFS Source Kubo for low startup latency and continues through browser-to-browser WebTorrent delivery supported by S-3 HDS WebTorrent Seeder when HDS bootstrap or recovery support is required.
 
 ## Architecture Goals
 
@@ -42,18 +42,20 @@ Playback starts through IPFS for low startup latency and continues through WebTo
 
 ### Protected HDS Coordination
 
-- S-1 Gateway Local
-- S-7 Dashboard
+- S-7 HDS Tunnel Cloudflare
+- S-1 HDS Gateway Express
+- S-8 HDS Dashboard Netdata
 
 ### Delivery
 
-- S-3 IPFS
-- S-2 WebTorrent
+- S-2 HDS IPFS Source Kubo
+- S-3 HDS WebTorrent Seeder
 
-### Storage
+### Storage and Metadata
 
-- S-4 Postgres
-- S-8 Storage
+- S-4 HDS Storage ZFS
+- S-5 HDS Metadata PostgreSQL
+- S-6 HDS Transcoder FFmpeg
 - Audio files
 - Metadata
 
@@ -69,18 +71,15 @@ Playback starts through IPFS for low startup latency and continues through WebTo
 
 ### Active services
 
-- S-1 Gateway Local
-- S-2 WebTorrent
-- S-3 IPFS
-- S-4 Postgres
-- S-5 Audio
-- S-7 Dashboard
-- S-8 Storage
+- S-1 HDS Gateway Express
+- S-2 HDS IPFS Source Kubo
+- S-3 HDS WebTorrent Seeder
+- S-4 HDS Storage ZFS
+- S-5 HDS Metadata PostgreSQL
+- S-6 HDS Transcoder FFmpeg
+- S-7 HDS Tunnel Cloudflare
+- S-8 HDS Dashboard Netdata
 - S-11 Stream Controller
-
-### Legacy reserved identity
-
-- S-6 Player — legacy reserved identifier replaced by the approved S-11 Stream Controller model.
 
 Service boundaries and current service status are documented in `../Services/`.
 
@@ -95,11 +94,13 @@ S-11 Stream Controller
    ↓
 Protected infrastructure boundary
    ↓
-S-1 Gateway Local
-   ├── S-4 Postgres
-   ├── S-3 IPFS
-   ├── S-2 WebTorrent
-   └── S-7 Dashboard
+S-7 HDS Tunnel Cloudflare
+   ↓
+S-1 HDS Gateway Express
+   ├── S-5 HDS Metadata PostgreSQL
+   ├── S-2 HDS IPFS Source Kubo
+   ├── S-3 HDS WebTorrent Seeder
+   └── S-8 HDS Dashboard Netdata
 ```
 
 ## Component Responsibilities
@@ -121,33 +122,37 @@ S-1 Gateway Local
 - Integrates with the Service Worker where required.
 - Manages Bit-Perfect capability signaling.
 
-### Gateway Local
+### S-1 HDS Gateway Express
 
 - Coordinates protected HDS application logic.
 - Requests metadata through the private HDS service boundary.
-- Coordinates protected integrations with IPFS and WebTorrent services.
-- Integrates with Postgres and Dashboard.
+- Coordinates protected integrations with the HDS IPFS and WebTorrent services.
+- Integrates with HDS metadata and dashboard services.
 - Does not stream audio directly.
 - Does not carry browser P2P audio traffic.
 
-### IPFS
+### S-2 HDS IPFS Source Kubo
 
 - Provides the initial playback source as WebSeed.
 - Supports fast startup and initial buffering.
 
-### WebTorrent
+### S-3 HDS WebTorrent Seeder
 
-- Provides primary browser-to-browser peer-to-peer delivery through WebRTC.
-- Communicates directly with peers from the browser environment.
-- Reduces centralized server traffic.
+- Provides HDS bootstrap and recovery seeding support through WebTorrent.
+- Supports browser-side peer establishment when HDS assistance is required.
+- Reduces dependence on permanent centralized delivery.
 
-### Postgres
+### S-5 HDS Metadata PostgreSQL
 
 - Stores structured metadata and service relationships.
 
-### Storage
+### S-4 HDS Storage ZFS
 
 - Stores source audio, generated quality variants, covers and service data.
+
+### S-6 HDS Transcoder FFmpeg
+
+- Produces approved audio variants from source material.
 
 ## Playback Pipeline
 
@@ -159,9 +164,9 @@ WordPress / Musicon
 Plyr / HTML5 UI
   ↓
 S-11 Stream Controller
-  ├── Gateway Local coordination and metadata
-  ├── IPFS fast start
-  └── WebTorrent primary delivery
+  ├── S-1 HDS Gateway Express coordination and metadata
+  ├── S-2 HDS IPFS Source Kubo fast start
+  └── S-3 HDS WebTorrent Seeder bootstrap support
   ↓
 Audio output
 ```
@@ -197,9 +202,11 @@ S-11 Stream Controller
   ↓
 Protected infrastructure boundary
   ↓
-Gateway Local
+S-7 HDS Tunnel Cloudflare
   ↓
-Postgres
+S-1 HDS Gateway Express
+  ↓
+S-5 HDS Metadata PostgreSQL
   ↓
 Metadata response
   ↓
@@ -232,11 +239,14 @@ Purpose:
 
 Contains code, configuration and tools for the home development server:
 
-- Gateway Local
-- IPFS
-- WebTorrent
-- Dashboard
-- Postgres
+- HDS Gateway Express
+- HDS IPFS Source Kubo
+- HDS WebTorrent Seeder
+- HDS Storage ZFS
+- HDS Metadata PostgreSQL
+- HDS Transcoder FFmpeg
+- HDS Tunnel Cloudflare
+- HDS Dashboard Netdata
 - Docker
 - Tools
 
@@ -268,6 +278,8 @@ Contains code, configuration and tools for the VPS environment:
 - WebTorrent
 - IPFS / Kubo
 - PostgreSQL
+- FFmpeg
+- Netdata
 
 ### Infrastructure
 
@@ -276,14 +288,15 @@ Contains code, configuration and tools for the VPS environment:
 - Docker Compose
 - Nginx
 - Cloudflare Tunnel
+- ZFS
 
 ## Scalability
 
 The architecture allows future horizontal scaling through:
 
-- multiple Gateway Local instances where required;
-- multiple WebTorrent nodes;
-- multiple IPFS nodes;
+- multiple HDS Gateway Express instances where required;
+- multiple WebTorrent seeding nodes;
+- multiple IPFS source nodes;
 - distributed metadata;
 - load balancing;
 - multi-region deployment.
@@ -317,7 +330,7 @@ After playback starts and browser peers become available, content delivery shoul
 
 All SoNexus services shall be designed to minimize HDS traffic and maximize decentralized peer-to-peer delivery.
 
-Gateway Local and other infrastructure services must not turn HDS into a permanent streaming server or centralized CDN.
+S-1 HDS Gateway Express and the related HDS services must not turn HDS into a permanent streaming server or centralized CDN.
 
 ## Related ADRs
 

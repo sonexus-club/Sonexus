@@ -1,20 +1,26 @@
-# S-3 IPFS
+# S-2 HDS IPFS Source Kubo
 
 Status: Draft
 Progress: Planned
 Owner: SoNexus Project
 Source of Truth: GitHub
 
+Service Type:
+Docker
+
+Docker Container:
+docker-hds-ipfs-source-kubo
+
 ## Purpose
 
-S-3 IPFS provides the initial HTTP-accessible audio source for fast playback startup.
+S-2 HDS IPFS Source Kubo provides the initial HTTP-accessible audio source for fast playback startup inside the HDS environment.
 
 ## Responsibilities
 
 - Provide track data by CID.
 - Support initial buffering before P2P delivery takes over.
 - Maintain approved pinning and availability behavior.
-- Integrate with Gateway Local and Storage through approved contracts.
+- Integrate with S-1 HDS Gateway Express and S-4 HDS Storage ZFS through approved contracts.
 
 ## Boundaries
 
@@ -27,13 +33,13 @@ The service does not:
 
 ## Interfaces
 
-- S-1 Gateway Local.
+- S-1 HDS Gateway Express.
 - S-11 Stream Controller.
-- S-8 Storage.
+- S-4 HDS Storage ZFS.
 
 ## Current State
 
-- Service identifier approved: S-3.
+- Service identifier approved: S-2.
 - Kubo is part of the approved technology baseline.
 - Detailed proxy, pinning and fallback behavior is not yet documented.
 
@@ -45,7 +51,7 @@ The service does not:
 
 ## Open Decisions
 
-- Gateway Local proxy contract.
+- Gateway proxy contract.
 - Range-request behavior.
 - Pinning and replication policy.
 - Public gateway fallback policy.
