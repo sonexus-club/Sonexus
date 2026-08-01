@@ -216,9 +216,9 @@ Examples:
 - S-3 — HDS WebTorrent Seeder
 - S-11 — Stream Controller
 
-## Infrastructure Naming Standard v1.0
+## Infrastructure Naming Standard v1.1
 
-The Infrastructure Naming Standard v1.0 is approved and mandatory across the SoNexus project.
+The Infrastructure Naming Standard v1.1 is approved and mandatory across the SoNexus project.
 
 ### Service
 
@@ -288,17 +288,15 @@ Always specify the image explicitly.
 
 Format:
 
-`sonexus/<service-name>:<tag>`
-
-Default tag:
-
-`latest`
+`sonexus/<service-name>:latest`
 
 Examples:
 
 - `image: sonexus/hds-webtorrent-seeder:latest`
 - `image: sonexus/hds-gateway-express:latest`
 - `image: sonexus/hds-transcoder-ffmpeg:latest`
+- `image: sonexus/vps-gateway-express:latest`
+- `image: sonexus/browser-stream-controller:latest`
 
 #### Third-party services
 
@@ -310,6 +308,7 @@ Examples:
 - `image: postgres:17`
 - `image: portainer/portainer-ce:lts`
 - `image: netdata/netdata:stable`
+- `image: cloudflare/cloudflared:latest`
 
 Do not rename or rebuild third-party images unless an approved ADR explicitly requires it.
 

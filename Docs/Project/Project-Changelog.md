@@ -2,6 +2,12 @@
 
 ## 2026-08-01
 
+### Infrastructure Naming Standard v1.1
+
+- Finalized the first-party Docker image namespace for SoNexus services.
+- Confirmed `sonexus/<service-name>:latest` as the approved Docker image format for first-party services.
+- Preserved official vendor image naming for third-party services including IPFS, PostgreSQL, Portainer, Netdata and Cloudflare Tunnel.
+
 ### S-5 HDS Metadata PostgreSQL Migration
 
 - Completed the migration of S-5 HDS Metadata PostgreSQL to the approved infrastructure naming standard.
@@ -19,7 +25,7 @@
 - Approved `<Platform> <Function> <Implementation>` as the required service naming format.
 - Approved `kebab-case` for service directories, Docker Compose projects and Docker Compose services.
 - Approved `docker-<service-name>` for Docker containers.
-- Approved explicit `sonexus/<service-name>:<tag>` image naming for SoNexus-built services.
+- Approved explicit `sonexus/<service-name>:latest` image naming for SoNexus-built services.
 - Confirmed that third-party services must use official vendor images unless an ADR explicitly approves an exception.
 
 ### S-2 HDS IPFS Source Kubo Migration
