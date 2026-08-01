@@ -42,6 +42,13 @@ The service does not:
 ## Current State
 
 - Service identifier approved: S-3.
+- Approved service naming: `HDS WebTorrent Seeder`.
+- Approved documentation filename: `S-3-HDS-WebTorrent-Seeder.md`.
+- Approved service directory name: `hds-webtorrent-seeder`.
+- Approved Docker Compose project: `hds-webtorrent-seeder`.
+- Approved Docker Compose service: `hds-webtorrent-seeder`.
+- Approved Docker image: `sonexus/hds-webtorrent-seeder:latest`.
+- Approved Docker container: `docker-hds-webtorrent-seeder`.
 - Minimal Node.js container code exists in `HDS/WebTorrent/`.
 - Full demand-based seeding lifecycle and control API are not yet implemented.
 

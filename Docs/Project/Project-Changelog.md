@@ -2,6 +2,16 @@
 
 ## 2026-08-01
 
+### Infrastructure Naming Standard v1.0
+
+- Approved Infrastructure Naming Standard v1.0 for the full documentation-to-runtime naming chain.
+- Standardized the mandatory sequence `ADR → Service → Directory → Compose Project → Compose Service → Docker Image → Docker Container`.
+- Approved `<Platform> <Function> <Implementation>` as the required service naming format.
+- Approved `kebab-case` for service directories, Docker Compose projects and Docker Compose services.
+- Approved `docker-<service-name>` for Docker containers.
+- Approved explicit `sonexus/<service-name>:<tag>` image naming for SoNexus-built services.
+- Confirmed that third-party services must use official vendor images unless an ADR explicitly approves an exception.
+
 ### S-2 HDS IPFS Source Kubo Migration
 
 - Completed the first HDS service migration to the approved infrastructure naming standard.

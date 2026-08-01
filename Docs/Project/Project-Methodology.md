@@ -216,6 +216,111 @@ Examples:
 - S-3 — HDS WebTorrent Seeder
 - S-11 — Stream Controller
 
+## Infrastructure Naming Standard v1.0
+
+The Infrastructure Naming Standard v1.0 is approved and mandatory across the SoNexus project.
+
+### Service
+
+Format:
+
+`<Platform> <Function> <Implementation>`
+
+Example:
+
+- `HDS WebTorrent Seeder`
+
+### Documentation
+
+Format:
+
+`S-x-<Service-Name>.md`
+
+Example:
+
+- `S-3-HDS-WebTorrent-Seeder.md`
+
+### Directory
+
+Format:
+
+`kebab-case`
+
+Example:
+
+- `hds-webtorrent-seeder`
+
+### Docker Compose Project
+
+Format:
+
+`kebab-case`
+
+Example:
+
+- `hds-webtorrent-seeder`
+
+### Docker Compose Service
+
+Format:
+
+`kebab-case`
+
+Example:
+
+- `hds-webtorrent-seeder`
+
+### Docker Container
+
+Format:
+
+`docker-<service-name>`
+
+Example:
+
+- `docker-hds-webtorrent-seeder`
+
+### Docker Image
+
+#### SoNexus services
+
+Always specify the image explicitly.
+
+Format:
+
+`sonexus/<service-name>:<tag>`
+
+Default tag:
+
+`latest`
+
+Examples:
+
+- `image: sonexus/hds-webtorrent-seeder:latest`
+- `image: sonexus/hds-gateway-express:latest`
+- `image: sonexus/hds-transcoder-ffmpeg:latest`
+
+#### Third-party services
+
+Always use official vendor images.
+
+Examples:
+
+- `image: ipfs/kubo:latest`
+- `image: postgres:17`
+- `image: portainer/portainer-ce:lts`
+- `image: netdata/netdata:stable`
+
+Do not rename or rebuild third-party images unless an approved ADR explicitly requires it.
+
+### Architectural Principle
+
+Every infrastructure component must follow one consistent naming chain:
+
+`ADR → Service → Directory → Compose Project → Compose Service → Docker Image → Docker Container`
+
+A component name must identify the corresponding documentation, implementation and runtime object without ambiguity.
+
 ## Trello Engineering Workflow
 
 Engineering workflow is defined in:
