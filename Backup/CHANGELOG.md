@@ -1,14 +1,19 @@
-# Changelog
+# SoNexus Project Changelog
 
-## v0.1.0
+All notable changes to the SoNexus project are documented here.
 
-### Infrastructure
+This changelog records project-level milestones, architecture approvals and implementation progress.
 
-- Ubuntu Desktop
-- Docker
-- Portainer
-- IPFS (Kubo)
-- Docker Networks
-- Storage Layout
-- GitHub Repository
-- Initial Project Structure
+## [Unreleased]
+
+### Changed
+
+- Continued infrastructure and documentation consolidation.
+
+## [1.0.0] - 2026-08-01
+
+### Added
+
+- Core project structure.
+- Project architecture documentation.
+- Project methodology documentation.

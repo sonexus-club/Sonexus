@@ -4,126 +4,72 @@
 
 ## Overview
 
-SoNexus is an open, modular and decentralized audio streaming platform designed for high-quality music delivery using modern peer-to-peer technologies.
-
-The platform combines:
-
-- WebTorrent
-- IPFS
-- WordPress
-- Docker
-- PostgreSQL
-
-into a scalable hybrid streaming architecture.
-
----
+SoNexus is an open, modular audio platform that combines IPFS WebSeed fast start with browser-to-browser WebTorrent/WebRTC delivery.
 
 ## Current Status
 
-Version: 1.0
+- Status: Active
+- Current stage: S-1 HDS Gateway Express
+- Active service: S-1 HDS Gateway Express
+- Approved documentation: GitHub
+- Active workflow: Trello
 
-Phase: Documentation Foundation
-
-Status: In Development
-
-GitHub: Local
-
----
+See [Project Status](Docs/Project/Project-Status.md) for the current objective, active work, blockers and next milestone.
 
 ## Architecture
 
-Playback pipeline:
+```text
+WordPress / Musicon
+        ↓
+Plyr / HTML5 UI
+        ↓
+S-11 Stream Controller
+   ├── Protected infrastructure boundary
+   │   ├── S-7 HDS Tunnel Cloudflare
+   │   └── S-1 HDS Gateway Express
+   │       ├── S-5 HDS Metadata PostgreSQL
+   │       └── S-8 HDS Dashboard Netdata
+   ├── S-2 HDS IPFS Source Kubo
+   └── S-3 HDS WebTorrent Seeder
+```
 
-WordPress
-
-↓
-
-SoNexus Player
-
-↓
-
-Gateway
-
-↓
-
-IPFS (Fast Playback Start)
-
-↓
-
-WebTorrent (Primary Delivery)
-
-↓
-
-Audio Output
-
----
+Plyr is a third-party playback UI library. S-11 Stream Controller is the browser-side transport controller. S-2 HDS IPFS Source Kubo provides the initial WebSeed source, S-3 HDS WebTorrent Seeder provides bootstrap and recovery seeding support, and S-1 HDS Gateway Express coordinates protected HDS application logic without carrying P2P audio traffic.
 
 ## Documentation
 
-Project documentation is located in:
+- [`AI/AI-Index.md`](AI/AI-Index.md) — entry point for AI assistants
+- [Project Status](Docs/Project/Project-Status.md) — current project state
+- [Project Changelog](Docs/Project/Project-Changelog.md) — approved project history
+- [`Docs/Project/Project-Architecture.md`](Docs/Project/Project-Architecture.md) — system architecture
+- [`Docs/Project/Project-Methodology.md`](Docs/Project/Project-Methodology.md) — engineering methodology
+- [`Docs/ADR/`](Docs/ADR/) — architectural decisions
+- [`Docs/Services/`](Docs/Services/) — service technical passports
 
-```text
-docs/
-├── Project-AIContext.md
-├── Project-Architecture.md
-├── Project-Methodology.md
-├── Project-Passport.md
-├── adr/
-├── services/
-└── development/
-```
+## Repository Areas
 
----
-
-## Roadmap
-
-Current milestone:
-
-- Complete GitHub Migration
-- Gateway Architecture
-- Gateway Implementation
-- URL Parser
-- Metadata Database
-- Dashboard
-- Native SoNexus Player
-
----
+- `AI/` — AI navigation and rules
+- `Docs/` — project documentation
+- `HDS/` — home development server code, configuration and tools
+- `VPS/` — VPS code, configuration and tools
+- `Backup/` — temporary snapshot created before restructuring
 
 ## Technology Stack
 
-Frontend
-
-- WordPress
-- Musicon Theme
-- JavaScript
-
-Backend
-
-- Node.js
-- Express.js
-- WebTorrent
-- IPFS
+- WordPress, Musicon, JavaScript
+- Node.js, Express.js
+- WebTorrent, IPFS (Kubo)
 - PostgreSQL
-
-Infrastructure
-
-- Ubuntu Linux
-- Docker
-- Docker Compose
-- Nginx
-- Cloudflare Tunnel
-
----
+- Docker, Ubuntu Linux, Nginx, Cloudflare Tunnel
 
 ## Principles
 
 - Architecture First
-- GitHub is the Source of Truth
-- One ADR = One Architecture Decision
-- Modular Design
-- Documentation evolves with implementation
-
----
+- GitHub stores approved architecture and published engineering documentation
+- Trello is the active engineering workflow space
+- One architectural responsibility per ADR
+- One document per knowledge area
+- Minimal documentation
+- Modular design
 
 ## License
 
