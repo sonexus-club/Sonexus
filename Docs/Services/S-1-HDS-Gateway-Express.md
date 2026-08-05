@@ -1,7 +1,7 @@
 # S-1 HDS Gateway Express
 
 Status: Draft
-Progress: Analysis
+Progress: In Progress
 Owner: SoNexus Project
 Source of Truth: GitHub
 
@@ -103,15 +103,25 @@ S-1 HDS Gateway Express returns coordination and metadata responses. Audio deliv
 - Docker
 - Ubuntu Linux
 
-Exact versions, API endpoints, authentication, session model and deployment parameters are not yet approved.
+The implementation baseline provides the following read-only endpoints:
+
+- `GET /api/v1/health`
+- `GET /api/v1/services`
+- `GET /api/v1/dashboard`
+- `GET /api/v1/torrents`
+
+The PostgreSQL service health probe opens a database connection and executes `SELECT 1`.
+
+Protected command API, authentication, the control contract and detailed Gateway architecture remain unapproved.
 
 ## Current State
 
 - Service identifier approved: S-1.
 - Active service identity: HDS Gateway Express.
 - Architectural role defined in `../Project/Project-Architecture.md`.
-- Implementation not started.
-- Detailed gateway architecture is the next engineering stage.
+- Implementation baseline exists in `HDS/Gateway/`.
+- Read-only Gateway, Dashboard and torrent integration endpoints are implemented.
+- Detailed Gateway Command Layer analysis is the next engineering stage under ADR-005.
 
 ## Related Documents
 
@@ -125,10 +135,10 @@ Exact versions, API endpoints, authentication, session model and deployment para
 
 ## Open Decisions
 
-- Internal API contract.
+- Protected command API and control contract.
 - Protected request model between S-7 HDS Tunnel Cloudflare and S-1 HDS Gateway Express.
 - Error model.
-- Service health endpoints.
+- Health response contract and readiness criteria.
 - PostgreSQL metadata contract.
 - IPFS and WebTorrent coordination interfaces.
 - Logging and observability.
@@ -136,7 +146,7 @@ Exact versions, API endpoints, authentication, session model and deployment para
 
 ## Completion Criteria
 
-S-1 HDS Gateway Express can move from Analysis to Development only after:
+S-1 HDS Gateway Express command capabilities can move beyond the current implementation baseline only after:
 
 - its detailed internal HDS architecture is approved;
 - service boundaries are confirmed;

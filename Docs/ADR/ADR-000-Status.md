@@ -18,7 +18,7 @@ GitHub: Published
 | ADR-002 | IPFS as WebSeed | 1.0 | Final | Completed | Published | S-2 — HDS IPFS Source Kubo | — | — |
 | ADR-003 | Docker Platform | 1.0 | Final | Completed | Published | Project-wide platform | — | — |
 | ADR-004 | Universal URL Standard | 1.0 | Final | Completed | Published | Shared contract | S-11.1, S-11.4, S-11.7 | — |
-| ADR-005 | Gateway Architecture | — | Planned | Planned | Not Created | S-1 — HDS Gateway Express | — | Planned registry entry pending final review |
+| ADR-005 | Gateway Architecture | — | — | In Progress | Not Created | S-1 — HDS Gateway Express | — | Gateway Command Layer analysis is active; no ADR document exists yet |
 | ADR-006 | Infrastructure Deployment Architecture | — | Draft | Planned | Not Created | Shared HDS / VPS infrastructure boundary | — | Active planned infrastructure architecture |
 | ADR-007 | Audio Transcoder Architecture | — | Draft | Planned | Not Created | S-6 — HDS Transcoder FFmpeg | — | Active planned HDS service architecture |
 | ADR-008 | Player Architecture | — | Planned | Planned | Not Created | Browser-side legacy identity | — | Legacy planned identity replaced by ADR-011 / S-11 |
@@ -73,4 +73,4 @@ GitHub: Published
 - Every ADR registry entry must track its defined service and permanent modules where applicable.
 - Approved ADR changes increment the Version.
 - GitHub is the source of truth for approved architecture and published ADR documentation.
-- Trello is the active workflow system for planned, draft and pre-publication engineering movement.
+- Linear is the active workflow system for planned, draft and pre-publication engineering movement.

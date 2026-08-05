@@ -1,18 +1,29 @@
 # SoNexus Project Status
 
 Status: Active
-Last Updated: 2026-08-01
+Last Updated: 2026-08-06
 Owner: SoNexus Project
 Approved Documentation: GitHub
-Active Workflow: Trello
+Active Workflow: Linear
 
 ## Current Focus
 
-S-1 — HDS Gateway Express
+ADR-005 — Gateway Architecture / Command Layer
 
 Status: Analysis
 
-## Completed During the Current Session
+## Current State
+
+- Repository consolidation is completed; no active repository-consolidation work remains.
+- The Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL runtime source baseline is published.
+- Gateway read-only endpoints are implemented: `/api/v1/health`, `/api/v1/services`, `/api/v1/dashboard` and `/api/v1/torrents`.
+- PostgreSQL health is verified by a real `SELECT 1` probe.
+- WebTorrent TEST_MODE album discovery was tested.
+- Dashboard → Gateway → WebTorrent integration test passed.
+- WebTorrent control and command endpoints are not implemented.
+- Automated GitHub CI is not configured.
+
+## Completed Historical Work
 
 - completed the infrastructure migration of S-5 HDS Metadata PostgreSQL to the approved naming standard;
 - confirmed successful Docker Compose migration for S-5 HDS Metadata PostgreSQL;
@@ -35,14 +46,14 @@ Status: Analysis
 
 ## Next Continuation Point
 
-Define the interaction between S-1 HDS Gateway Express, S-7 HDS Tunnel Cloudflare and the rest of HDS.
+Continue ADR-005 analysis for the Gateway Command Layer. Do not define or implement a command API until the architecture and protected control contract are approved.
 
 ## Repository Status
 
-Repository restructuring is completed.
+Repository consolidation is completed.
 
-- GitHub matches the approved structure for published project documentation.
-- Trello is the active workflow system for analysis, decomposition and pre-publication iteration.
+- GitHub contains the published runtime source baseline and approved project documentation.
+- Linear is the active workflow system for analysis, decomposition and pre-publication iteration.
 - Documentation is consolidated and synchronized with approved results.
 - AI documentation is reduced to `AI/AI-Index.md` and `AI/AI-Rules.md`.
 - `HDS/`, `VPS/`, `Docs/ADR/`, `Docs/Services/` and `Backup/` are established.

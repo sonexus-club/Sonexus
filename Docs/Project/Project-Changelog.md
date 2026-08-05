@@ -1,5 +1,17 @@
 # Project Changelog
 
+## 2026-08-06
+
+### Repository Consolidation and Documentation Synchronization
+
+- Completed repository consolidation through PR #1.
+- Published the Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL runtime source baseline.
+- Confirmed Gateway read-only API availability and PostgreSQL `SELECT 1` health verification.
+- Confirmed WebTorrent TEST_MODE album discovery and Dashboard → Gateway → WebTorrent integration.
+- Applied the final Dashboard DOM XSS remediation.
+- Replaced Trello with Linear as the active engineering workflow system.
+- Recorded ADR-005 Gateway Architecture / Command Layer as the next analysis stage.
+
 ## 2026-08-01
 
 ### Infrastructure Naming Standard v1.1

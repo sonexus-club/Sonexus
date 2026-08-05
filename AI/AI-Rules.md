@@ -1,8 +1,8 @@
 # AI-Rules
 
 Status: Final
-Version: 2.7
-Last Updated: 2026-07-29
+Version: 2.8
+Last Updated: 2026-08-06
 Owner: SoNexus Project
 Source of Truth: GitHub
 
@@ -134,7 +134,7 @@ Create new modules, documents, directories or technologies only when clearly jus
 
 GitHub is the single source of truth for approved project knowledge.
 
-Trello is the active engineering workflow and working-state management space.
+Linear is the active engineering workflow and working-state management space.
 
 The home server is only a synchronized working copy.
 
@@ -194,11 +194,11 @@ Documentation must be updated in GitHub only after the result is approved and st
 
 GitHub is the single source of truth for approved project knowledge.
 
-Trello remains the active workflow system for analysis, decomposition and pre-publication iteration.
+Linear remains the active workflow system for analysis, decomposition and pre-publication iteration.
 
 All approved documentation and code changes MUST be applied directly to GitHub.
 
-Unapproved or unstable working-state details MUST remain in Trello until they are ready for approved publication.
+Unapproved or unstable working-state details MUST remain in Linear until they are ready for approved publication.
 
 Standard workflow:
 
@@ -429,7 +429,7 @@ Verification
 
 ↓
 
-Trello working-state tracking
+Linear working-state tracking
 
 ↓
 
@@ -467,7 +467,7 @@ Only architectural decisions and knowledge with long-term value are transferred 
 When working through Android:
 
 - ChatGPT prepares ready-to-run commands.
-- The user executes them through @GitHub, @Trello, or on the HDS.
+- The user executes them through @GitHub, @Linear, or on the HDS.
 - ChatGPT analyzes the result.
 - The next command is prepared only after the result has been analyzed.
 
@@ -479,22 +479,22 @@ Each tool has one primary responsibility.
 
 - GitHub: Approved architecture, rules and published documentation.
 - HDS (ws.sonexus.club): Development & Integration Environment.
-- Trello: Active engineering workflow and working-state management.
+- Linear: Active engineering workflow and working-state management.
 - ChatGPT: AI Engineering Lead.
 
 The tools must not duplicate each other's roles.
 
 ---
 
-# 23. Trello Standard Reference
+# 23. Linear Standard Reference
 
-Trello standard:
+Linear standard:
 
 See:
 
-`Docs/Project/Trello-Standard.md`
+`Docs/Project/Linear-Standard.md`
 
-AI must not duplicate Trello methodology.
+AI must not duplicate Linear workflow rules.
 
 ---
 
@@ -517,20 +517,20 @@ Mandatory rules:
 
 ---
 
-# 25. Trello Standard Usage
+# 25. Linear Standard Usage
 
-When creating or updating Trello cards, the AI MUST follow:
+When creating or updating Linear work items, the AI MUST follow:
 
-`Docs/Project/Trello-Standard.md`
+`Docs/Project/Linear-Standard.md`
 
-The AI must apply the approved naming, lifecycle, ownership, label and template rules from that document without rewriting them elsewhere.
+The AI must apply the verified workspace, project, issue-prefix and status rules from that document without rewriting them elsewhere.
 
 When an ADR is approved, the AI MUST also:
 
 - update the related GitHub documentation;
 - update the master architecture diagram if the approved ADR changes the project-level architecture;
 - create an ADR-specific diagram when the approved decision requires additional local visualization;
-- attach the relevant approved diagram to the corresponding ADR card in Trello;
+- attach the relevant approved diagram to the corresponding Linear item when workflow context requires it;
 - keep not-yet-approved parts of the architecture generalized on the master diagram.
 
 ---
@@ -564,7 +564,7 @@ An Epic is completed only when:
 - all Tasks are completed;
 - all code changes are published to GitHub;
 - all required documentation is updated;
-- all implementation references are recorded in Trello;
+- all implementation references are recorded in Linear;
 - the result is verified;
 - the Epic status is set to Completed.
 
@@ -578,11 +578,11 @@ Changes to project process rules are allowed only when there is an objective pra
 
 ---
 
-# 30. Trello Labels
+# 30. Linear Workflow Reference
 
-Use the approved Trello label rules defined in:
+Use the verified Linear workflow facts defined in:
 
-`Docs/Project/Trello-Standard.md`
+`Docs/Project/Linear-Standard.md`
 
 ---
 
