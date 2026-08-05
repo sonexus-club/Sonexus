@@ -6,6 +6,8 @@ Progress: Completed
 Owner: SoNexus Project
 Source of Truth: GitHub
 
+Implementation baseline note: Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL source configuration is published. This note records implementation state only and does not approve new architecture.
+
 ## Purpose
 
 This document defines the approved technical architecture of SoNexus: system layers, service boundaries, component communication, playback flow and architectural principles.
@@ -312,7 +314,7 @@ The architecture allows future horizontal scaling through:
 - WebTorrent Primary Delivery
 - Separation of Concerns
 - GitHub stores approved architecture and published engineering documentation
-- Trello is the active workflow and pre-publication iteration space
+- Linear is the active workflow and pre-publication iteration space
 
 ### Decentralized Delivery Principle
 

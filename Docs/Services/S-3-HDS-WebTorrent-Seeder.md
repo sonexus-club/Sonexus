@@ -1,7 +1,7 @@
 # S-3 HDS WebTorrent Seeder
 
 Status: Draft
-Progress: Planned
+Progress: In Progress
 Owner: SoNexus Project
 Source of Truth: GitHub
 
@@ -49,8 +49,12 @@ The service does not:
 - Approved Docker Compose service: `hds-webtorrent-seeder`.
 - Approved Docker image: `sonexus/hds-webtorrent-seeder:latest`.
 - Approved Docker container: `docker-hds-webtorrent-seeder`.
-- Minimal Node.js container code exists in `HDS/WebTorrent/`.
-- Full demand-based seeding lifecycle and control API are not yet implemented.
+- Node.js container implementation exists in `HDS/WebTorrent/`.
+- TEST_MODE album discovery is completed and was tested.
+- Read-only health and torrent API exists.
+- Gateway and Dashboard integration was verified.
+- On-demand start, stop and pause lifecycle is not implemented.
+- Command Layer remains the next development target.
 
 ## Related Documents
 

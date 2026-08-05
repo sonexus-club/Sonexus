@@ -173,7 +173,7 @@ This describes the approval state of the ADR document.
 
 Lifecycle and document status are separate dimensions.
 
-The Trello column determines the working lifecycle state.
+The Linear status determines the working lifecycle state.
 
 ADR metadata determines the document approval state.
 
@@ -320,17 +320,17 @@ Every infrastructure component must follow one consistent naming chain:
 
 A component name must identify the corresponding documentation, implementation and runtime object without ambiguity.
 
-## Trello Engineering Workflow
+## Linear Engineering Workflow
 
 Engineering workflow is defined in:
 
-`Docs/Project/Trello-Standard.md`
+`Docs/Project/Linear-Standard.md`
 
-This file is the single authoritative Trello standard for the project.
+This file is the single authoritative Linear standard for the project.
 
-Project methodology must not duplicate detailed Trello lifecycle, naming, label, or template rules.
+Project methodology must not duplicate the verified Linear workspace, project, issue-prefix or status rules.
 
-Trello is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
+Linear is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
 
 ## Architecture Visualization Standard
 
@@ -341,7 +341,7 @@ After approval of each ADR:
 1. the GitHub documentation is updated;
 2. the master architecture diagram is updated;
 3. if needed, a dedicated ADR-specific diagram is created;
-4. the updated diagram is attached to the corresponding ADR card in Trello.
+4. the updated diagram is attached to the corresponding Linear item when workflow context requires it.
 
 The master architecture diagram must show only approved services, approved relationships, approved infrastructure boundaries and approved transport flows.
 
@@ -349,7 +349,7 @@ Any part of the project that has not yet been analyzed or approved through ADR m
 
 GitHub stores the authoritative diagrams together with the approved project documentation.
 
-Trello stores workflow context, pre-publication iteration state and the related visual attachment for the corresponding ADR card.
+Linear stores workflow context and pre-publication iteration state.
 
 ## Documentation Principles
 
@@ -408,7 +408,7 @@ GitHub is the source of truth for approved project knowledge.
 
 GitHub stores approved architecture, ADRs, service specifications, AI rules and published engineering results.
 
-Trello stores the active engineering workflow, task movement, decomposition and pre-publication working state.
+Linear stores the active engineering workflow, task movement, decomposition and pre-publication working state.
 
 ## Glossary
 

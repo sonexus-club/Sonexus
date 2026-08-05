@@ -23,7 +23,7 @@ At this point:
 - documentation is standardized;
 - engineering workflow is standardized;
 - GitHub is the Source of Truth for approved project knowledge;
-- Trello is the active engineering workflow manager;
+- Linear is the active engineering workflow manager;
 - AI behavior is standardized;
 - identifier hierarchy is standardized.
 
@@ -42,7 +42,7 @@ The methodology is composed of the approved project standards and must be mainta
 The authoritative methodology references are:
 
 - `../Project/Project-Methodology.md`
-- `../Project/Trello-Standard.md`
+- `../Project/Linear-Standard.md`
 - `../../AI/AI-Rules.md`
 - `../../AI/AI-Index.md`
 - `ADR-000-Status.md`
@@ -73,7 +73,7 @@ This hierarchy is mandatory for all future engineering work.
 
 GitHub is the only Source of Truth for approved architecture and published documentation.
 
-Trello records active engineering workflow, decomposition and pre-publication working state.
+Linear records active engineering workflow, decomposition and pre-publication working state.
 
 AI follows GitHub documentation.
 
@@ -83,13 +83,13 @@ AI follows GitHub documentation.
 
 The unified methodology follows the approved project principles:
 
-- One card = One responsibility.
+- One work item = One responsibility.
 - One authoritative document for every engineering standard.
 - No duplicated methodology.
 - Permanent identifiers.
 - Engineering standards change only through ADR.
 
-Detailed Trello workflow rules are defined in `../Project/Trello-Standard.md` and must not be restated in parallel documents.
+Verified Linear workflow facts are defined in `../Project/Linear-Standard.md` and must not be restated in parallel documents.
 
 ---
 
