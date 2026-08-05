@@ -1,6 +1,6 @@
 # S-1 HDS Gateway Express
 
-Status: Development
+Status: Draft
 Progress: In Progress
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -138,7 +138,7 @@ Protected command API, authentication, the control contract and detailed Gateway
 - Protected command API and control contract.
 - Protected request model between S-7 HDS Tunnel Cloudflare and S-1 HDS Gateway Express.
 - Error model.
-- Service health endpoints.
+- Health response contract and readiness criteria.
 - PostgreSQL metadata contract.
 - IPFS and WebTorrent coordination interfaces.
 - Logging and observability.
