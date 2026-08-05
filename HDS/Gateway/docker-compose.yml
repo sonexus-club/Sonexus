@@ -8,6 +8,13 @@ services:
 
     restart: unless-stopped
 
+    environment:
+      POSTGRES_HOST: docker-hds-metadata-postgresql
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: sonexus
+      POSTGRES_USER: sonexus
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+
     networks:
       - sonexus-management
 

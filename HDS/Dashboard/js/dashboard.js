@@ -204,23 +204,25 @@ function renderTorrentTable() {
         const row =
             document.createElement("tr");
 
-        row.innerHTML = `
+        const cells = [
+            torrent.name,
+            torrent.status,
+            `${torrent.progress}%`,
+            torrent.peers,
+            formatSpeed(torrent.downloadSpeed),
+            formatSpeed(torrent.uploadSpeed),
+            torrent.source
+        ];
 
-            <td>${torrent.name}</td>
+        cells.forEach((value) => {
 
-            <td>${torrent.status}</td>
+            const cell = document.createElement("td");
 
-            <td>${torrent.progress}%</td>
+            cell.textContent = value;
 
-            <td>${torrent.peers}</td>
+            row.appendChild(cell);
 
-            <td>${formatSpeed(torrent.downloadSpeed)}</td>
-
-            <td>${formatSpeed(torrent.uploadSpeed)}</td>
-
-            <td>${torrent.source}</td>
-
-        `;
+        });
 
         row.onclick = () => {
 

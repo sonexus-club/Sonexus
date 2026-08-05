@@ -3,7 +3,8 @@ const axios = require("axios");
 
 const {
     checkWebTorrent,
-    checkIPFS
+    checkIPFS,
+    checkPostgreSQL
 } = require("./services");
 
 const router = express.Router();
@@ -41,8 +42,11 @@ router.get("/health", (req, res) => {
 
 router.get("/services", async (req, res) => {
 
-    const webtorrent = await checkWebTorrent();
-    const ipfs = await checkIPFS();
+    const [webtorrent, ipfs, postgresql] = await Promise.all([
+        checkWebTorrent(),
+        checkIPFS(),
+        checkPostgreSQL()
+    ]);
 
     res.json({
 
@@ -65,7 +69,7 @@ router.get("/services", async (req, res) => {
 
             {
                 name: "HDS Metadata PostgreSQL",
-                status: "online"
+                status: postgresql
             }
 
         ]
@@ -82,8 +86,11 @@ router.get("/services", async (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
 
-    const webtorrent = await checkWebTorrent();
-    const ipfs = await checkIPFS();
+    const [webtorrent, ipfs, postgresql] = await Promise.all([
+        checkWebTorrent(),
+        checkIPFS(),
+        checkPostgreSQL()
+    ]);
 
     res.json({
 
@@ -92,7 +99,7 @@ router.get("/dashboard", async (req, res) => {
             gateway: "online",
             webtorrent,
             ipfs,
-            postgresql: "online"
+            postgresql
 
         },
 
