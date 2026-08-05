@@ -1,0 +1,35 @@
+name: hds-webtorrent-seeder
+
+services:
+  hds-webtorrent-seeder:
+    image: sonexus/hds-webtorrent-seeder:latest
+
+    build:
+      context: .
+
+    container_name: docker-hds-webtorrent-seeder
+
+    environment:
+      DEBUG: webtorrent*
+      TEST_MODE: "false"
+
+    restart: unless-stopped
+
+    networks:
+      - sonexus-management
+      - sonexus-p2p
+
+    ports:
+      - "3000:3000"
+      - "40245:40245"
+      - "40245:40245/udp"
+
+    volumes:
+      - ../../storage/music:/data
+
+networks:
+  sonexus-management:
+    external: true
+
+  sonexus-p2p:
+    external: true

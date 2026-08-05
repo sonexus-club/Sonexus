@@ -1,0 +1,22 @@
+name: hds-gateway-express
+
+services:
+  hds-gateway-express:
+    build: .
+    image: sonexus/hds-gateway-express:latest
+    container_name: docker-hds-gateway-express
+
+    restart: unless-stopped
+
+    networks:
+      - sonexus-management
+
+    ports:
+      - "3001:3000"
+
+    volumes:
+      - ../Dashboard:/app/dashboard:ro
+
+networks:
+  sonexus-management:
+    external: true

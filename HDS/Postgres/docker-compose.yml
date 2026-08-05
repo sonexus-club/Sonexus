@@ -1,0 +1,31 @@
+name: hds-metadata-postgresql
+
+services:
+  hds-metadata-postgresql:
+    image: postgres:17
+
+    container_name: docker-hds-metadata-postgresql
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: sonexus
+      POSTGRES_USER: sonexus
+      POSTGRES_PASSWORD: CHANGE_ME
+
+    volumes:
+      - ../../storage/postgres:/var/lib/postgresql/data
+
+    networks:
+      - sonexus-management
+      - sonexus-storage
+
+    ports:
+      - "5432:5432"
+
+networks:
+  sonexus-management:
+    external: true
+
+  sonexus-storage:
+    external: true

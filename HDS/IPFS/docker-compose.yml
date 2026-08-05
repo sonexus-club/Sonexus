@@ -1,0 +1,25 @@
+services:
+  hds-ipfs-source-kubo:
+    image: ipfs/kubo:latest
+    container_name: docker-hds-ipfs-source-kubo
+
+    restart: unless-stopped
+
+    networks:
+      - sonexus-management
+      - sonexus-p2p
+
+    ports:
+      - "4001:4001"
+      - "5001:5001"
+      - "8080:8080"
+
+    volumes:
+      - ../../storage/ipfs:/data/ipfs
+
+networks:
+  sonexus-management:
+    external: true
+
+  sonexus-p2p:
+    external: true

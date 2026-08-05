@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SoNexus Dashboard</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- ========================================= -->
+    <!-- Sidebar                                   -->
+    <!-- ========================================= -->
+
+    <aside id="sidebar">
+
+        <div class="logo">
+
+            SoNexus
+
+        </div>
+
+        <nav>
+
+            <a href="#">🏠 Overview</a>
+
+            <a href="#" class="active">
+                📀 Torrents
+            </a>
+
+            <a href="#">
+                📊 Statistics
+            </a>
+
+            <a href="#">
+                🖥 HDS Services
+            </a>
+
+            <a href="#">
+                ☁ VPS
+            </a>
+
+            <a href="#">
+                🔔 Alert Center
+            </a>
+
+            <a href="#">
+                ⚙ Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ========================================= -->
+    <!-- Main                                      -->
+    <!-- ========================================= -->
+
+    <main id="content">
+
+        <!-- ===================================== -->
+        <!-- Header                                -->
+        <!-- ===================================== -->
+
+        <header id="header">
+
+            <div>
+
+                <h1>SoNexus Dashboard</h1>
+
+                <span>
+
+                    HDS Gateway Express
+
+                </span>
+
+            </div>
+
+            <div id="gateway-state">
+
+                <span class="status online"
+                      id="gateway-status"></span>
+
+                <span id="gateway-text">
+
+                    Online
+
+                </span>
+
+            </div>
+
+        </header>
+        <!-- ===================================== -->
+        <!-- System Status                         -->
+        <!-- ===================================== -->
+
+        <section id="system-status">
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🌐
+                </div>
+
+                <div class="service-info">
+
+                    <div class="service-title">
+
+                        Gateway
+
+                    </div>
+
+                    <div class="service-value">
+
+                        <span class="status online"
+                              id="gateway-card-status"></span>
+
+                        <span id="gateway-card-text">
+
+                            Online
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    📀
+                </div>
+
+                <div class="service-info">
+
+                    <div class="service-title">
+
+                        WebTorrent
+
+                    </div>
+
+                    <div class="service-value">
+
+                        <span class="status offline"
+                              id="webtorrent-status"></span>
+
+                        <span id="webtorrent-text">
+
+                            Loading...
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    📦
+                </div>
+
+                <div class="service-info">
+
+                    <div class="service-title">
+
+                        IPFS
+
+                    </div>
+
+                    <div class="service-value">
+
+                        <span class="status offline"
+                              id="ipfs-status"></span>
+
+                        <span id="ipfs-text">
+
+                            Loading...
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🗄️
+                </div>
+
+                <div class="service-info">
+
+                    <div class="service-title">
+
+                        PostgreSQL
+
+                    </div>
+
+                    <div class="service-value">
+
+                        <span class="status offline"
+                              id="postgresql-status"></span>
+
+                        <span id="postgresql-text">
+
+                            Loading...
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ===================================== -->
+        <!-- Toolbar                               -->
+        <!-- ===================================== -->
+
+        <section id="toolbar">
+
+            <div class="toolbar-left">
+
+                <button id="btn-add">
+                    ➕ Add
+                </button>
+
+                <button id="btn-start">
+                    ▶ Start
+                </button>
+
+                <button id="btn-pause">
+                    ⏸ Pause
+                </button>
+
+                <button id="btn-stop">
+                    ⏹ Stop
+                </button>
+
+                <button id="btn-remove">
+                    🗑 Remove
+                </button>
+
+            </div>
+
+            <div class="toolbar-right">
+
+                <input
+                    id="torrent-search"
+                    type="text"
+                    placeholder="Search torrent..."
+                >
+
+            </div>
+
+        </section>
+
+        <!-- ===================================== -->
+        <!-- Torrent Table                         -->
+        <!-- ===================================== -->
+
+        <section id="torrent-table">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Status</th>
+
+                        <th>Progress</th>
+
+                        <th>Peers</th>
+
+                        <th>↓ Download</th>
+
+                        <th>↑ Upload</th>
+
+                        <th>Source</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="torrent-list">
+
+                </tbody>
+
+            </table>
+
+        </section>
+        <!-- ===================================== -->
+        <!-- Selected Torrent                      -->
+        <!-- ===================================== -->
+
+        <section id="torrent-details">
+
+            <h2>Selected Torrent</h2>
+
+            <table class="details-table">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Name</td>
+
+                        <td id="selected-name">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>InfoHash</td>
+
+                        <td id="selected-infohash">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Status</td>
+
+                        <td id="selected-status">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Rank</td>
+
+                        <td id="selected-rank">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Source</td>
+
+                        <td id="selected-source">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Peers</td>
+
+                        <td id="selected-peers">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Progress</td>
+
+                        <td id="selected-progress">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Download</td>
+
+                        <td id="selected-download">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Upload</td>
+
+                        <td id="selected-upload">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Listeners</td>
+
+                        <td id="selected-listeners">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Streams</td>
+
+                        <td id="selected-streams">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Pieces Served</td>
+
+                        <td id="selected-pieces">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Started</td>
+
+                        <td id="selected-started">-</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Last Activity</td>
+
+                        <td id="selected-lastactivity">-</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
+
