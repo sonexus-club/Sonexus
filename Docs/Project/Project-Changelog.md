@@ -2,6 +2,17 @@
 
 ## 2026-08-06
 
+### Universal Media URL Standard v1.1
+
+- Reconfirmed the canonical URL as `https://<gateway>/<TrackCID>#h=<AlbumInfoHash>&t=<TrackIndex>&q=<Quality>`.
+- Replaced the older placeholders `<Domain>` and `<QualityIndex>` in active documentation.
+- Confirmed that `h`, `t` and `q` remain in BR and are not transmitted to the HTTP gateway.
+- Rejected the legacy action URL variants `/s` and `/d`.
+- Separated the public media URL contract from the S-1 HDS Gateway Express Command API contract.
+- Recorded the confirmed runtime flow `S-11 BR Stream Controller → S-1 HDS Gateway Express → S-3 HDS WebTorrent Seeder`.
+- Recorded that the exact command route is not present in the published Gateway source baseline and still requires synchronization.
+
+
 ### Repository Consolidation and Documentation Synchronization
 
 - Completed repository consolidation through PR #1.
