@@ -2,7 +2,7 @@
 
 Title: Engineering Methodology
 
-Version: 1.0
+Version: 1.1
 
 Status: Final
 
@@ -23,7 +23,7 @@ At this point:
 - documentation is standardized;
 - engineering workflow is standardized;
 - GitHub is the Source of Truth for approved project knowledge;
-- Linear is the active engineering workflow manager;
+- Linear was evaluated as the active engineering workflow manager but is now frozen because its automation and integration limits do not meet the current project needs;
 - AI behavior is standardized;
 - identifier hierarchy is standardized.
 
@@ -42,7 +42,7 @@ The methodology is composed of the approved project standards and must be mainta
 The authoritative methodology references are:
 
 - `../Project/Project-Methodology.md`
-- `../Project/Linear-Standard.md`
+- `../Project/Linear-Standard.md` (frozen Linear status and reactivation boundary)
 - `../../AI/AI-Rules.md`
 - `../../AI/AI-Index.md`
 - `ADR-000-Status.md`
@@ -73,7 +73,9 @@ This hierarchy is mandatory for all future engineering work.
 
 GitHub is the only Source of Truth for approved architecture and published documentation.
 
-Linear records active engineering workflow, decomposition and pre-publication working state.
+GitHub project documentation records the active engineering workflow, decomposition and pre-publication working state.
+
+Linear is frozen and is not a source of current project state.
 
 AI follows GitHub documentation.
 
@@ -89,7 +91,7 @@ The unified methodology follows the approved project principles:
 - Permanent identifiers.
 - Engineering standards change only through ADR.
 
-Verified Linear workflow facts are defined in `../Project/Linear-Standard.md` and must not be restated in parallel documents.
+The Linear freeze state and reactivation boundary are defined in `../Project/Linear-Standard.md` and must not be contradicted by parallel documents.
 
 ---
 
@@ -97,13 +99,17 @@ Verified Linear workflow facts are defined in `../Project/Linear-Standard.md` an
 
 Expected outcomes:
 
-- unified engineering workflow;
+- unified GitHub-based engineering record without mandatory external workflow synchronization;
 - unified documentation;
 - stable identifiers;
 - traceability;
 - reproducible engineering process.
 
-All further methodology changes require a new ADR.
+All further methodology changes require explicit approval and an ADR update or a new ADR.
+
+## Version 1.1 Amendment
+
+Linear is frozen. Existing Linear data is retained for possible future use, but normal project work does not require Linear updates. GitHub project documentation now carries the active status, engineering journal, blockers and continuation point. Trello is not restored as an active workflow system.
 
 ---
 

@@ -173,7 +173,9 @@ This describes the approval state of the ADR document.
 
 Lifecycle and document status are separate dimensions.
 
-The Linear status determines the working lifecycle state.
+The working lifecycle state is recorded in `Project-Status.md` and the relevant ADR or Service document.
+
+Linear statuses are inactive while Linear is frozen.
 
 ADR metadata determines the document approval state.
 
@@ -320,17 +322,15 @@ Every infrastructure component must follow one consistent naming chain:
 
 A component name must identify the corresponding documentation, implementation and runtime object without ambiguity.
 
-## Linear Engineering Workflow
+## Active Engineering Workflow
 
-Engineering workflow is defined in:
+GitHub project documentation is the active workflow record.
 
-`Docs/Project/Linear-Standard.md`
+- `Project-Status.md` records current focus, implementation state, blockers and the next continuation point.
+- `Project-Changelog.md` records significant completed changes.
+- relevant ADR and Service documents record their factual status.
 
-This file is the single authoritative Linear standard for the project.
-
-Project methodology must not duplicate the verified Linear workspace, project, issue-prefix or status rules.
-
-Linear is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
+`Docs/Project/Linear-Standard.md` records that Linear is frozen and defines the reactivation boundary. Linear is not a required working-state system.
 
 ## Architecture Visualization Standard
 
@@ -341,7 +341,7 @@ After approval of each ADR:
 1. the GitHub documentation is updated;
 2. the master architecture diagram is updated;
 3. if needed, a dedicated ADR-specific diagram is created;
-4. the updated diagram is attached to the corresponding Linear item when workflow context requires it.
+4. the updated diagram is referenced from the relevant GitHub documentation.
 
 The master architecture diagram must show only approved services, approved relationships, approved infrastructure boundaries and approved transport flows.
 
@@ -349,7 +349,7 @@ Any part of the project that has not yet been analyzed or approved through ADR m
 
 GitHub stores the authoritative diagrams together with the approved project documentation.
 
-Linear stores workflow context and pre-publication iteration state.
+GitHub project documentation stores workflow context and pre-publication iteration state.
 
 ## Documentation Principles
 
@@ -406,9 +406,9 @@ No project work session is considered complete until the documentation has been 
 
 GitHub is the source of truth for approved project knowledge.
 
-GitHub stores approved architecture, ADRs, service specifications, AI rules and published engineering results.
+GitHub stores approved architecture, ADRs, service specifications, AI rules, published engineering results, active status and the project journal.
 
-Linear stores the active engineering workflow, task movement, decomposition and pre-publication working state.
+Linear is frozen. Existing Linear data is retained for possible future use, but no Linear update is required during normal project work.
 
 ## Glossary
 

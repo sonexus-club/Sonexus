@@ -10,3 +10,4 @@
 - Added real PostgreSQL health verification using `SELECT 1`.
 - Replaced Dashboard torrent-table HTML injection with safe DOM text assignment.
 - Recorded the Linear workflow migration and the post-consolidation project state.
+- Froze Linear after practical automation and integration limitations were confirmed; moved active status and journal tracking to GitHub project documentation.

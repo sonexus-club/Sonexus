@@ -314,7 +314,7 @@ The architecture allows future horizontal scaling through:
 - WebTorrent Primary Delivery
 - Separation of Concerns
 - GitHub stores approved architecture and published engineering documentation
-- Linear is the active workflow and pre-publication iteration space
+- GitHub project documentation records the active workflow state and pre-publication engineering journal
 
 ### Decentralized Delivery Principle
 

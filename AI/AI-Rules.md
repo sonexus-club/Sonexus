@@ -1,7 +1,7 @@
 # AI-Rules
 
 Status: Final
-Version: 2.8
+Version: 2.9
 Last Updated: 2026-08-06
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -134,7 +134,9 @@ Create new modules, documents, directories or technologies only when clearly jus
 
 GitHub is the single source of truth for approved project knowledge.
 
-Linear is the active engineering workflow and working-state management space.
+Active workflow state, blockers, next steps and the project journal are maintained in GitHub project documentation.
+
+Linear is frozen and is not a required workflow system.
 
 The home server is only a synchronized working copy.
 
@@ -194,11 +196,11 @@ Documentation must be updated in GitHub only after the result is approved and st
 
 GitHub is the single source of truth for approved project knowledge.
 
-Linear remains the active workflow system for analysis, decomposition and pre-publication iteration.
+GitHub project documentation records analysis state, decomposition, blockers and pre-publication iteration.
 
 All approved documentation and code changes MUST be applied directly to GitHub.
 
-Unapproved or unstable working-state details MUST remain in Linear until they are ready for approved publication.
+Linear is frozen and MUST NOT be treated as a source of current project state.
 
 Standard workflow:
 
@@ -429,7 +431,7 @@ Verification
 
 ↓
 
-Linear working-state tracking
+GitHub working-state and journal update
 
 ↓
 
@@ -467,7 +469,7 @@ Only architectural decisions and knowledge with long-term value are transferred 
 When working through Android:
 
 - ChatGPT prepares ready-to-run commands.
-- The user executes them through @GitHub, @Linear, or on the HDS.
+- The user executes them through @GitHub or on the HDS.
 - ChatGPT analyzes the result.
 - The next command is prepared only after the result has been analyzed.
 
@@ -477,24 +479,24 @@ When working through Android:
 
 Each tool has one primary responsibility.
 
-- GitHub: Approved architecture, rules and published documentation.
+- GitHub: Approved architecture, rules, published documentation, active project status and engineering journal.
 - HDS (ws.sonexus.club): Development & Integration Environment.
-- Linear: Active engineering workflow and working-state management.
+- Linear: Frozen; retained only for possible future reactivation.
 - ChatGPT: AI Engineering Lead.
 
 The tools must not duplicate each other's roles.
 
 ---
 
-# 23. Linear Standard Reference
+# 23. Linear Status Reference
 
-Linear standard:
+Linear status and reactivation boundary:
 
 See:
 
 `Docs/Project/Linear-Standard.md`
 
-AI must not duplicate Linear workflow rules.
+AI must not use Linear as an active workflow while its status is Frozen.
 
 ---
 
@@ -517,20 +519,20 @@ Mandatory rules:
 
 ---
 
-# 25. Linear Standard Usage
+# 25. Working-State Documentation
 
-When creating or updating Linear work items, the AI MUST follow:
+While Linear is Frozen, the AI MUST:
 
-`Docs/Project/Linear-Standard.md`
-
-The AI must apply the verified workspace, project, issue-prefix and status rules from that document without rewriting them elsewhere.
+- maintain current focus, implementation state, blockers and next continuation point in `Docs/Project/Project-Status.md`;
+- record significant completed changes in `Docs/Project/Project-Changelog.md`;
+- update relevant ADR and Service statuses when factual project state changes;
+- avoid creating or updating Linear items unless Linear is explicitly reactivated.
 
 When an ADR is approved, the AI MUST also:
 
 - update the related GitHub documentation;
 - update the master architecture diagram if the approved ADR changes the project-level architecture;
 - create an ADR-specific diagram when the approved decision requires additional local visualization;
-- attach the relevant approved diagram to the corresponding Linear item when workflow context requires it;
 - keep not-yet-approved parts of the architecture generalized on the master diagram.
 
 ---
@@ -539,34 +541,30 @@ When an ADR is approved, the AI MUST also:
 
 When a new idea appears during work, first check whether it belongs to the current ADR.
 
-If it belongs to the current ADR, create a Task under the active Epic.
+If it belongs to the current ADR, record it as a Task in the active project documentation.
 
-If it does not belong to the current ADR, create a new ADR with status Planned and create a new Epic for that ADR.
-
----
-
-# 27. Epic and ADR Relationship
-
-For architectural work, one Epic corresponds to one ADR.
-
-Examples of non-ADR Epics include:
-
-- Recovery Stage;
-- Documentation Foundation;
-- Release.
+If it does not belong to the current ADR, create a new ADR with status Planned and record the related task.
 
 ---
 
-# 28. Definition of Done for Epic
+# 27. Historical Epic and ADR Relationship
 
-An Epic is completed only when:
+The previous Linear model mapped one architectural Epic to one ADR.
 
-- all Tasks are completed;
+This mapping is retained for historical compatibility only and is not an active workflow requirement while Linear is Frozen.
+
+---
+
+# 28. Definition of Done
+
+Engineering work is completed only when:
+
+- all required Tasks are completed;
 - all code changes are published to GitHub;
 - all required documentation is updated;
-- all implementation references are recorded in Linear;
+- implementation references are recorded in the relevant GitHub documentation;
 - the result is verified;
-- the Epic status is set to Completed.
+- the relevant project, ADR and Service statuses are updated.
 
 ---
 
@@ -578,11 +576,11 @@ Changes to project process rules are allowed only when there is an objective pra
 
 ---
 
-# 30. Linear Workflow Reference
+# 30. Linear Freeze Rule
 
-Use the verified Linear workflow facts defined in:
+Use `Docs/Project/Linear-Standard.md` only to verify the frozen state and the conditions for future reactivation.
 
-`Docs/Project/Linear-Standard.md`
+Do not require Linear updates during normal project work.
 
 ---
 

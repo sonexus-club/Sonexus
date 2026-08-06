@@ -4,7 +4,7 @@ Status: Active
 Last Updated: 2026-08-06
 Owner: SoNexus Project
 Approved Documentation: GitHub
-Active Workflow: Linear
+Active Workflow: GitHub project documentation
 
 ## Purpose
 
@@ -38,7 +38,7 @@ It provides navigation to the authoritative project documents and does not dupli
 - `Docs/Project/Project-Changelog.md` — project change history
 - `Docs/Project/Project-Architecture.md` — current approved system architecture
 - `Docs/Project/Project-Methodology.md` — engineering methodology and project standards
-- `Docs/Project/Linear-Standard.md` — active Linear workflow standard
+- `Docs/Project/Linear-Standard.md` — frozen Linear status and reactivation boundary
 - `Docs/ADR/` — architectural decisions and ADR status
 - `Docs/Services/` — service technical passports
 - `AI/AI-Rules.md` — mandatory rules for AI assistants
@@ -55,6 +55,6 @@ It provides navigation to the authoritative project documents and does not dupli
 
 GitHub is the single source of truth for approved project knowledge.
 
-Linear is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
+Linear is frozen and must not be used as a source of current project state. Active status, blockers, next steps and the project journal are maintained in GitHub project documentation.
 
 AI assistants must use the linked documents instead of relying on duplicated context or assumptions.

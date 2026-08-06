@@ -36,6 +36,6 @@ Runtime data, secrets, databases, IPFS repositories, logs, media files, and gene
 - [Project Status](Docs/Project/Project-Status.md)
 - [Project Architecture](Docs/Project/Project-Architecture.md)
 - [Project Methodology](Docs/Project/Project-Methodology.md)
-- [Linear Standard](Docs/Project/Linear-Standard.md)
+- [Linear Status — Frozen](Docs/Project/Linear-Standard.md)
 - [ADR Status](Docs/ADR/ADR-000-Status.md)
 - [Service Documentation](Docs/Services/)
