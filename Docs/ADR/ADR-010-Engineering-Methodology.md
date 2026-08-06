@@ -2,7 +2,7 @@
 
 Title: Engineering Methodology
 
-Version: 1.0
+Version: 1.2
 
 Status: Final
 
@@ -23,7 +23,8 @@ At this point:
 - documentation is standardized;
 - engineering workflow is standardized;
 - GitHub is the Source of Truth for approved project knowledge;
-- Linear is the active engineering workflow manager;
+- Trello is the active engineering workflow and project journal;
+- Linear was evaluated as an alternative workflow manager but is now frozen because its automation and integration limits do not meet the current project needs;
 - AI behavior is standardized;
 - identifier hierarchy is standardized.
 
@@ -42,7 +43,8 @@ The methodology is composed of the approved project standards and must be mainta
 The authoritative methodology references are:
 
 - `../Project/Project-Methodology.md`
-- `../Project/Linear-Standard.md`
+- `../Project/Trello-Standard.md` (active workflow and lifecycle)
+- `../Project/Linear-Standard.md` (frozen Linear status and reactivation boundary)
 - `../../AI/AI-Rules.md`
 - `../../AI/AI-Index.md`
 - `ADR-000-Status.md`
@@ -73,7 +75,9 @@ This hierarchy is mandatory for all future engineering work.
 
 GitHub is the only Source of Truth for approved architecture and published documentation.
 
-Linear records active engineering workflow, decomposition and pre-publication working state.
+Trello records the active engineering workflow, decomposition, working journal and pre-publication state.
+
+GitHub stores approved architecture, code and published documentation. Linear is frozen and is not a source of current project state.
 
 AI follows GitHub documentation.
 
@@ -89,7 +93,7 @@ The unified methodology follows the approved project principles:
 - Permanent identifiers.
 - Engineering standards change only through ADR.
 
-Verified Linear workflow facts are defined in `../Project/Linear-Standard.md` and must not be restated in parallel documents.
+The active Trello workflow is defined in `../Project/Trello-Standard.md`. The Linear freeze state and reactivation boundary are defined in `../Project/Linear-Standard.md`. These roles must not be contradicted by parallel documents.
 
 ---
 
@@ -97,13 +101,21 @@ Verified Linear workflow facts are defined in `../Project/Linear-Standard.md` an
 
 Expected outcomes:
 
-- unified engineering workflow;
+- unified Trello lifecycle and engineering journal with approved results published to GitHub;
 - unified documentation;
 - stable identifiers;
 - traceability;
 - reproducible engineering process.
 
-All further methodology changes require a new ADR.
+All further methodology changes require explicit approval and an ADR update or a new ADR.
+
+## Version 1.1 Amendment
+
+Linear is frozen. Existing Linear data is retained for possible future use, but normal project work does not require Linear updates.
+
+## Version 1.2 Amendment
+
+Trello is restored as the active SoNexus workflow and project journal. Every work item begins in Trello and moves through the approved lifecycle from idea to analysis, implementation, testing, GitHub publication, completion and archive. GitHub remains the Source of Truth for approved architecture, code and published documentation.
 
 ---
 

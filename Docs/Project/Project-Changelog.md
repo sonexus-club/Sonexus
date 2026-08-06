@@ -21,6 +21,10 @@
 - Confirmed WebTorrent TEST_MODE album discovery and Dashboard → Gateway → WebTorrent integration.
 - Applied the final Dashboard DOM XSS remediation.
 - Replaced Trello with Linear as the active engineering workflow system.
+- Froze Linear after practical automation and integration limitations were confirmed.
+- Restored Trello as the active project lifecycle and working journal.
+- Re-established the full Trello flow from idea through analysis, implementation, testing, GitHub publication, completion and archive.
+- Retained existing Linear data for possible future reactivation.
 - Recorded ADR-005 Gateway Architecture / Command Layer as the next analysis stage.
 
 ## 2026-08-01
