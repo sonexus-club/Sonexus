@@ -38,8 +38,8 @@ Playback starts through S-2 HDS IPFS Source Kubo for low startup latency and con
 
 ### Browser Runtime
 
-- S-11 Stream Controller
-- S-11.1 Universal URL Parser
+- S-11 BR Stream Controller
+- S-11.1 BR Universal URL Parser
 - S-11.4 Quality Manager
 
 ### Protected HDS Coordination
@@ -81,7 +81,7 @@ Playback starts through S-2 HDS IPFS Source Kubo for low startup latency and con
 - S-6 HDS Transcoder FFmpeg
 - S-7 HDS Tunnel Cloudflare
 - S-8 HDS Dashboard Netdata
-- S-11 Stream Controller
+- S-11 BR Stream Controller
 
 Service boundaries and current service status are documented in `../Services/`.
 
@@ -92,7 +92,7 @@ WordPress / Musicon
    ↓
 Plyr / HTML5 UI
    ↓
-S-11 Stream Controller
+S-11 BR Stream Controller
    ↓
 Protected infrastructure boundary
    ↓
@@ -113,7 +113,7 @@ S-1 HDS Gateway Express
 - Renders playback controls and browser media state.
 - Does not define SoNexus service identity.
 
-### S-11 Stream Controller
+### S-11 BR Stream Controller
 
 - Controls browser-side transport behavior.
 - Parses the universal stream URL.
@@ -165,7 +165,7 @@ WordPress / Musicon
   ↓
 Plyr / HTML5 UI
   ↓
-S-11 Stream Controller
+S-11 BR Stream Controller
   ├── S-1 HDS Gateway Express coordination and metadata
   ├── S-2 HDS IPFS Source Kubo fast start
   └── S-3 HDS WebTorrent Seeder bootstrap support
@@ -175,10 +175,10 @@ Audio output
 
 The transition from IPFS to WebTorrent must be seamless and transparent to the listener.
 
-## Universal Stream URL
+## Universal Media URL
 
 ```text
-https://<Domain>/<TrackCID>#h=<AlbumInfoHash>&t=<TrackIndex>&q=<QualityIndex>
+https://<gateway>/<TrackCID>#h=<AlbumInfoHash>&t=<TrackIndex>&q=<Quality>
 ```
 
 Parameters:
@@ -195,12 +195,16 @@ Quality model:
 - `q=2` — FLAC 16-bit / 44.1–48 kHz / Lossless default
 - `q=3` — FLAC 24-bit / Hi-Res
 
+The fragment `#h=...&t=...&q=...` remains in BR and is not transmitted to the HTTP gateway. The public media URL does not use action endpoints such as `/s` or `/d`.
+
+The universal media URL and the separate S-1 Command API are different contracts. After parsing the media URL, S-11 BR Stream Controller may send a dedicated control request to S-1 HDS Gateway Express to activate S-3 HDS WebTorrent Seeder.
+
 The URL contract is defined by `../ADR/ADR-004-Universal-URL-Standard.md`.
 
 ## Metadata Flow
 
 ```text
-S-11 Stream Controller
+S-11 BR Stream Controller
   ↓
 Protected infrastructure boundary
   ↓
@@ -212,7 +216,7 @@ S-5 HDS Metadata PostgreSQL
   ↓
 Metadata response
   ↓
-S-11 Stream Controller
+S-11 BR Stream Controller
 ```
 
 ## Audio Delivery Strategy
