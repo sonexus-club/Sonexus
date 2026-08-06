@@ -1,12 +1,12 @@
 # SoNexus Project Architecture
 
-Version: 1.2
+Version: 1.3
 Status: Final
 Progress: Completed
 Owner: SoNexus Project
 Source of Truth: GitHub
 
-Implementation baseline note: Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL source configuration is published. This note records implementation state only and does not approve new architecture.
+Implementation baseline note: Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL source configuration is published. The HDS Docker network migration was verified on 2026-08-07. This note records implementation state only and does not approve new architecture.
 
 ## Purpose
 
@@ -104,6 +104,17 @@ S-1 HDS Gateway Express
    ├── S-3 HDS WebTorrent Seeder
    └── S-8 HDS Dashboard Netdata
 ```
+
+## HDS Docker Network Topology
+
+```text
+S-1 HDS Gateway Express
+   ├── docker-network-ipfs ─────── S-2 HDS IPFS Source Kubo
+   ├── docker-network-webtorrent ── S-3 HDS WebTorrent Seeder
+   └── docker-network-postgresql ── S-5 HDS Metadata PostgreSQL
+```
+
+Each application network exists only for a verified service relationship. IPFS, WebTorrent Seeder and PostgreSQL do not share a direct Docker network with each other. Portainer is excluded from the HDS application networks.
 
 ## Component Responsibilities
 
@@ -318,7 +329,7 @@ The architecture allows future horizontal scaling through:
 - WebTorrent Primary Delivery
 - Separation of Concerns
 - GitHub stores approved architecture and published engineering documentation
-- Linear is the active workflow and pre-publication iteration space
+- Trello is the active workflow and pre-publication iteration space
 
 ### Decentralized Delivery Principle
 

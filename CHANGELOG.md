@@ -10,3 +10,5 @@
 - Added real PostgreSQL health verification using `SELECT 1`.
 - Replaced Dashboard torrent-table HTML injection with safe DOM text assignment.
 - Recorded the Linear workflow migration and the post-consolidation project state.
+- Published the verified HDS Docker network topology using `docker-network-ipfs`, `docker-network-webtorrent` and `docker-network-postgresql`.
+- Restored Trello as the active engineering workflow and required Trello plus GitHub synchronization at session closure.

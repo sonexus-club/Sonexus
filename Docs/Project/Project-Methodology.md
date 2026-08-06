@@ -173,7 +173,7 @@ This describes the approval state of the ADR document.
 
 Lifecycle and document status are separate dimensions.
 
-The Linear status determines the working lifecycle state.
+The Trello status determines the working lifecycle state.
 
 ADR metadata determines the document approval state.
 
@@ -280,6 +280,22 @@ Example:
 
 - `docker-hds-webtorrent-seeder`
 
+### Docker Network
+
+Format:
+
+`docker-network-<purpose>`
+
+The purpose is the target service name in lowercase when the network represents a direct Gateway-to-service relationship.
+
+Approved HDS networks:
+
+- `docker-network-ipfs`
+- `docker-network-webtorrent`
+- `docker-network-postgresql`
+
+Create a Docker network only for a verified service relationship. Do not create shared or speculative networks without a demonstrated communication requirement.
+
 ### Docker Image
 
 #### SoNexus services
@@ -320,17 +336,17 @@ Every infrastructure component must follow one consistent naming chain:
 
 A component name must identify the corresponding documentation, implementation and runtime object without ambiguity.
 
-## Linear Engineering Workflow
+## Trello Engineering Workflow
 
 Engineering workflow is defined in:
 
-`Docs/Project/Linear-Standard.md`
+`Docs/Project/Trello-Standard.md`
 
-This file is the single authoritative Linear standard for the project.
+This file is the single authoritative Trello standard for the project.
 
-Project methodology must not duplicate the verified Linear workspace, project, issue-prefix or status rules.
+Project methodology must not duplicate the Trello lifecycle, naming, label or card-template rules.
 
-Linear is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
+Trello is the active engineering workflow and working-state management space for analysis, decomposition and pre-publication iteration.
 
 ## Architecture Visualization Standard
 
@@ -341,7 +357,7 @@ After approval of each ADR:
 1. the GitHub documentation is updated;
 2. the master architecture diagram is updated;
 3. if needed, a dedicated ADR-specific diagram is created;
-4. the updated diagram is attached to the corresponding Linear item when workflow context requires it.
+4. the updated diagram is attached to the corresponding Trello item when workflow context requires it.
 
 The master architecture diagram must show only approved services, approved relationships, approved infrastructure boundaries and approved transport flows.
 
@@ -349,7 +365,7 @@ Any part of the project that has not yet been analyzed or approved through ADR m
 
 GitHub stores the authoritative diagrams together with the approved project documentation.
 
-Linear stores workflow context and pre-publication iteration state.
+Trello stores workflow context and pre-publication iteration state.
 
 ## Documentation Principles
 
@@ -400,7 +416,11 @@ The update shall include, where applicable:
 - relevant changelog entries;
 - the next continuation point.
 
-No project work session is considered complete until the documentation has been synchronized with the approved results of that session.
+No project work session is considered complete until:
+
+- the affected Trello cards match the verified working state;
+- approved results are published and verified in GitHub;
+- the verified commit SHA and next continuation point are recorded in Trello.
 
 ## GitHub Rules
 
@@ -408,7 +428,7 @@ GitHub is the source of truth for approved project knowledge.
 
 GitHub stores approved architecture, ADRs, service specifications, AI rules and published engineering results.
 
-Linear stores the active engineering workflow, task movement, decomposition and pre-publication working state.
+Trello stores the active engineering workflow, task movement, decomposition and pre-publication working state.
 
 ## Glossary
 

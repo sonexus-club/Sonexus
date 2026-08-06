@@ -1,10 +1,10 @@
 # SoNexus Project Status
 
 Status: Active
-Last Updated: 2026-08-06
+Last Updated: 2026-08-07
 Owner: SoNexus Project
 Approved Documentation: GitHub
-Active Workflow: Linear
+Active Workflow: Trello
 
 ## Current Focus
 
@@ -20,6 +20,11 @@ Status: Analysis
 - PostgreSQL health is verified by a real `SELECT 1` probe.
 - WebTorrent TEST_MODE album discovery was tested.
 - Dashboard → Gateway → WebTorrent integration test passed.
+- The HDS Docker network migration is completed and verified.
+- Gateway uses three isolated service networks: `docker-network-ipfs`, `docker-network-webtorrent` and `docker-network-postgresql`.
+- IPFS, WebTorrent Seeder and PostgreSQL do not share a direct application network with each other.
+- Five WebTorrent test torrents were restored after container recreation.
+- `sonexus-management` remains attached only to Portainer and is a separate follow-up.
 - WebTorrent control and command endpoints are not implemented.
 - Automated GitHub CI is not configured.
 
@@ -53,7 +58,7 @@ Continue ADR-005 analysis for the Gateway Command Layer. Do not define or implem
 Repository consolidation is completed.
 
 - GitHub contains the published runtime source baseline and approved project documentation.
-- Linear is the active workflow system for analysis, decomposition and pre-publication iteration.
+- Trello is the active workflow system for analysis, decomposition and pre-publication iteration.
 - Documentation is consolidated and synchronized with approved results.
 - AI documentation is reduced to `AI/AI-Index.md` and `AI/AI-Rules.md`.
 - `HDS/`, `VPS/`, `Docs/ADR/`, `Docs/Services/` and `Backup/` are established.

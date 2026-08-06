@@ -2,7 +2,7 @@
 
 Title: Engineering Methodology
 
-Version: 1.0
+Version: 1.1
 
 Status: Final
 
@@ -23,7 +23,7 @@ At this point:
 - documentation is standardized;
 - engineering workflow is standardized;
 - GitHub is the Source of Truth for approved project knowledge;
-- Linear is the active engineering workflow manager;
+- Trello is the active engineering workflow manager;
 - AI behavior is standardized;
 - identifier hierarchy is standardized.
 
@@ -42,7 +42,7 @@ The methodology is composed of the approved project standards and must be mainta
 The authoritative methodology references are:
 
 - `../Project/Project-Methodology.md`
-- `../Project/Linear-Standard.md`
+- `../Project/Trello-Standard.md`
 - `../../AI/AI-Rules.md`
 - `../../AI/AI-Index.md`
 - `ADR-000-Status.md`
@@ -71,9 +71,11 @@ This hierarchy is mandatory for all future engineering work.
 
 # Source of Truth
 
-GitHub is the only Source of Truth for approved architecture and published documentation.
+GitHub is the only Source of Truth for approved architecture, code and published documentation.
 
-Linear records active engineering workflow, decomposition and pre-publication working state.
+Trello records active engineering workflow, decomposition and pre-publication working state.
+
+Every completed work session must synchronize both systems: GitHub stores the approved result, while Trello records the verified task state, commit SHA and next continuation point.
 
 AI follows GitHub documentation.
 
@@ -89,7 +91,7 @@ The unified methodology follows the approved project principles:
 - Permanent identifiers.
 - Engineering standards change only through ADR.
 
-Verified Linear workflow facts are defined in `../Project/Linear-Standard.md` and must not be restated in parallel documents.
+Trello workflow rules are defined in `../Project/Trello-Standard.md` and must not be restated in parallel documents.
 
 ---
 
@@ -103,7 +105,7 @@ Expected outcomes:
 - traceability;
 - reproducible engineering process.
 
-All further methodology changes require a new ADR.
+Further methodology changes require explicit approval and a versioned ADR-010 update. A new ADR is required when the change introduces a separate architectural responsibility.
 
 ---
 

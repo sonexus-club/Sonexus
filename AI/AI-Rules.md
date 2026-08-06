@@ -1,8 +1,8 @@
 # AI-Rules
 
 Status: Final
-Version: 2.8
-Last Updated: 2026-08-06
+Version: 2.9
+Last Updated: 2026-08-07
 Owner: SoNexus Project
 Source of Truth: GitHub
 
@@ -134,7 +134,7 @@ Create new modules, documents, directories or technologies only when clearly jus
 
 GitHub is the single source of truth for approved project knowledge.
 
-Linear is the active engineering workflow and working-state management space.
+Trello is the active engineering workflow and working-state management space.
 
 The home server is only a synchronized working copy.
 
@@ -194,11 +194,11 @@ Documentation must be updated in GitHub only after the result is approved and st
 
 GitHub is the single source of truth for approved project knowledge.
 
-Linear remains the active workflow system for analysis, decomposition and pre-publication iteration.
+Trello remains the active workflow system for analysis, decomposition and pre-publication iteration.
 
 All approved documentation and code changes MUST be applied directly to GitHub.
 
-Unapproved or unstable working-state details MUST remain in Linear until they are ready for approved publication.
+Unapproved or unstable working-state details MUST remain in Trello until they are ready for approved publication.
 
 Standard workflow:
 
@@ -372,8 +372,13 @@ Before completing every SoNexus work session:
 1. Update the affected project documentation.
 2. Record all approved architectural decisions.
 3. Update the current service or ADR status.
-4. Record the next continuation point.
-5. Ensure the repository is ready for seamless continuation in the next session.
+4. Synchronize the affected Trello cards with the verified working state.
+5. Publish approved results to GitHub and read them back for verification.
+6. Record the verified commit SHA in Trello.
+7. Record the next continuation point.
+8. Ensure the repository is ready for seamless continuation in the next session.
+
+The session is not complete until both GitHub and Trello are synchronized.
 
 ## Execution Rule
 
@@ -429,7 +434,7 @@ Verification
 
 ↓
 
-Linear working-state tracking
+Trello working-state tracking
 
 ↓
 
@@ -467,7 +472,7 @@ Only architectural decisions and knowledge with long-term value are transferred 
 When working through Android:
 
 - ChatGPT prepares ready-to-run commands.
-- The user executes them through @GitHub, @Linear, or on the HDS.
+- The user executes them through @GitHub, @Trello, or on the HDS.
 - ChatGPT analyzes the result.
 - The next command is prepared only after the result has been analyzed.
 
@@ -479,22 +484,22 @@ Each tool has one primary responsibility.
 
 - GitHub: Approved architecture, rules and published documentation.
 - HDS (ws.sonexus.club): Development & Integration Environment.
-- Linear: Active engineering workflow and working-state management.
+- Trello: Active engineering workflow and working-state management.
 - ChatGPT: AI Engineering Lead.
 
 The tools must not duplicate each other's roles.
 
 ---
 
-# 23. Linear Standard Reference
+# 23. Trello Standard Reference
 
-Linear standard:
+Trello standard:
 
 See:
 
-`Docs/Project/Linear-Standard.md`
+`Docs/Project/Trello-Standard.md`
 
-AI must not duplicate Linear workflow rules.
+AI must not duplicate Trello workflow rules.
 
 ---
 
@@ -517,20 +522,20 @@ Mandatory rules:
 
 ---
 
-# 25. Linear Standard Usage
+# 25. Trello Standard Usage
 
-When creating or updating Linear work items, the AI MUST follow:
+When creating or updating Trello work items, the AI MUST follow:
 
-`Docs/Project/Linear-Standard.md`
+`Docs/Project/Trello-Standard.md`
 
-The AI must apply the verified workspace, project, issue-prefix and status rules from that document without rewriting them elsewhere.
+The AI must apply the verified card lifecycle, naming, label and completion rules from that document without rewriting them elsewhere.
 
 When an ADR is approved, the AI MUST also:
 
 - update the related GitHub documentation;
 - update the master architecture diagram if the approved ADR changes the project-level architecture;
 - create an ADR-specific diagram when the approved decision requires additional local visualization;
-- attach the relevant approved diagram to the corresponding Linear item when workflow context requires it;
+- attach the relevant approved diagram to the corresponding Trello item when workflow context requires it;
 - keep not-yet-approved parts of the architecture generalized on the master diagram.
 
 ---
@@ -539,17 +544,17 @@ When an ADR is approved, the AI MUST also:
 
 When a new idea appears during work, first check whether it belongs to the current ADR.
 
-If it belongs to the current ADR, create a Task under the active Epic.
+If it belongs to the current ADR, create a Task linked to the active ADR card.
 
-If it does not belong to the current ADR, create a new ADR with status Planned and create a new Epic for that ADR.
+If it does not belong to the current ADR, reserve a new ADR identifier only after registry verification and create its Trello ADR card with status Planned.
 
 ---
 
-# 27. Epic and ADR Relationship
+# 27. Trello Card Relationships
 
-For architectural work, one Epic corresponds to one ADR.
+For architectural work, one ADR card corresponds to one ADR.
 
-Examples of non-ADR Epics include:
+Examples of non-ADR work cards include:
 
 - Recovery Stage;
 - Documentation Foundation;
@@ -557,16 +562,17 @@ Examples of non-ADR Epics include:
 
 ---
 
-# 28. Definition of Done for Epic
+# 28. Definition of Done for a Work Item
 
-An Epic is completed only when:
+A Trello work item is completed only when:
 
-- all Tasks are completed;
+- all required child Tasks are completed;
 - all code changes are published to GitHub;
 - all required documentation is updated;
-- all implementation references are recorded in Linear;
+- all implementation references are recorded in Trello;
 - the result is verified;
-- the Epic status is set to Completed.
+- the verified commit SHA is recorded in Trello;
+- the card is moved to `Completed`.
 
 ---
 
@@ -578,11 +584,11 @@ Changes to project process rules are allowed only when there is an objective pra
 
 ---
 
-# 30. Linear Workflow Reference
+# 30. Trello Workflow Reference
 
-Use the verified Linear workflow facts defined in:
+Use the verified Trello workflow facts defined in:
 
-`Docs/Project/Linear-Standard.md`
+`Docs/Project/Trello-Standard.md`
 
 ---
 

@@ -1,5 +1,22 @@
 # Project Changelog
 
+## 2026-08-07
+
+### HDS Docker Network Migration
+
+- Replaced the shared legacy HDS networks with three direct service networks: `docker-network-ipfs`, `docker-network-webtorrent` and `docker-network-postgresql`.
+- Restricted each target service to its direct network with S-1 HDS Gateway Express.
+- Verified DNS resolution, PostgreSQL readiness, IPFS health, Seeder API and Gateway API after container recreation.
+- Preserved images, ports, restart policies, bind mounts, persistent data and five WebTorrent test torrents.
+- Removed `sonexus-p2p`, `sonexus-storage`, `ipfs_default` and `webtorrent_default`.
+- Left `sonexus-management` only for Portainer as a separate follow-up.
+
+### Trello and GitHub Session Synchronization
+
+- Restored Trello as the active engineering workflow system.
+- Required every completed SoNexus session to synchronize the verified task state in Trello and the approved result in GitHub.
+- Required the verified commit SHA and next continuation point to be recorded in Trello before session closure.
+
 ## 2026-08-06
 
 ### Universal Media URL Standard v1.1
