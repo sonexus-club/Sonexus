@@ -50,6 +50,20 @@ The service does not:
 - manage browser cache;
 - switch audio sources inside the browser.
 
+## Universal Media URL Boundary
+
+The canonical media URL is:
+
+```text
+https://<gateway>/<TrackCID>#h=<AlbumInfoHash>&t=<TrackIndex>&q=<Quality>
+```
+
+S-1 does not parse the fragment `h/t/q`; the fragment remains in S-11 BR Stream Controller. The universal media URL is not the S-1 command route.
+
+After client-side parsing, S-11 may send a separate control request to S-1. S-1 validates and coordinates that request, then delegates the actual torrent lifecycle operation to S-3 HDS WebTorrent Seeder.
+
+The runtime flow `S-11 → S-1 → S-3` has been confirmed to start a specific album torrent. However, the exact command route and request/response contract are not present in the published `HDS/Gateway/routes.js` baseline and remain to be synchronized and documented.
+
 ## Interfaces
 
 ### Inbound
