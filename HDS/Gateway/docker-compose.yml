@@ -16,7 +16,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
 
     networks:
-      - sonexus-management
+      - docker-network-ipfs
+      - docker-network-webtorrent
+      - docker-network-postgresql
 
     ports:
       - "3001:3000"
@@ -25,5 +27,11 @@ services:
       - ../Dashboard:/app/dashboard:ro
 
 networks:
-  sonexus-management:
+  docker-network-ipfs:
+    external: true
+
+  docker-network-webtorrent:
+    external: true
+
+  docker-network-postgresql:
     external: true

@@ -11,6 +11,9 @@ Docker
 Docker Container:
 docker-hds-metadata-postgresql
 
+Docker Network:
+docker-network-postgresql
+
 ## Purpose
 
 S-5 HDS Metadata PostgreSQL stores structured catalog and playback metadata used by SoNexus services.
@@ -49,7 +52,7 @@ The service does not:
 - Approved Docker image: `postgres:17`.
 - Approved Docker container: `docker-hds-metadata-postgresql`.
 - Persistent storage: `/home/sonexus/storage/postgres`.
-- Approved external network: `sonexus-storage`.
+- Approved external network: `docker-network-postgresql`.
 - Existing PostgreSQL data reused without loss.
 - Bind mount preserved.
 - PostgreSQL accepts connections after migration.

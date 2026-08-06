@@ -11,6 +11,12 @@ Docker
 Docker Container:
 docker-hds-gateway-express
 
+Docker Networks:
+
+- docker-network-ipfs
+- docker-network-webtorrent
+- docker-network-postgresql
+
 ## Purpose
 
 S-1 HDS Gateway Express is the internal HDS coordination gateway for SoNexus.

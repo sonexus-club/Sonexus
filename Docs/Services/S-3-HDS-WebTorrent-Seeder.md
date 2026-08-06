@@ -11,6 +11,9 @@ Docker
 Docker Container:
 docker-hds-webtorrent-seeder
 
+Docker Network:
+docker-network-webtorrent
+
 ## Purpose
 
 S-3 HDS WebTorrent Seeder provides HDS-side bootstrap and backup seeding for SoNexus after playback startup.
@@ -49,6 +52,7 @@ The service does not:
 - Approved Docker Compose service: `hds-webtorrent-seeder`.
 - Approved Docker image: `sonexus/hds-webtorrent-seeder:latest`.
 - Approved Docker container: `docker-hds-webtorrent-seeder`.
+- Approved external network: `docker-network-webtorrent`.
 - Node.js container implementation exists in `HDS/WebTorrent/`.
 - TEST_MODE album discovery is completed and was tested.
 - Read-only health and torrent API exists.

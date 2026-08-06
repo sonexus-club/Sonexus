@@ -17,15 +17,11 @@ services:
       - ../../storage/postgres:/var/lib/postgresql/data
 
     networks:
-      - sonexus-management
-      - sonexus-storage
+      - docker-network-postgresql
 
     ports:
       - "5432:5432"
 
 networks:
-  sonexus-management:
-    external: true
-
-  sonexus-storage:
+  docker-network-postgresql:
     external: true

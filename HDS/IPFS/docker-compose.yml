@@ -6,8 +6,7 @@ services:
     restart: unless-stopped
 
     networks:
-      - sonexus-management
-      - sonexus-p2p
+      - docker-network-ipfs
 
     ports:
       - "4001:4001"
@@ -18,8 +17,5 @@ services:
       - ../../storage/ipfs:/data/ipfs
 
 networks:
-  sonexus-management:
-    external: true
-
-  sonexus-p2p:
+  docker-network-ipfs:
     external: true

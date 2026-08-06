@@ -11,6 +11,9 @@ Docker
 Docker Container:
 docker-hds-ipfs-source-kubo
 
+Docker Network:
+docker-network-ipfs
+
 ## Purpose
 
 S-2 HDS IPFS Source Kubo provides the initial HTTP-accessible audio source for fast playback startup inside the HDS environment.
@@ -47,6 +50,7 @@ The service does not:
 - Docker Compose project: `hds-ipfs-source-kubo`.
 - Docker Compose service: `hds-ipfs-source-kubo`.
 - Docker container: `docker-hds-ipfs-source-kubo`.
+- Approved external network: `docker-network-ipfs`.
 - Persistent repository: `/home/sonexus/ipfs`.
 - Existing IPFS repository reused without data loss.
 - Existing peer identity preserved.
