@@ -4,13 +4,13 @@ Status: Active
 Last Updated: 2026-08-06
 Owner: SoNexus Project
 Approved Documentation: GitHub
-Active Workflow: GitHub project documentation
+Active Workflow: Trello
 
 ## Current Focus
 
 ADR-005 — Gateway Architecture / Command Layer
 
-Status: Analysis
+Trello Column: 📖 Анализ
 
 ## Current State
 
@@ -22,6 +22,7 @@ Status: Analysis
 - Dashboard → Gateway → WebTorrent integration test passed.
 - WebTorrent control and command endpoints are not implemented.
 - Automated GitHub CI is not configured.
+- Trello is restored as the active lifecycle and working journal; ADR-005 belongs in `📖 Анализ`.
 - Linear is frozen because its current automation and integration limits do not support the required workflow; existing Linear data is retained for possible future use.
 
 ## Completed Historical Work
@@ -54,7 +55,8 @@ Continue ADR-005 analysis for the Gateway Command Layer. Do not define or implem
 Repository consolidation is completed.
 
 - GitHub contains the published runtime source baseline and approved project documentation.
-- GitHub project documentation records the active workflow state, project journal, blockers and next continuation point.
+- Trello records the active workflow state, project journal, blockers and next continuation point.
+- GitHub stores approved architecture, code and published documentation.
 - Linear is frozen and is not a required workflow system.
 - Documentation is consolidated and synchronized with approved results.
 - AI documentation is reduced to `AI/AI-Index.md` and `AI/AI-Rules.md`.

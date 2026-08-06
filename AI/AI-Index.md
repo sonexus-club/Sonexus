@@ -4,7 +4,7 @@ Status: Active
 Last Updated: 2026-08-06
 Owner: SoNexus Project
 Approved Documentation: GitHub
-Active Workflow: GitHub project documentation
+Active Workflow: Trello
 
 ## Purpose
 
@@ -38,6 +38,7 @@ It provides navigation to the authoritative project documents and does not dupli
 - `Docs/Project/Project-Changelog.md` — project change history
 - `Docs/Project/Project-Architecture.md` — current approved system architecture
 - `Docs/Project/Project-Methodology.md` — engineering methodology and project standards
+- `Docs/Project/Trello-Standard.md` — active Trello workflow and lifecycle standard
 - `Docs/Project/Linear-Standard.md` — frozen Linear status and reactivation boundary
 - `Docs/ADR/` — architectural decisions and ADR status
 - `Docs/Services/` — service technical passports
@@ -55,6 +56,8 @@ It provides navigation to the authoritative project documents and does not dupli
 
 GitHub is the single source of truth for approved project knowledge.
 
-Linear is frozen and must not be used as a source of current project state. Active status, blockers, next steps and the project journal are maintained in GitHub project documentation.
+Trello is the active engineering workflow and project journal from idea through implementation and GitHub publication.
+
+GitHub is the Source of Truth for approved architecture, code and published documentation. Linear is frozen and must not be used as a source of current project state.
 
 AI assistants must use the linked documents instead of relying on duplicated context or assumptions.

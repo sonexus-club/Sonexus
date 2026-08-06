@@ -22,13 +22,9 @@ Linear was evaluated as an engineering workflow and working-state management sys
 
 GitHub is the Source of Truth for approved architecture, code and documentation.
 
-Until another workflow system is explicitly approved, current focus, implementation state, blockers, next steps and the project journal are maintained in GitHub project documentation, primarily:
+Trello is the active engineering workflow and project journal. Its authoritative rules are defined in `Docs/Project/Trello-Standard.md`.
 
-- `Docs/Project/Project-Status.md`
-- `Docs/Project/Project-Changelog.md`
-- relevant ADR and Service documents
-
-Trello is not restored as an active workflow system by this decision.
+GitHub remains the Source of Truth for approved architecture, code and published documentation.
 
 ## Retained Reference
 

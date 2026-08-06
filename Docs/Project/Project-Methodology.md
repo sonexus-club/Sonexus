@@ -173,7 +173,7 @@ This describes the approval state of the ADR document.
 
 Lifecycle and document status are separate dimensions.
 
-The working lifecycle state is recorded in `Project-Status.md` and the relevant ADR or Service document.
+The working lifecycle state is represented by the Trello card column. Approved results and durable status are synchronized to `Project-Status.md` and the relevant ADR or Service document.
 
 Linear statuses are inactive while Linear is frozen.
 
@@ -324,13 +324,15 @@ A component name must identify the corresponding documentation, implementation a
 
 ## Active Engineering Workflow
 
-GitHub project documentation is the active workflow record.
+Trello is the active engineering workflow and project journal. Every work item begins in Trello and moves through the approved lifecycle:
 
-- `Project-Status.md` records current focus, implementation state, blockers and the next continuation point.
-- `Project-Changelog.md` records significant completed changes.
-- relevant ADR and Service documents record their factual status.
+`💡 Новые идеи → 📋 Запланировано → 📖 Анализ → 💻 Разработка → 🧪 Тестирование → 📤 Публикация в GitHub → ✅ Завершено → 📦 Архив`
 
-`Docs/Project/Linear-Standard.md` records that Linear is frozen and defines the reactivation boundary. Linear is not a required working-state system.
+The complete operational rules are defined in `Trello-Standard.md`.
+
+GitHub stores approved architecture, code and published documentation. `Project-Status.md`, `Project-Changelog.md`, relevant ADR documents and Service documents are synchronized at approved publication points.
+
+`Linear-Standard.md` records that Linear is frozen and defines the reactivation boundary.
 
 ## Architecture Visualization Standard
 
@@ -341,7 +343,7 @@ After approval of each ADR:
 1. the GitHub documentation is updated;
 2. the master architecture diagram is updated;
 3. if needed, a dedicated ADR-specific diagram is created;
-4. the updated diagram is referenced from the relevant GitHub documentation.
+4. the authoritative diagram is published in GitHub and linked from the corresponding Trello ADR card.
 
 The master architecture diagram must show only approved services, approved relationships, approved infrastructure boundaries and approved transport flows.
 
@@ -349,7 +351,7 @@ Any part of the project that has not yet been analyzed or approved through ADR m
 
 GitHub stores the authoritative diagrams together with the approved project documentation.
 
-GitHub project documentation stores workflow context and pre-publication iteration state.
+Trello stores workflow context and pre-publication iteration state.
 
 ## Documentation Principles
 
@@ -406,7 +408,9 @@ No project work session is considered complete until the documentation has been 
 
 GitHub is the source of truth for approved project knowledge.
 
-GitHub stores approved architecture, ADRs, service specifications, AI rules, published engineering results, active status and the project journal.
+GitHub stores approved architecture, ADRs, service specifications, AI rules, code and published engineering results.
+
+Trello stores the active lifecycle, task movement, working journal, blockers and next actions.
 
 Linear is frozen. Existing Linear data is retained for possible future use, but no Linear update is required during normal project work.
 

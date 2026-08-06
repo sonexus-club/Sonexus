@@ -314,7 +314,8 @@ The architecture allows future horizontal scaling through:
 - WebTorrent Primary Delivery
 - Separation of Concerns
 - GitHub stores approved architecture and published engineering documentation
-- GitHub project documentation records the active workflow state and pre-publication engineering journal
+- Trello records the active engineering lifecycle and pre-publication project journal
+- GitHub stores approved architecture, code and published engineering documentation
 
 ### Decentralized Delivery Principle
 
