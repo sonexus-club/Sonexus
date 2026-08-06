@@ -41,8 +41,10 @@ This spelling is normative. Documentation and implementations must use the place
 | `https://<gateway>` | Active HTTPS gateway base URL; the standard is not tied to a specific domain |
 | `<TrackCID>` | IPFS CID of the selected track and quality used for initial HTTP/IPFS playback |
 | `h` | WebTorrent infoHash of the album torrent |
-| `t` | Zero-based or implementation-defined track index inside the album torrent; one indexing convention must be used consistently by metadata and the client |
+| `t` | Track index inside the album torrent; one indexing convention must be used consistently by metadata and BR |
 | `q` | Requested quality value |
+
+One album is identified by one `AlbumInfoHash`. For the same composition, `t` must remain stable across the available quality profiles; `q` selects the requested quality profile.
 
 ## Quality values
 
