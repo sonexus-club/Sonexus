@@ -14,7 +14,11 @@
 - Replaced the shared-key JWT proposal with `RS256`: the private key remains only in WordPress and Gateway receives only the public key.
 - Approved the single MVP scope `torrent:control` for both activation and status of the token-bound `infoHash`.
 - Kept Command Layer runtime state outside PostgreSQL.
-- Confirmed that Command Layer implementation has not started and must proceed through approved tasks and acceptance tests.
+- Approved the Command Layer implementation tasks and acceptance criteria.
+- Started S-1 implementation with centralized configuration and fail-fast validation.
+- Added safe Gateway environment examples and passed all approved variables through Docker Compose.
+- Replaced hardcoded WebTorrent Seeder URL and timeout usage in the existing Gateway routes and health probe.
+- Added automated tests for required values, approved defaults, numeric validation, RSA public-key validation, secret-free startup summaries and configured Seeder health probing.
 
 ### HDS Docker Network Migration
 

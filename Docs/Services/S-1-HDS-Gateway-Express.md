@@ -68,7 +68,7 @@ S-1 does not parse the fragment `h/t/q`; the fragment remains in S-11 BR Stream 
 
 After client-side parsing, S-11 may send a separate control request to S-1. S-1 validates and coordinates that request, then delegates the actual torrent lifecycle operation to S-3 HDS WebTorrent Seeder.
 
-The runtime flow `S-11 → S-1 → S-3` has been confirmed to start a specific album torrent. ADR-005 now defines the approved Command Layer contract; the published `HDS/Gateway/routes.js` baseline does not yet implement it.
+The runtime flow `S-11 → S-1 → S-3` has been confirmed to start a specific album torrent. ADR-005 now defines the approved Command Layer contract. The Gateway configuration foundation is implemented, while the protected activation and status routes remain pending.
 
 ## Command Layer Contract
 
@@ -150,7 +150,16 @@ The implementation baseline provides the following read-only endpoints:
 
 The PostgreSQL service health probe opens a database connection and executes `SELECT 1`.
 
-Protected Command Layer architecture is `v1.0 Final` in ADR-005 and remains unimplemented.
+Protected Command Layer architecture is `v1.0 Final` in ADR-005. Its configuration foundation is implemented; authentication and command routes remain pending.
+
+The implementation foundation provides:
+
+- centralized loading of the approved Gateway configuration contract;
+- fail-fast validation for missing or invalid required values;
+- RSA public-key validation for future `RS256` verification;
+- sanitized startup reporting that excludes secrets and key material;
+- Compose and `.env.example` coverage for all approved Gateway variables;
+- automated configuration and Seeder health-probe tests.
 
 ## Current State
 
@@ -161,7 +170,9 @@ Protected Command Layer architecture is `v1.0 Final` in ADR-005 and remains unim
 - Read-only Gateway, Dashboard and torrent integration endpoints are implemented.
 - ADR-005 Command Layer documentation passed Engineering Review and is published as `v1.0 Final`.
 - WordPress token issuance, RS256 verification and the `torrent:control` scope are approved.
-- Implementation tasks and acceptance tests must be approved before runtime changes begin.
+- Implementation and acceptance tasks are approved.
+- Centralized Gateway configuration, fail-fast validation and Compose environment wiring are implemented and verified.
+- Playback-token verification and protected Command Layer routes remain pending.
 
 ## Related Documents
 
