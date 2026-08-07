@@ -39,8 +39,24 @@ The service does not:
 ## Interfaces
 
 - S-1 HDS Gateway Express.
-- S-11 Stream Controller.
 - S-4 HDS Storage ZFS.
+
+S-11 BR Stream Controller does not call Seeder directly. All Command Layer requests pass through S-1 HDS Gateway Express.
+
+## Command Layer Lifecycle
+
+Internal routes:
+
+- `POST /internal/v1/torrents/{infoHash}/activate`
+- `GET /internal/v1/torrents/{infoHash}`
+
+Both routes require `SEEDER_INTERNAL_TOKEN` and are available only on `docker-network-webtorrent`.
+
+Scanning `/data` builds the known torrent catalog without starting WebTorrent sessions. Known torrents start as `inactive`. Activation creates or extends one session; automatic cleanup removes the session after 900 seconds of inactivity while preserving the known catalog entry.
+
+Lifecycle operations are serialized per `infoHash`. `expiresAt` is rechecked immediately before cleanup. Failed cleanup is retried after 60 seconds.
+
+`TEST_MODE` does not imply autostart. `AUTO_SEED_ON_START` defaults to `false` and exists only for explicit testing.
 
 ## Current State
 
@@ -57,19 +73,18 @@ The service does not:
 - TEST_MODE album discovery is completed and was tested.
 - Read-only health and torrent API exists.
 - Gateway and Dashboard integration was verified.
-- On-demand start, stop and pause lifecycle is not implemented.
-- Command Layer remains the next development target.
+- On-demand activation and automatic idle cleanup are approved in ADR-005 but not implemented.
+- The current implementation must be changed so discovered torrents remain inactive until activation.
 
 ## Related Documents
 
 - `../Project/Project-Architecture.md`
 - `../ADR/ADR-001-WebTorrent.md`
 - `../ADR/ADR-003-Docker-Platform.md`
+- `../ADR/ADR-005-Gateway-Architecture.md`
 
 ## Open Decisions
 
-- On-demand seeding lifecycle.
-- Inactivity timeout before pause.
 - Tracker configuration.
 - Peer and session limits.
-- Health, logging and operational controls.
+- Operational controls beyond Command Layer MVP.

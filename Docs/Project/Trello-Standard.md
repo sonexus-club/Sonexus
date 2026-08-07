@@ -106,6 +106,16 @@ Rules:
 
 Templates are intentionally minimal.
 
+Every active engineering card must contain exactly one checklist named `Список задач`.
+
+Checklist rules:
+
+- add the checklist when the card is created or first brought into active work;
+- keep only current, non-duplicated tasks;
+- mark an approved decision or verified result complete immediately;
+- keep unresolved decisions and remaining work incomplete;
+- do not create a second checklist for the same card.
+
 ### ADR
 
 - Purpose

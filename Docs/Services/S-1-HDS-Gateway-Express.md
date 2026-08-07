@@ -1,6 +1,6 @@
 # S-1 HDS Gateway Express
 
-Status: Draft
+Status: Check
 Progress: In Progress
 Owner: SoNexus Project
 Source of Truth: GitHub
@@ -68,7 +68,25 @@ S-1 does not parse the fragment `h/t/q`; the fragment remains in S-11 BR Stream 
 
 After client-side parsing, S-11 may send a separate control request to S-1. S-1 validates and coordinates that request, then delegates the actual torrent lifecycle operation to S-3 HDS WebTorrent Seeder.
 
-The runtime flow `S-11 → S-1 → S-3` has been confirmed to start a specific album torrent. However, the exact command route and request/response contract are not present in the published `HDS/Gateway/routes.js` baseline and remain to be synchronized and documented.
+The runtime flow `S-11 → S-1 → S-3` has been confirmed to start a specific album torrent. ADR-005 now defines the approved Command Layer contract; the published `HDS/Gateway/routes.js` baseline does not yet implement it.
+
+## Command Layer Contract
+
+Client-facing routes:
+
+- `POST /api/v1/torrents/{infoHash}/activate`
+- `GET /api/v1/torrents/{infoHash}`
+
+The routes require a short-lived playback JWT bound to `infoHash` and the permitted operation. Gateway validates the 40-character hexadecimal hash, applies CORS and configurable rate limits, delegates to S-3, and returns only normalized responses.
+
+Internal Seeder routes:
+
+- `POST /internal/v1/torrents/{infoHash}/activate`
+- `GET /internal/v1/torrents/{infoHash}`
+
+Gateway authenticates to Seeder with `SEEDER_INTERNAL_TOKEN` through `docker-network-webtorrent`. It waits at most five seconds and does not automatically retry activation.
+
+Activation is idempotent. A new session returns `action=started`; an existing session returns `action=extended`. Public state is limited to `active` and `inactive`. There is no public `stop` route.
 
 ## Interfaces
 
@@ -132,7 +150,7 @@ The implementation baseline provides the following read-only endpoints:
 
 The PostgreSQL service health probe opens a database connection and executes `SELECT 1`.
 
-Protected command API, authentication, the control contract and detailed Gateway architecture remain unapproved.
+Protected Command Layer architecture is approved for Engineering Review in ADR-005 and remains unimplemented.
 
 ## Current State
 
@@ -141,7 +159,8 @@ Protected command API, authentication, the control contract and detailed Gateway
 - Architectural role defined in `../Project/Project-Architecture.md`.
 - Implementation baseline exists in `HDS/Gateway/`.
 - Read-only Gateway, Dashboard and torrent integration endpoints are implemented.
-- Detailed Gateway Command Layer analysis is the next engineering stage under ADR-005.
+- ADR-005 Command Layer documentation is published with status `Check`.
+- Implementation is blocked until Engineering Review resolves the trusted playback token issuer and exact scope mapping.
 
 ## Related Documents
 
@@ -151,18 +170,16 @@ Protected command API, authentication, the control contract and detailed Gateway
 - `../ADR/ADR-001-WebTorrent.md`
 - `../ADR/ADR-002-IPFS-as-WebSeed.md`
 - `../ADR/ADR-003-Docker-Platform.md`
+- `../ADR/ADR-005-Gateway-Architecture.md`
 - `../Project/Project-Status.md`
 
 ## Open Decisions
 
-- Protected command API and control contract.
-- Protected request model between S-7 HDS Tunnel Cloudflare and S-1 HDS Gateway Express.
-- Error model.
-- Health response contract and readiness criteria.
-- PostgreSQL metadata contract.
-- IPFS and WebTorrent coordination interfaces.
-- Logging and observability.
-- Deployment and scaling model.
+- Trusted server-side playback token issuer and refresh interface.
+- Exact JWT `scope` values and operation mapping.
+- Health response contract and readiness criteria beyond the Command Layer MVP.
+- PostgreSQL metadata contract outside the Command Layer MVP.
+- Deployment and scaling model beyond the single-Gateway MVP.
 
 ## Completion Criteria
 

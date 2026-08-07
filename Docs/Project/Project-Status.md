@@ -10,7 +10,7 @@ Active Workflow: Trello
 
 ADR-005 — Gateway Architecture / Command Layer
 
-Status: Analysis
+Status: Engineering Review
 
 ## Current State
 
@@ -26,6 +26,9 @@ Status: Analysis
 - Five WebTorrent test torrents were restored after container recreation.
 - `sonexus-management` remains attached only to Portainer and is a separate follow-up.
 - WebTorrent control and command endpoints are not implemented.
+- ADR-005 Command Layer contracts are approved and published with document status `Check`.
+- Command Layer implementation remains blocked pending Engineering Review.
+- The review must resolve trusted playback token issuer ownership and exact JWT scope mapping.
 - Automated GitHub CI is not configured.
 
 ## Completed Historical Work
@@ -51,7 +54,7 @@ Status: Analysis
 
 ## Next Continuation Point
 
-Continue ADR-005 analysis for the Gateway Command Layer. Do not define or implement a command API until the architecture and protected control contract are approved.
+Complete ADR-005 Engineering Review. Resolve the trusted server-side playback token issuer and exact JWT scope mapping, update ADR-005, and approve implementation tasks before changing Gateway, Seeder or S-11 source.
 
 ## Repository Status
 

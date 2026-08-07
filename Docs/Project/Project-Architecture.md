@@ -1,12 +1,12 @@
 # SoNexus Project Architecture
 
-Version: 1.3
+Version: 1.4
 Status: Final
 Progress: Completed
 Owner: SoNexus Project
 Source of Truth: GitHub
 
-Implementation baseline note: Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL source configuration is published. The HDS Docker network migration was verified on 2026-08-07. This note records implementation state only and does not approve new architecture.
+Implementation baseline note: Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL source configuration is published. The HDS Docker network migration was verified on 2026-08-07. ADR-005 Command Layer is approved for Engineering Review but is not implemented.
 
 ## Purpose
 
@@ -134,6 +134,9 @@ Each application network exists only for a verified service relationship. IPFS, 
 - Connects browser-to-browser WebTorrent/WebRTC delivery.
 - Integrates with the Service Worker where required.
 - Manages Bit-Perfect capability signaling.
+- Requests activation for the album `infoHash` when playback starts or resumes.
+- Sends an activation heartbeat every five minutes while playback remains active.
+- Stores the short-lived playback token only in browser memory.
 
 ### S-1 HDS Gateway Express
 
@@ -143,6 +146,8 @@ Each application network exists only for a verified service relationship. IPFS, 
 - Integrates with HDS metadata and dashboard services.
 - Does not stream audio directly.
 - Does not carry browser P2P audio traffic.
+- Authenticates and rate-limits client-facing Command Layer requests.
+- Normalizes Command Layer errors and delegates torrent lifecycle operations to S-3.
 
 ### S-2 HDS IPFS Source Kubo
 
@@ -154,6 +159,37 @@ Each application network exists only for a verified service relationship. IPFS, 
 - Provides HDS bootstrap and recovery seeding support through WebTorrent.
 - Supports browser-side peer establishment when HDS assistance is required.
 - Reduces dependence on permanent centralized delivery.
+- Owns the known torrent catalog and active WebTorrent session state.
+- Starts a known torrent on demand and removes its session after the idle timeout.
+
+## Gateway Command Layer
+
+```mermaid
+flowchart TD
+    C["S-11 BR Stream Controller"] -->|"Playback JWT"| T["S-7 HDS Tunnel Cloudflare"]
+    T --> G["S-1 HDS Gateway Express"]
+    G -->|"Internal Bearer token"| S["S-3 HDS WebTorrent Seeder"]
+    S --> K["Known torrents: inactive"]
+    S --> A["Active WebTorrent sessions"]
+```
+
+Client-facing Gateway routes:
+
+- `POST /api/v1/torrents/{infoHash}/activate`
+- `GET /api/v1/torrents/{infoHash}`
+
+Internal Seeder routes:
+
+- `POST /internal/v1/torrents/{infoHash}/activate`
+- `GET /internal/v1/torrents/{infoHash}`
+
+Activation is idempotent. The default heartbeat interval is five minutes and the default Seeder idle timeout is 15 minutes. There is no public `stop` command; Seeder performs automatic cleanup.
+
+Gateway does not accept arbitrary magnet URIs, file paths or media URLs. Command Layer runtime state belongs to Seeder and is not persisted in PostgreSQL.
+
+Client-facing routes require a short-lived playback JWT. Internal Seeder routes require a separate shared Bearer token and are available only through `docker-network-webtorrent`. The trusted server-side playback token issuer remains an Engineering Review gate because S-11 browser runtime cannot hold the signing secret.
+
+The complete contract is defined by `../ADR/ADR-005-Gateway-Architecture.md`.
 
 ### S-5 HDS Metadata PostgreSQL
 
@@ -356,6 +392,7 @@ S-1 HDS Gateway Express and the related HDS services must not turn HDS into a pe
 - `../ADR/ADR-002-IPFS-as-WebSeed.md`
 - `../ADR/ADR-003-Docker-Platform.md`
 - `../ADR/ADR-004-Universal-URL-Standard.md`
+- `../ADR/ADR-005-Gateway-Architecture.md`
 - `../ADR/ADR-010-Engineering-Methodology.md`
 
 ## Related Documents

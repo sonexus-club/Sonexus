@@ -44,6 +44,14 @@ https://<gateway>/<TrackCID>#h=<AlbumInfoHash>&t=<TrackIndex>&q=<Quality>
 
 The universal media URL is not an S-1 command route. After S-11 parses and validates the media URL, it may send a separate control request to S-1 HDS Gateway Express.
 
+## Command Layer Client Behavior
+
+S-11 calls `POST /api/v1/torrents/{infoHash}/activate` when playback starts or resumes and every five minutes while playback remains active. Heartbeat stops when playback pauses.
+
+Both activation and `GET /api/v1/torrents/{infoHash}` require a short-lived playback JWT bound to the selected `infoHash` and allowed operation. S-11 keeps the token only in memory and never places it in the media URL or `localStorage`.
+
+S-11 is browser runtime and cannot safely store the JWT signing secret. Token issuance and refresh must be provided by an approved trusted server-side playback authorization component before implementation begins.
+
 ## Responsibilities
 
 - Parse the universal media URL through S-11.1 BR Universal URL Parser.
@@ -106,7 +114,8 @@ The current implementation is in testing. Packaging the same S-11 implementation
 - JavaScript implementation through WPCode exists and is in testing.
 - S-11.1 BR Universal URL Parser exists and is in testing.
 - The end-to-end request from S-11 through S-1 to S-3 has been confirmed to start the requested album torrent.
-- The exact S-1 command route and request/response contract are not present in the published Gateway source baseline and remain a synchronization task.
+- ADR-005 defines the S-1 Command Layer contract, but the published Gateway and S-11 source baselines do not implement it.
+- Trusted playback token issuer ownership and exact JWT scope mapping remain Engineering Review gates.
 - VPS does not participate in the current runtime.
 
 ## Related Documents
@@ -117,3 +126,4 @@ The current implementation is in testing. Packaging the same S-11 implementation
 - `../ADR/ADR-001-WebTorrent.md`
 - `../ADR/ADR-002-IPFS-as-WebSeed.md`
 - `../ADR/ADR-004-Universal-URL-Standard.md`
+- `../ADR/ADR-005-Gateway-Architecture.md`

@@ -2,6 +2,17 @@
 
 ## 2026-08-07
 
+### ADR-005 Gateway Command Layer
+
+- Published ADR-005 Gateway Architecture with status `Check`.
+- Approved idempotent activation and status contracts for one known `infoHash`.
+- Assigned client validation and orchestration to S-1 HDS Gateway Express.
+- Assigned known torrent catalog, session lifecycle and idle cleanup to S-3 HDS WebTorrent Seeder.
+- Approved a five-minute playback heartbeat and a configurable 15-minute Seeder idle timeout.
+- Approved separate playback JWT and internal Seeder Bearer-token boundaries.
+- Kept Command Layer runtime state outside PostgreSQL.
+- Recorded trusted playback token issuer ownership and JWT scope mapping as Engineering Review gates before implementation.
+
 ### HDS Docker Network Migration
 
 - Replaced the shared legacy HDS networks with three direct service networks: `docker-network-ipfs`, `docker-network-webtorrent` and `docker-network-postgresql`.
