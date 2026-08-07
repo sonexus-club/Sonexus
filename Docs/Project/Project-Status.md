@@ -8,9 +8,9 @@ Active Workflow: Trello
 
 ## Current Focus
 
-ADR-005 — Gateway Architecture / Command Layer
+ADR-005 — Gateway Command Layer implementation planning
 
-Status: Engineering Review
+Status: Architecture Final / Implementation Planning
 
 ## Current State
 
@@ -26,9 +26,11 @@ Status: Engineering Review
 - Five WebTorrent test torrents were restored after container recreation.
 - `sonexus-management` remains attached only to Portainer and is a separate follow-up.
 - WebTorrent control and command endpoints are not implemented.
-- ADR-005 Command Layer contracts are approved and published with document status `Check`.
-- Command Layer implementation remains blocked pending Engineering Review.
-- The review must resolve trusted playback token issuer ownership and exact JWT scope mapping.
+- ADR-005 Command Layer architecture passed Engineering Review and is published as `v1.0 Final`.
+- WordPress owns playback-token issuance and refresh through `POST /wp-json/sonexus/v1/playback-token`.
+- Playback JWTs use `RS256`; the private key remains only in WordPress and Gateway verifies with the public key.
+- The single MVP scope `torrent:control` authorizes activation and status for the token-bound `infoHash`.
+- Command Layer implementation has not started.
 - Automated GitHub CI is not configured.
 
 ## Completed Historical Work
@@ -54,7 +56,7 @@ Status: Engineering Review
 
 ## Next Continuation Point
 
-Complete ADR-005 Engineering Review. Resolve the trusted server-side playback token issuer and exact JWT scope mapping, update ADR-005, and approve implementation tasks before changing Gateway, Seeder or S-11 source.
+Create and approve implementation tasks plus acceptance tests for Gateway, Seeder, the WordPress playback-token endpoint and S-11 integration before changing runtime source.
 
 ## Repository Status
 

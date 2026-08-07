@@ -4,14 +4,17 @@
 
 ### ADR-005 Gateway Command Layer
 
-- Published ADR-005 Gateway Architecture with status `Check`.
+- Finalized ADR-005 Gateway Architecture as `v1.0 Final` after Engineering Review.
 - Approved idempotent activation and status contracts for one known `infoHash`.
 - Assigned client validation and orchestration to S-1 HDS Gateway Express.
 - Assigned known torrent catalog, session lifecycle and idle cleanup to S-3 HDS WebTorrent Seeder.
 - Approved a five-minute playback heartbeat and a configurable 15-minute Seeder idle timeout.
 - Approved separate playback JWT and internal Seeder Bearer-token boundaries.
+- Assigned playback-token issuance and refresh to `POST /wp-json/sonexus/v1/playback-token` on the WordPress server.
+- Replaced the shared-key JWT proposal with `RS256`: the private key remains only in WordPress and Gateway receives only the public key.
+- Approved the single MVP scope `torrent:control` for both activation and status of the token-bound `infoHash`.
 - Kept Command Layer runtime state outside PostgreSQL.
-- Recorded trusted playback token issuer ownership and JWT scope mapping as Engineering Review gates before implementation.
+- Confirmed that Command Layer implementation has not started and must proceed through approved tasks and acceptance tests.
 
 ### HDS Docker Network Migration
 

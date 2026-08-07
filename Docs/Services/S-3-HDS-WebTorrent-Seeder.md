@@ -73,7 +73,8 @@ Lifecycle operations are serialized per `infoHash`. `expiresAt` is rechecked imm
 - TEST_MODE album discovery is completed and was tested.
 - Read-only health and torrent API exists.
 - Gateway and Dashboard integration was verified.
-- On-demand activation and automatic idle cleanup are approved in ADR-005 but not implemented.
+- On-demand activation and automatic idle cleanup are approved in final ADR-005 but not implemented.
+- Implementation tasks and acceptance tests must be approved before the Seeder runtime is changed.
 - The current implementation must be changed so discovered torrents remain inactive until activation.
 
 ## Related Documents

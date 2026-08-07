@@ -77,7 +77,7 @@ Client-facing routes:
 - `POST /api/v1/torrents/{infoHash}/activate`
 - `GET /api/v1/torrents/{infoHash}`
 
-The routes require a short-lived playback JWT bound to `infoHash` and the permitted operation. Gateway validates the 40-character hexadecimal hash, applies CORS and configurable rate limits, delegates to S-3, and returns only normalized responses.
+The routes require a short-lived `RS256` playback JWT bound to `infoHash` with `scope=torrent:control`. The WordPress endpoint `POST /wp-json/sonexus/v1/playback-token` owns issuance and refresh; Gateway holds only the public verification key. Gateway validates the 40-character hexadecimal hash, applies CORS and configurable rate limits, delegates to S-3, and returns only normalized responses.
 
 Internal Seeder routes:
 
@@ -150,7 +150,7 @@ The implementation baseline provides the following read-only endpoints:
 
 The PostgreSQL service health probe opens a database connection and executes `SELECT 1`.
 
-Protected Command Layer architecture is approved for Engineering Review in ADR-005 and remains unimplemented.
+Protected Command Layer architecture is `v1.0 Final` in ADR-005 and remains unimplemented.
 
 ## Current State
 
@@ -159,8 +159,9 @@ Protected Command Layer architecture is approved for Engineering Review in ADR-0
 - Architectural role defined in `../Project/Project-Architecture.md`.
 - Implementation baseline exists in `HDS/Gateway/`.
 - Read-only Gateway, Dashboard and torrent integration endpoints are implemented.
-- ADR-005 Command Layer documentation is published with status `Check`.
-- Implementation is blocked until Engineering Review resolves the trusted playback token issuer and exact scope mapping.
+- ADR-005 Command Layer documentation passed Engineering Review and is published as `v1.0 Final`.
+- WordPress token issuance, RS256 verification and the `torrent:control` scope are approved.
+- Implementation tasks and acceptance tests must be approved before runtime changes begin.
 
 ## Related Documents
 
@@ -175,8 +176,6 @@ Protected Command Layer architecture is approved for Engineering Review in ADR-0
 
 ## Open Decisions
 
-- Trusted server-side playback token issuer and refresh interface.
-- Exact JWT `scope` values and operation mapping.
 - Health response contract and readiness criteria beyond the Command Layer MVP.
 - PostgreSQL metadata contract outside the Command Layer MVP.
 - Deployment and scaling model beyond the single-Gateway MVP.

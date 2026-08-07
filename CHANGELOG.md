@@ -12,4 +12,4 @@
 - Recorded the Linear workflow migration and the post-consolidation project state.
 - Published the verified HDS Docker network topology using `docker-network-ipfs`, `docker-network-webtorrent` and `docker-network-postgresql`.
 - Restored Trello as the active engineering workflow and required Trello plus GitHub synchronization at session closure.
-- Published ADR-005 Gateway Command Layer architecture for Engineering Review, including API, authentication, lifecycle, error and configuration contracts.
+- Finalized ADR-005 Gateway Command Layer architecture as `v1.0 Final` after Engineering Review, including the WordPress token issuer, RS256 verification boundary and `torrent:control` scope.

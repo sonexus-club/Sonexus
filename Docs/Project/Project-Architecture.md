@@ -1,12 +1,12 @@
 # SoNexus Project Architecture
 
-Version: 1.4
+Version: 1.5
 Status: Final
 Progress: Completed
 Owner: SoNexus Project
 Source of Truth: GitHub
 
-Implementation baseline note: Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL source configuration is published. The HDS Docker network migration was verified on 2026-08-07. ADR-005 Command Layer is approved for Engineering Review but is not implemented.
+Implementation baseline note: Gateway, Dashboard, WebTorrent Seeder, IPFS and PostgreSQL source configuration is published. The HDS Docker network migration was verified on 2026-08-07. ADR-005 Command Layer architecture is `v1.0 Final`; its API remains unimplemented.
 
 ## Purpose
 
@@ -32,7 +32,7 @@ Playback starts through S-2 HDS IPFS Source Kubo for low startup latency and con
 
 ### Presentation
 
-- WordPress
+- WordPress and the server-side playback-token endpoint
 - Musicon Theme
 - Plyr / HTML5 playback UI
 
@@ -118,6 +118,14 @@ Each application network exists only for a verified service relationship. IPFS, 
 
 ## Component Responsibilities
 
+### WordPress playback-token endpoint
+
+- Exposes `POST /wp-json/sonexus/v1/playback-token`.
+- Validates the requested `infoHash` against the authorized catalog.
+- Issues and refreshes 30-minute playback JWTs using `RS256`.
+- Keeps the RS256 private key exclusively on the WordPress server.
+- Returns the token and its `expiresAt` value to S-11.
+
 ### Plyr / HTML5 playback UI
 
 - Provides the third-party playback interface inside WordPress and Musicon.
@@ -166,7 +174,8 @@ Each application network exists only for a verified service relationship. IPFS, 
 
 ```mermaid
 flowchart TD
-    C["S-11 BR Stream Controller"] -->|"Playback JWT"| T["S-7 HDS Tunnel Cloudflare"]
+    I["WordPress playback-token endpoint"] -->|"RS256 JWT"| C["S-11 BR Stream Controller"]
+    C -->|"Playback JWT"| T["S-7 HDS Tunnel Cloudflare"]
     T --> G["S-1 HDS Gateway Express"]
     G -->|"Internal Bearer token"| S["S-3 HDS WebTorrent Seeder"]
     S --> K["Known torrents: inactive"]
@@ -187,7 +196,7 @@ Activation is idempotent. The default heartbeat interval is five minutes and the
 
 Gateway does not accept arbitrary magnet URIs, file paths or media URLs. Command Layer runtime state belongs to Seeder and is not persisted in PostgreSQL.
 
-Client-facing routes require a short-lived playback JWT. Internal Seeder routes require a separate shared Bearer token and are available only through `docker-network-webtorrent`. The trusted server-side playback token issuer remains an Engineering Review gate because S-11 browser runtime cannot hold the signing secret.
+Client-facing routes require a short-lived `RS256` playback JWT issued by `POST /wp-json/sonexus/v1/playback-token`. The private key remains only in WordPress; Gateway verifies with the public key. The single MVP scope `torrent:control` authorizes both activation and status for the token-bound `infoHash`. Internal Seeder routes require a separate shared Bearer token and are available only through `docker-network-webtorrent`.
 
 The complete contract is defined by `../ADR/ADR-005-Gateway-Architecture.md`.
 

@@ -2,11 +2,11 @@
 
 Title: Gateway Architecture and Command Layer
 
-Version: 0.9
+Version: 1.0
 
-Status: Check
+Status: Final
 
-Progress: In Progress
+Progress: Completed
 
 GitHub: Published
 
@@ -46,7 +46,8 @@ There is no public `stop` command. Gateway does not accept file paths, media URL
 
 ```mermaid
 flowchart TD
-    P["S-11 BR Stream Controller"] -->|"JWT + infoHash"| T["S-7 HDS Tunnel Cloudflare"]
+    I["WordPress playback-token endpoint"] -->|"RS256 JWT"| P["S-11 BR Stream Controller"]
+    P -->|"JWT + infoHash"| T["S-7 HDS Tunnel Cloudflare"]
     T --> G["S-1 HDS Gateway Express"]
     G -->|"Internal Bearer token"| S["S-3 HDS WebTorrent Seeder"]
     S --> K["Known torrent catalog"]
@@ -166,23 +167,31 @@ MVP client-facing errors:
 
 # Playback Authentication
 
-Client-facing Command Layer routes require a signed playback JWT using `HS256`.
+Client-facing Command Layer routes require a signed playback JWT using `RS256`.
+
+The trusted server-side issuer is the WordPress endpoint:
+
+```http
+POST /wp-json/sonexus/v1/playback-token
+```
+
+The endpoint validates the requested `infoHash` against the authorized catalog and returns the short-lived `token` and its `expiresAt` value. S-11 requests the token when playback starts and refreshes it through the same endpoint before expiry. Gateway does not issue or refresh playback tokens.
 
 Required claims:
 
 - `iss`;
 - `aud=sonexus-gateway`;
 - `infoHash`;
-- `scope`;
+- `scope=torrent:control`;
 - `iat`;
 - `exp`;
 - `jti`.
 
-Token lifetime is 30 minutes by default and is configurable. Gateway accepts only `HS256` and allows at most 30 seconds of clock skew. The signing secret contains at least 32 bytes and remains outside Git in `.env`.
+Token lifetime is 30 minutes by default and is configurable. Gateway accepts only `RS256` and allows at most 30 seconds of clock skew. The private signing key exists only in the server-side WordPress issuer. Gateway receives only the matching public verification key.
 
 The Player stores the token only in memory. It must not place the token in a URL or `localStorage`. The token itself is never logged; `jti` may be logged.
 
-The token must be issued and refreshed by a trusted server-side playback authorization component. S-11 is browser runtime and cannot contain the JWT signing secret. The exact ownership and refresh interface of this trusted issuer is an Engineering Review item that must be resolved before implementation.
+The single MVP scope `torrent:control` authorizes both `activate` and `status` for the `infoHash` in the token. A valid token with another scope or another `infoHash` returns `403 TOKEN_SCOPE_MISMATCH`.
 
 ---
 
@@ -256,7 +265,7 @@ Command Layer MVP does not depend on PostgreSQL.
 |---|---|
 | `SEEDER_INTERNAL_URL` | Required |
 | `SEEDER_INTERNAL_TOKEN` | Required secret |
-| `PLAYBACK_JWT_SECRET` | Required secret, at least 32 bytes |
+| `PLAYBACK_JWT_PUBLIC_KEY` | Required RS256 public verification key |
 | `PLAYBACK_JWT_ISSUER` | Required |
 | `PLAYBACK_JWT_AUDIENCE` | Default `sonexus-gateway` |
 | `SEEDER_REQUEST_TIMEOUT_MS` | Default `5000` |
@@ -273,7 +282,7 @@ Command Layer MVP does not depend on PostgreSQL.
 | `TORRENT_STOP_RETRY_SECONDS` | Default `60` |
 | `AUTO_SEED_ON_START` | Default `false` |
 
-Secrets exist only in `.env`. `.env.example` documents names and safe placeholders without usable secrets. Missing required values and invalid numeric values cause a fail-fast startup error. Startup logs may report resolved non-secret settings but never secret values.
+The WordPress issuer's RS256 private key and all shared secrets remain outside Git. `.env.example` documents Gateway and Seeder configuration names and safe placeholders without usable secrets. Missing required values and invalid numeric values cause a fail-fast startup error. Startup logs may report resolved non-secret settings but never secret values.
 
 ---
 
@@ -290,26 +299,29 @@ Secrets exist only in `.env`. `.env.example` documents names and safe placeholde
 
 ## Costs
 
-- a trusted server-side playback token issuer is required;
+- the WordPress installation must operate the server-side playback token endpoint and protect the RS256 private key;
 - runtime state is reset after Seeder restart;
 - in-memory rate limiting is sufficient only for the single-Gateway MVP;
 - implementation must handle per-hash lifecycle races explicitly.
 
 ---
 
-# Engineering Review Gate
+# Engineering Review Result
 
-Implementation must not begin until:
+Engineering Review is completed. It confirmed:
 
-- trusted playback token issuer ownership and refresh interface are approved;
-- exact `scope` values and operation mapping are approved;
-- the documented contract passes Engineering Review;
-- implementation tasks and acceptance tests are created in Trello.
+- WordPress owns token issuance and refresh through `POST /wp-json/sonexus/v1/playback-token`;
+- the issuer validates `infoHash` against the authorized catalog;
+- JWT signing uses `RS256`, with the private key only in WordPress and the public key only in Gateway;
+- `scope=torrent:control` authorizes both `activate` and `status` for the bound `infoHash`;
+- the documented Command Layer contract is implementable on the current Node.js, Express and WebTorrent baseline.
+
+Implementation must proceed through approved Trello tasks and acceptance tests. Final ADR status approves the architecture; it does not claim that the API is already implemented.
 
 ---
 
 # Status
 
-The Command Layer architecture is approved for Engineering Review and published with status `Check`.
+The Command Layer architecture passed Engineering Review and is published as `v1.0 Final`.
 
-The API is not implemented. A successful review and resolution of the review gate are required before this ADR may become `Final`.
+The API is not implemented. The next stage is implementation planning and acceptance-test definition for Gateway, Seeder, WordPress token issuance and S-11 integration.

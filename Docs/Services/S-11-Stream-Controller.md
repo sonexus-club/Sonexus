@@ -48,9 +48,9 @@ The universal media URL is not an S-1 command route. After S-11 parses and valid
 
 S-11 calls `POST /api/v1/torrents/{infoHash}/activate` when playback starts or resumes and every five minutes while playback remains active. Heartbeat stops when playback pauses.
 
-Both activation and `GET /api/v1/torrents/{infoHash}` require a short-lived playback JWT bound to the selected `infoHash` and allowed operation. S-11 keeps the token only in memory and never places it in the media URL or `localStorage`.
+Both activation and `GET /api/v1/torrents/{infoHash}` require a short-lived `RS256` playback JWT bound to the selected `infoHash` with `scope=torrent:control`. S-11 keeps the token only in memory and never places it in the media URL or `localStorage`.
 
-S-11 is browser runtime and cannot safely store the JWT signing secret. Token issuance and refresh must be provided by an approved trusted server-side playback authorization component before implementation begins.
+S-11 is browser runtime and never stores a signing key. It requests and refreshes the token through the WordPress server endpoint `POST /wp-json/sonexus/v1/playback-token`. The private RS256 key remains only in WordPress; Gateway receives only the public verification key.
 
 ## Responsibilities
 
@@ -115,7 +115,8 @@ The current implementation is in testing. Packaging the same S-11 implementation
 - S-11.1 BR Universal URL Parser exists and is in testing.
 - The end-to-end request from S-11 through S-1 to S-3 has been confirmed to start the requested album torrent.
 - ADR-005 defines the S-1 Command Layer contract, but the published Gateway and S-11 source baselines do not implement it.
-- Trusted playback token issuer ownership and exact JWT scope mapping remain Engineering Review gates.
+- ADR-005 passed Engineering Review and finalized WordPress token issuance, RS256 verification and the `torrent:control` scope.
+- Command Layer client behavior remains unimplemented in the published S-11 source baseline.
 - VPS does not participate in the current runtime.
 
 ## Related Documents
