@@ -1,10 +1,10 @@
 const axios = require("axios");
 const { Client } = require("pg");
 
-async function checkWebTorrent() {
+async function checkWebTorrent(seederConfig) {
   try {
-    const response = await axios.get("http://docker-hds-webtorrent-seeder:3000/", {
-      timeout: 2000
+    const response = await axios.get(`${seederConfig.internalUrl}/`, {
+      timeout: seederConfig.requestTimeoutMs
     });
 
     return response.status === 200 ? "online" : "offline";

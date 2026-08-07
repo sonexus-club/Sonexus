@@ -8,9 +8,9 @@ Active Workflow: Trello
 
 ## Current Focus
 
-ADR-005 — Gateway Command Layer implementation planning
+ADR-005 — Gateway Command Layer implementation
 
-Status: Architecture Final / Implementation Planning
+Status: Architecture Final / Implementation In Progress
 
 ## Current State
 
@@ -30,7 +30,10 @@ Status: Architecture Final / Implementation Planning
 - WordPress owns playback-token issuance and refresh through `POST /wp-json/sonexus/v1/playback-token`.
 - Playback JWTs use `RS256`; the private key remains only in WordPress and Gateway verifies with the public key.
 - The single MVP scope `torrent:control` authorizes activation and status for the token-bound `infoHash`.
-- Command Layer implementation has not started.
+- Gateway centralized configuration and fail-fast validation are implemented and verified.
+- Gateway Compose configuration now supplies the approved ADR-005 variables and documents safe placeholders in `HDS/Gateway/.env.example`.
+- Existing WebTorrent health and torrent-list requests now use the centralized Seeder URL and timeout.
+- Command Layer authentication and activation/status routes are not implemented.
 - Automated GitHub CI is not configured.
 
 ## Completed Historical Work
@@ -56,7 +59,7 @@ Status: Architecture Final / Implementation Planning
 
 ## Next Continuation Point
 
-Create and approve implementation tasks plus acceptance tests for Gateway, Seeder, the WordPress playback-token endpoint and S-11 integration before changing runtime source.
+Implement S-1 Gateway RS256 playback-token verification and enforce the approved issuer, audience, `torrent:control` scope and token-bound `infoHash` claims.
 
 ## Repository Status
 

@@ -11,15 +11,6 @@ const router = express.Router();
 
 /*
 |--------------------------------------------------------------------------
-| Configuration
-|--------------------------------------------------------------------------
-*/
-
-const HDS_WEBTORRENT =
-    "http://docker-hds-webtorrent-seeder:3000";
-
-/*
-|--------------------------------------------------------------------------
 | Health
 |--------------------------------------------------------------------------
 */
@@ -42,8 +33,10 @@ router.get("/health", (req, res) => {
 
 router.get("/services", async (req, res) => {
 
+    const { seeder } = req.app.locals.config;
+
     const [webtorrent, ipfs, postgresql] = await Promise.all([
-        checkWebTorrent(),
+        checkWebTorrent(seeder),
         checkIPFS(),
         checkPostgreSQL()
     ]);
@@ -86,8 +79,10 @@ router.get("/services", async (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
 
+    const { seeder } = req.app.locals.config;
+
     const [webtorrent, ipfs, postgresql] = await Promise.all([
-        checkWebTorrent(),
+        checkWebTorrent(seeder),
         checkIPFS(),
         checkPostgreSQL()
     ]);
@@ -123,12 +118,14 @@ router.get("/torrents", async (req, res) => {
 
     try {
 
+        const { seeder } = req.app.locals.config;
+
         const response = await axios.get(
 
-            `${HDS_WEBTORRENT}/torrents`,
+            `${seeder.internalUrl}/torrents`,
 
             {
-                timeout: 3000
+                timeout: seeder.requestTimeoutMs
             }
 
         );
